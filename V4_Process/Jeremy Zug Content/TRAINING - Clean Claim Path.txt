@@ -1,0 +1,86 @@
+---
+title: "Clean Claim Path: How a Claim Results in Payment"
+description: "A step-by-step visual of the medical billing process, from documentation to payment, used to educate providers and administrative staff."
+service_provider: "Practice Solutions"
+audience:
+  - Healthcare providers
+  - Billing staff
+  - Office administrators
+  - Mental health professionals
+keywords:
+  - medical billing
+  - insurance claims
+  - clean claim path
+  - ERA
+  - clearinghouse
+  - EDI
+context:
+  summary: >
+    This infographic outlines the five steps required for a clean claim to result in successful payment from insurance: progress note, claim submission, clearinghouse QC, payer processing, and remittance/payment. The aim is to clarify the technical flow for providers and staff.
+  ideal_for: >
+    Billing coordinators, therapists, or practice managers who want to understand or explain how claims move from clinical documentation to payment.
+  value_proposition: >
+    Helps reduce denials and delays by clarifying the importance of each step in the claim submission process, encouraging more accurate and complete billing practices.
+---
+
+# 🧾 Clean Claim Path  
+**How a Claim Results in Payment**
+
+This visual guide walks through the standard process that transforms a clinical visit into an insurance payment. Ensuring each step is completed accurately helps your practice get paid faster and with fewer rejections.
+
+---
+
+## 1️⃣ Progress Note
+
+A claim is created when a **progress note** is written by the rendering provider.  
+🔹 This note documents the clinical encounter and provides the necessary CPT codes and diagnoses that justify the claim.
+
+---
+
+## 2️⃣ Submit Claim
+
+After reviewing for accuracy and payer requirements, the claim is submitted—usually via **Electronic Data Interchange (EDI)**—to a **clearinghouse**.  
+🔹 This step includes verifying that all required fields are filled, codes are valid, and provider information is correct.
+
+---
+
+## 3️⃣ Clearinghouse QC
+
+The **clearinghouse** reformats the claim and checks for **small data errors** (e.g., invalid NPI numbers, date mismatches).  
+🔹 Once cleaned, the claim is forwarded to the insurance payer.  
+💡 Think of this as a quality control checkpoint.
+
+---
+
+## 4️⃣ Payer Processing
+
+The **insurance company** processes the claim according to:
+- Your credentials (e.g., in-network status)
+- The patient’s benefit plan  
+🔹 This determines what portion is paid, denied, or marked as patient responsibility.
+
+---
+
+## 5️⃣ Payment
+
+Payment is issued to the provider, or the claim is transferred to the patient for balance due. This is reflected in an **Electronic Remittance Advice (ERA)**.  
+🔹 The ERA explains how much was paid, why, and what adjustments (if any) were made.
+
+---
+
+## 📌 Summary Flow
+
+| Step | Name               | Key Action                                                     |
+|------|--------------------|----------------------------------------------------------------|
+| 1    | Progress Note      | Provider documents session and codes visit                    |
+| 2    | Submit Claim       | Claim submitted via EDI to clearinghouse                      |
+| 3    | Clearinghouse QC   | Data validated and cleaned for formatting issues              |
+| 4    | Payer Processing   | Insurance adjudicates the claim based on benefits and setup   |
+| 5    | Payment            | Payment or denial issued via ERA                              |
+
+---
+
+✅ **Tip:**  
+Incomplete or incorrect info at **any stage** of the process may result in delays, denials, or rework. Clean claims = faster revenue.
+
+---

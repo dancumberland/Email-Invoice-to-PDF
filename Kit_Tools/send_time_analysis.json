@@ -1,0 +1,152 @@
+{
+  "day_of_week_analysis": {
+    "Monday": {
+      "broadcast_count": 17,
+      "avg_open_rate": 28.12,
+      "avg_click_rate": 7.86
+    },
+    "Tuesday": {
+      "broadcast_count": 31,
+      "avg_open_rate": 27.82,
+      "avg_click_rate": 4.09
+    },
+    "Wednesday": {
+      "broadcast_count": 26,
+      "avg_open_rate": 27.47,
+      "avg_click_rate": 8.08
+    },
+    "Thursday": {
+      "broadcast_count": 53,
+      "avg_open_rate": 27.34,
+      "avg_click_rate": 6.44
+    },
+    "Friday": {
+      "broadcast_count": 41,
+      "avg_open_rate": 27.88,
+      "avg_click_rate": 6.51
+    },
+    "Saturday": {
+      "broadcast_count": 9,
+      "avg_open_rate": 25.24,
+      "avg_click_rate": 6.89
+    },
+    "Sunday": {
+      "broadcast_count": 22,
+      "avg_open_rate": 28.21,
+      "avg_click_rate": 4.42
+    }
+  },
+  "hour_of_day_analysis": {
+    "0": {
+      "broadcast_count": 1,
+      "avg_open_rate": 25.65,
+      "avg_click_rate": 11.02
+    },
+    "1": {
+      "broadcast_count": 2,
+      "avg_open_rate": 27.45,
+      "avg_click_rate": 2.14
+    },
+    "2": {
+      "broadcast_count": 4,
+      "avg_open_rate": 31.29,
+      "avg_click_rate": 13.0
+    },
+    "3": {
+      "broadcast_count": 6,
+      "avg_open_rate": 31.08,
+      "avg_click_rate": 17.68
+    },
+    "4": {
+      "broadcast_count": 17,
+      "avg_open_rate": 31.15,
+      "avg_click_rate": 15.47
+    },
+    "5": {
+      "broadcast_count": 27,
+      "avg_open_rate": 25.71,
+      "avg_click_rate": 6.94
+    },
+    "6": {
+      "broadcast_count": 19,
+      "avg_open_rate": 27.68,
+      "avg_click_rate": 4.26
+    },
+    "7": {
+      "broadcast_count": 16,
+      "avg_open_rate": 29.38,
+      "avg_click_rate": 5.04
+    },
+    "8": {
+      "broadcast_count": 16,
+      "avg_open_rate": 27.74,
+      "avg_click_rate": 8.35
+    },
+    "9": {
+      "broadcast_count": 19,
+      "avg_open_rate": 25.06,
+      "avg_click_rate": 4.32
+    },
+    "10": {
+      "broadcast_count": 10,
+      "avg_open_rate": 23.79,
+      "avg_click_rate": 2.46
+    },
+    "11": {
+      "broadcast_count": 5,
+      "avg_open_rate": 28.01,
+      "avg_click_rate": 5.31
+    },
+    "12": {
+      "broadcast_count": 11,
+      "avg_open_rate": 26.72,
+      "avg_click_rate": 3.23
+    },
+    "13": {
+      "broadcast_count": 8,
+      "avg_open_rate": 28.93,
+      "avg_click_rate": 3.7
+    },
+    "14": {
+      "broadcast_count": 13,
+      "avg_open_rate": 28.85,
+      "avg_click_rate": 3.61
+    },
+    "15": {
+      "broadcast_count": 7,
+      "avg_open_rate": 24.73,
+      "avg_click_rate": 2.26
+    },
+    "16": {
+      "broadcast_count": 4,
+      "avg_open_rate": 30.32,
+      "avg_click_rate": 1.89
+    },
+    "17": {
+      "broadcast_count": 7,
+      "avg_open_rate": 28.99,
+      "avg_click_rate": 2.48
+    },
+    "18": {
+      "broadcast_count": 2,
+      "avg_open_rate": 18.4,
+      "avg_click_rate": 1.6
+    },
+    "20": {
+      "broadcast_count": 3,
+      "avg_open_rate": 29.38,
+      "avg_click_rate": 8.09
+    },
+    "21": {
+      "broadcast_count": 1,
+      "avg_open_rate": 33.68,
+      "avg_click_rate": 0.73
+    },
+    "22": {
+      "broadcast_count": 1,
+      "avg_open_rate": 28.32,
+      "avg_click_rate": 4.31
+    }
+  },
+  "total_broadcasts_analyzed": 199
+}

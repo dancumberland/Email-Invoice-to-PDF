@@ -1,0 +1,289 @@
+{
+  "subject_analysis": {
+    "common_keywords": [
+      [
+        "future",
+        6
+      ],
+      [
+        "closing",
+        4
+      ],
+      [
+        "me",
+        3
+      ],
+      [
+        "work",
+        3
+      ],
+      [
+        "tonight",
+        3
+      ],
+      [
+        "builder",
+        2
+      ],
+      [
+        "knock",
+        2
+      ],
+      [
+        "mean",
+        2
+      ],
+      [
+        "what",
+        2
+      ],
+      [
+        "can",
+        2
+      ],
+      [
+        "video",
+        2
+      ],
+      [
+        "3",
+        2
+      ],
+      [
+        "only",
+        2
+      ],
+      [
+        "questions",
+        2
+      ],
+      [
+        "hours",
+        2
+      ]
+    ],
+    "structural_patterns": {
+      "count_with_brackets": 8,
+      "count_all_caps": 0,
+      "average_length": 33.87
+    }
+  },
+  "preview_text_analysis": {
+    "common_keywords": [
+      [
+        "me",
+        2
+      ],
+      [
+        "what",
+        2
+      ],
+      [
+        "quick",
+        1
+      ],
+      [
+        "question",
+        1
+      ],
+      [
+        "that",
+        1
+      ],
+      [
+        "keeping",
+        1
+      ],
+      [
+        "up",
+        1
+      ],
+      [
+        "if",
+        1
+      ],
+      [
+        "building",
+        1
+      ],
+      [
+        "exactly",
+        1
+      ],
+      [
+        "don",
+        1
+      ],
+      [
+        "let",
+        1
+      ],
+      [
+        "help",
+        1
+      ],
+      [
+        "pick",
+        1
+      ],
+      [
+        "preferred",
+        1
+      ]
+    ],
+    "average_length": 4.27
+  },
+  "total_broadcasts_analyzed": 30,
+  "worst_broadcasts_list": [
+    {
+      "subject": "Understanding Your Motivation",
+      "open_rate": 13.360102208432195,
+      "recipients": 5479
+    },
+    {
+      "subject": "Is FUTURE BUILDER right for you?",
+      "open_rate": 13.738977072310405,
+      "recipients": 5670
+    },
+    {
+      "subject": "Knock knock",
+      "open_rate": 14.045801526717558,
+      "recipients": 5240
+    },
+    {
+      "subject": "Help me not waste months of work (and $100k+!!!)",
+      "open_rate": 14.31480942682572,
+      "recipients": 6874
+    },
+    {
+      "subject": "Resending: Truth Hurls... I Mean, Hurts: What Can You Stomach?",
+      "open_rate": 14.635639926515614,
+      "recipients": 6532
+    },
+    {
+      "subject": "Finding your future self",
+      "open_rate": 14.715252887295899,
+      "recipients": 5022
+    },
+    {
+      "subject": "Don't Believe These Myths! [Video 3 + a surprise]",
+      "open_rate": 14.785040195735757,
+      "recipients": 5722
+    },
+    {
+      "subject": "Can Work Make You Happy?",
+      "open_rate": 14.793004996431119,
+      "recipients": 5604
+    },
+    {
+      "subject": "[Closing Tonight] Is this the end?",
+      "open_rate": 14.962992598519703,
+      "recipients": 4999
+    },
+    {
+      "subject": "The reviews are in",
+      "open_rate": 15.096925788133934,
+      "recipients": 5107
+    },
+    {
+      "subject": "Am I the only one with questions? [Closing tonight|",
+      "open_rate": 15.535714285714286,
+      "recipients": 5600
+    },
+    {
+      "subject": "Only 8 Hours Left....",
+      "open_rate": 15.622763063707945,
+      "recipients": 5588
+    },
+    {
+      "subject": "Everything you ever wanted",
+      "open_rate": 15.652003142183817,
+      "recipients": 5092
+    },
+    {
+      "subject": "Going LIVE in 2 hours! Will you join me?",
+      "open_rate": 16.02658788774003,
+      "recipients": 4062
+    },
+    {
+      "subject": "Name your fear (response requested!)",
+      "open_rate": 16.32495164410058,
+      "recipients": 5170
+    },
+    {
+      "subject": "[Video 3] Your questions",
+      "open_rate": 16.388024883359254,
+      "recipients": 5144
+    },
+    {
+      "subject": "This is the sign",
+      "open_rate": 16.569314641744548,
+      "recipients": 5136
+    },
+    {
+      "subject": "The future is bright",
+      "open_rate": 16.764246682279467,
+      "recipients": 5124
+    },
+    {
+      "subject": "Clear eyes.  Full heart.  From me to you.",
+      "open_rate": 16.836225812886497,
+      "recipients": 5013
+    },
+    {
+      "subject": "LAST CHANCE for Future Builder",
+      "open_rate": 16.855142703284866,
+      "recipients": 5571
+    },
+    {
+      "subject": "[Limited Time Masterclass] Work and identity are messy",
+      "open_rate": 17.194133539174064,
+      "recipients": 5182
+    },
+    {
+      "subject": "[OFFER CLOSING] Re: your future ",
+      "open_rate": 17.195233730522457,
+      "recipients": 5455
+    },
+    {
+      "subject": "Stronger Relationships in COVID \ud83d\udcaa[New training + Announcement \ud83c\udf89]",
+      "open_rate": 17.367949865711726,
+      "recipients": 5585
+    },
+    {
+      "subject": "What does financial freedom even mean?",
+      "open_rate": 17.413916786226686,
+      "recipients": 5576
+    },
+    {
+      "subject": "[Closing Tonight] It breaks my heart",
+      "open_rate": 17.414829659318638,
+      "recipients": 4990
+    },
+    {
+      "subject": "Is Time Flexible?",
+      "open_rate": 17.452830188679243,
+      "recipients": 5512
+    },
+    {
+      "subject": "Quick question",
+      "open_rate": 17.5531914893617,
+      "recipients": 5076
+    },
+    {
+      "subject": "Spoiler alert on tomorrow's big announcement...",
+      "open_rate": 17.59409328291014,
+      "recipients": 5553
+    },
+    {
+      "subject": "From Local Court Journalist to the Future of Food",
+      "open_rate": 17.638665953272696,
+      "recipients": 5607
+    },
+    {
+      "subject": "How long do I have to enroll?",
+      "open_rate": 17.66169154228856,
+      "recipients": 5628
+    }
+  ]
+}

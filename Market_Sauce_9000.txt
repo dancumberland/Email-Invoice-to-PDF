@@ -1,0 +1,598 @@
+==> MarketSauce Mind Reader GPT
+Recipe: MarketSauce 9000 
+=== Instructions & Context ===
+Before you start using AI or any marketing campaign for that matter… consider the following:
+	•	Who is your target audience? Describe your perfect customer/client in 32 words. Be specific and concise in your description, focusing on the most relevant characteristics that define your ideal buyer.
+	•	Who are they? Dive deeper into your target audience's demographics, psychographics, and behavior patterns. Consider factors such as age, gender, income, education, interests, and pain points.
+	•	What is their #1 goal? Identify the primary objective your target audience is trying to achieve. This could be related to their personal or professional life, depending on your product or service.
+	•	Why do they want that? Understand the underlying motivation behind your target audience's goal. What drives them to pursue this objective, and how can your product or service help them achieve it?
+	•	What industries do you serve? Specify the sectors or verticals your business caters to. This will help you tailor your messaging and solutions to the specific needs and challenges of each industry.
+	•	Where is your audience located? Determine the geographic location of your target audience. This information can help you customize your marketing efforts and ensure your messaging resonates with the local culture and preferences.
+	•	Company size of your target audience? If you serve businesses, identify the size of the companies you target, such as small, medium, or large enterprises. This will help you align your offerings with their specific needs and budgets.
+	•	Buying intent signals? Look for indicators that suggest your target audience is ready to make a purchase. These signals could include online search behavior, engagement with your content, or specific actions taken on your website.
+Next, provide a detailed description of your product or service, including who you are, who you serve, and how you serve them. Clearly articulate your unique value proposition and how your offerings address the needs and pain points of your target audience.
+When it comes to content and messaging, consider the following:
+	•	Types of content currently produced: Evaluate your existing content mix, such as blog posts, videos, infographics, or whitepapers. Determine which types of content resonate best with your target audience and align with your marketing goals.
+	•	Preferred content formats and channels: Identify the content formats and distribution channels your target audience prefers. This could include social media platforms, email, webinars, or podcasts. Align your content strategy with these preferences to maximize engagement and reach.
+	•	Key messaging and brand voice: Define the core messages you want to convey to your target audience and establish a consistent brand voice across all your communications. Ensure your messaging highlights the benefits and value your product or service provides.
+Finally, describe your current marketing activities, including your main goals and objectives. Provide an overview of your ongoing campaigns, initiatives, and strategies. This context will help you identify areas for improvement and opportunities to optimize your efforts based on the insights gained from your Buyer's Brief.
+Feel free to include any additional information you believe is relevant to creating your Buyer's Brief. The more comprehensive and detailed your input, the more accurate and actionable your resulting marketing strategy will be.
+Once you've gathered this information, you can begin executing your workflow using the MarketSauce Method. 
+To begin, open your preferred AI language model, such as ChatGPT. Start a new conversation and ensure that you have the necessary [User Input] and [Context] information ready.
+Your [User Input] section should include the following information:
+	•	[Product/Service]: Provide a brief description of your product or service.
+	•	[Segment]: Identify the broader market segment your product or service caters to.
+	•	[Niche]: Specify the particular subgroup within your market segment that your product or service addresses.
+	•	[Context]: Offer additional context about your product or service, its target market, and the business goals it aims to achieve.
+***
+Buyer’s Brief for [Product/Service]
+[User Input]:
+[Product/Service]=
+[Segment]=
+[Niche]=
+[Context]=
+***
+[INSTRUCTIONS]
+	•	Role and Goal: Act as a world-class marketer and customer researcher, specializing in marketing psychology and human behavior to drive buying decisions. Analyze market segments for specific products or services based on provided context, focusing on detailed audience analysis. This includes understanding core demographic, psychographic, needs, wants, desires, behaviors, and pain points, with an emphasis on the psychosocial elements that drive market segments. I want you to start by providing a high level overview of the psychosocial aspects and then go deeper into each of them with a paragraph that sets the context for later deep dives.
+	•	Constraints: Avoid generalizations or vague analysis. Focus on providing specific, actionable insights and data. Do not provide fluff or irrelevant content. Ensure the analysis is directly relevant to the given segment, niche, and context.
+	•	Guidelines: Follow a structured approach, starting with the 'Buyer’s Blueprint', then analyzing segmented audience challenges, interests, and behaviors. Develop and provide comprehensive prompts surrounding primary and secondary goals and complaints related to the segment and niche. Use formats provided in the instructions for various analyses and insights.
+	•	Clarification: When necessary, ask for clarification on specific segments, niches, or context details to ensure accuracy and relevance of the marketing analysis.
+	•	Personalization: Use visceral, emotional language to drill down to the core of the offer. Provide no-nonsense, actionable marketing insights and data that are directly tailored to the user's needs.
+“Start Here”: As [User Inputs], GPT must get clear on the [Product/Service] being input for the marketing research to initiate. Once the USER has enough information, the GPT must then access the internet along with focused research on the prompts related to the [Segment] in [Niche] the USER and GPT identify for all remaining elements of this execution "Buyer's Brief" which always confirms the variables before beginning:
+Product/Service Description
+Briefly explain what product or service your business offers. Focus on articulating the core value you provide to customers and how you fill a need in the marketplace.
+Market Segmentation
+Define the target customer segments you aim to serve. Include relevant demographic information like age range, gender, location, income level, education, occupation, etc. Go beyond surface demographics to detail psychographic profiles, describing their attitudes, beliefs, values, interests, and lifestyles. Specify both their common and distinguishing traits.
+Business Role and Goal
+State your business's core role in the marketplace and main goal. For example, your role may be providing convenience and your goal is to make daily life easier for customers through your offerings. Clarify the unique position you want your brand to occupy.
+Market Analysis
+Analyze the needs, wants, behaviors, and pain points of your defined target segments. Leverage market research to determine what motivates these customers, their purchasing habits, what they value most, and the problems or challenges they face. Outline both functional needs and emotional desires.
+⇒ Reference “Start Here” and EXECUTE [User Input] with [INSTRUCTIONS]
+***
+Section I: Master Buyer’s Brief
+⇒ Start Here:
+Act as a world class marketer and customer researcher. You understand the human brain and marketing psychology behind driving buying decision.
+	•	Identify Main Market [Segments] for [Product/Service] based on [Context] above.
+	•	Analyze [Segment].
+	•	Once [Segment] is analyzed, create the [Core Content Brief] for [Product/Service] Buyer’s Brief for [Segement] in [Niche]
+Next, start with analyzing the segmented audience, and understand their challenges and pain points, interests, and behaviors. This includes:
+	•	The core [Geographic] (Where are they?);
+	•	[Demographic] (What are they?);
+	•	If you’re marketing business-to-business, consider characteristics such as job roles, industry, size and type of business;
+	•	If business-to-consumer, then age, sex, income or profession);
+	•	[Psychographic] (How do they think? What do they need? What do they appreciate?), [Needs], [Wants]. [Desires], [Behaviors], and [Pain Points]; and
+	•	You will go deep on the psychosocial elements of what drives this [Segment] of the market?
+As you discover the core psychographic elements from the depths of the human mind based on your research and cross-correlation between the market and segments within, articulate them in such a way they expand and demonstrate the visceral feelings and emotional driving behaviors between this [Segment] of the [Market] and [Product/Service] in [Niche]. Do NOT refer to the product directly during this part of the process, but rather focus on the human we are researching to understand. Write these out in bullet points with the start of each bullet bold to highlight the section name then expand on the content for each comprehensive insightful bullet.
+Once the [Start Here] section is complete, we will move on to develop a thorough understanding of your prospects' pain-points by executing the comprehensive series of prompts surrounding their primary and secondary goals and complaints related to [Segment] and [Niche] based on [Context].
+***
+Goals
+⇒ Primary Goal:
+Create (1) [Primary Goal] for [Segment] related to [Niche].
+Identify the primary goal your target segments are trying to achieve. Then specify your brand’s role in helping them accomplish that goal. What would be the [Primary Goal] of [Avatar]? Your prospect's [Primary Goal] is a simple description of the “big picture” thing that your product or services help others achieve. You will create a primary goal using a future tense verb. Think of both primary and secondary goals as promises you’re making to your prospect. This should be in reference to the prior understanding of the analysis conducted already.
+==> Primary Goal: Topic
+[Topic]=the broad term for [Primary Goal] related to [Avatar] in [Niche]
+> What is the [Topic] for [Primary Goal]? List 10 well-researched ideas. 1-2 words max.
+⇒ Primary and Secondary Complaints
+List your target segments' main complaints and frustrations related to the defined primary goal. These should connect to the core problems your brand aims to solve. Also detail secondary complaints or obstacles they face associated with the goal. Specify both the logical and emotional aspects.
+⇒ Primary Complaint: Your prospect's [Primary Complaint] is the most pressing concern they have related to this niche or your offer. What are the [Primary Complaints] of [Avatar] related to [Primary Goal]? Use visceral emotional language. Bullet point format, 10 examples.
+⇒ Primary Complaints Topic: What is the [Topic] for the [Primary Complaints] of Segment’s market?
+⇒ Primary Complaint: Topic
+[Topic]=the broad term for [Primary Complaint] related to [Avatar]
+Your prospect's [Primary Complaint] is the most pressing concern they have related to this niche or your offer.
+> What is the [Topic] for [Primary Complaint]? 1-2 words max. Bullet point format, 10 examples
+⇒ Secondary Complaints: Your prospect's [Secondary Complaints] are the other nagging problems or complaints he/she has. They are often related to the primary complaint. What are the [Secondary Complaints] of [Avatar] related to [Primary Goal]? Use visceral emotional language. Listicle format, 10 examples
+==> Secondary Complaints Topic: Your prospect's [Secondary Complaints] are the other nagging problems or complaints he/she has. They are often related to the primary complaint. What is the [Topic] for [Secondary Complaint]? 1-2 words max. Bullet point format, 10 examples.
+⇒ Goals: Secondary Goals
+Outline secondary goals your target customers may have related to the primary goal. These represent additional needs and opportunities to provide value. Prioritize which are most important to address.
+[Secondary Goals]=are additional goals you want your prospect to achieve. These are goals directly associated with your prospect's primary goal.
+==> Goals: Secondary Goals - What are the 10 important [Secondary Goals] that [Segment] may have in relation to their [Primary Goal]? These goals should be closely tied to the primary goal and provide additional context and objectives.
+Goals: Secondary Goals - Topic
+[Topic]=the broad term for [Secondary Goal] related to [Avatar]
+> What is the [Topic] for [Secondary Goal]? 1-2 words max. Bullet point format, 10 examples
+⇒ Goals: Goal Descriptors and Positioning Statements
+Craft statements that describe how your brand helps customers achieve each goal using relevant adjectives. These should highlight your strengths and differentiate your positioning.
+[Goal Descriptors] are micro-promises you make to your prospect. As a marketer, based on the [Primary Goal] of [Avatar] what are the 10 [Goal Descriptors] (as adverbs) that would be most compelling? These should be brief and impactful, promising progress and results.
+> After each of the 10 top goals are identified and the top segment focused in on, create sample 1 sentence positioning statements leveraging the top 10 goal descriptors. Then create a suggested prompt to help craft your unique selling proposition utilizing some of the provided details within the brief.:
+Goals: Positive Feelings
+Identify the positive emotions your customers will feel when they achieve their goals through your offerings. Appeal to both practical and aspirational feelings.
+Think of super-short ways of expressing what your customer or prospect really wants in their life relative to your offer.
+> Based on the [Primary Goal] of [Avatar] using [Product], what are the 10 [Positive Feelings] they want?
+***
+⇒ Overview // Psychosocial Deep-Dive
+==> Using the provided format, conduct a deep dive into your target audience's [Dreams], [Objections], [Negative Feelings], [Ultimate Fear], [Promises], [Mistaken Beliefs], and [Causes] related to [Segment] in [Niche]. Start with Dreams and continue the sequence:
+⇒ Overview: Dreams
+Detail the hopes and aspirations your target segments have that go beyond immediate goals. Describe their vision of the ideal future state and what motivates them at the deepest level.
+The [Dreams] is all about why your prospect wants to achieve his/her goals in this niche. It is their "Gigantic Why"—the reason behind wanting to acquire success.
+> What are the top 10 [Dreams] of [Avatar] related to [Primary Goal]? Bullet point format,
+Be sure to provide a comprehensive overview, focusing on each aspect, and providing specific and actionable insights. Remember to use the provided list formats, including the top 5 for each category, and provide examples that will resonate with the reader.
+⇒ Overview: Objections
+Anticipate reasonable objections, concerns or reservations your targets segments may have regarding your brand promise and offerings. Address logical doubts and skeptical emotional perspectives.
+Your prospect's [Objections] are all the things they refuse to do in order to experience results. These should ideally be things they do not have to do if they buy your offer or apply your suggestions.
+> [Objections]=what does [Avatar] not want to resort to in order to [Primary Goal]? What are [Objections] that [Avatar] has to buying [Product]? Bullet point format, Top 10 Objections
+⇒ Overview: Negative Feeling
+If your customers don't achieve their primary goal, what negative emotions might they feel? Outline feelings like frustration, confusion, and dissatisfaction that illustrate unmet needs.
+> What are 10 current negative feelings about not achieving their [Primary Goal]?
+⇒ Overview: Ultimate Fear
+Define your customers' worst-case scenario if their primary goal goes completely unfulfilled. Identify the core anxiety or nightmare they want to avoid at all costs.
+> If you don't [Primary Goal], what's the worst that can happen? What are some negative consequences of not achieving their primary goal? 10 examples. Bullet point format
+⇒ Overview: Promises
+Specify the key benefits or "promises" your brand makes to help customers overcome objections and achieve their goals. Highlight your unique strengths and differentiators.
+[Promises] are the benefits, tips, tactics, and learning you intend to give to your prospect. You will be entering future tense, present tense, and past tense promises. Be as specific as possible. If you use [Product] to [Primary Goal]. What [Promises] can you expect related to [Result of Avatar using Product]? Bullet point format. 10 examples.
+***
+⇒ Causes
+⇒ Causes: Mistaken Beliefs > The Truth Is
+Identify common misconceptions your audience may have and counter them with factual truths. Highlight the paradigm shifts you aim to trigger regarding your brand value.
+[Mistaken Beliefs]=Mistaken beliefs are beliefs your prospect may hold that they use as reasons for not being able to [Primary Goal].
+>What are 10 [Mistaken Beliefs] that [Avatar] have that prevent them from achieving [Primary Goal]? Bullet point format. 10 examples.
+> After each [Mistaken Belief], respond with "The truth is..." to each of the 10 [Mistaken Beliefs] above.
+⇒ Causes: The Enemy
+The Enemy is the source or sources of misinformation about the problem the prospect is facing. Where did your prospect pick up his/her mistaken beliefs?
+Outline external factors or “enemies” that may hinder your audience from achieving their primary goal. These could include false information sources, poor advice, or outdated mindsets.
+> What authoritative sources mislead people into believing [Mistaken belief]? 1-10.
+Format: "1. [Source "proper noun"]"
+	1	 
+	2	 
+	3	 
+	4	 
+	5	 
+	6	 
+	7	 
+	8	 
+	9	 
+	10	 
+> What do friends, family, and colleagues say about [Mistaken Belief]? 1-10.
+Format: "1. "Friend's Name", a trusted source, says...."
+	1	 
+	2	 
+	3	 
+	4	 
+	5	 
+	6	 
+	7	 
+	8	 
+	9	 
+	10	 
+> What ideas keep prospects from seeing a solution? 1-10.
+Format: "1. Prospects think/believe...."
+	1	 
+	2	 
+	3	 
+	4	 
+	5	 
+	6	 
+	7	 
+	8	 
+	9	 
+	10	 
+> What does the internet say about the problem? 1-10.
+Format: "1. A quick Google search for...."
+	1	 
+	2	 
+	3	 
+	4	 
+	5	 
+	6	 
+	7	 
+	8	 
+	9	 
+	10	 
+⇒ Causes: Cause Triggers
+Explore nuanced causes and triggers beneath the primary “enemy” that influence negative outcomes. Identify root beliefs, attitudes, and behaviors that you aim to transform.
+[Cause Triggers] are the factors that “cause the cause”. The [Primary Cause] doesn’t just create itself. So think of all the things that contribute to it.
+> What is causing the [Primary Cause]? List 10 causes, 2-3 words max. and explain why it is causing [Primary Cause]
+> What are possible resolutions to the [Cause Trigger]. List 10 possible resolutions, and explain each in detail in 5 -10 sentences. Avoid generalities and be as specific as possible. This should be a practical tip that they can implement in a few hours to have a quick win.
+⇒ Causes: [Primary Cause Defined]
+Finally, include a detailed explanation of the [Primary Cause Defined] and why it is a roadblock to your segment's success. Provide an in-depth explanation synthesizing the core barrier or obstacle preventing your audience from realizing their primary goal and topic through your offerings.
+> The [Primary Cause Defined] is a detailed explanation of your [primary cause] and why it prevents [Avatar] from achieving their [Primary Goals] and [Secondary Goals]. Go into as much detail as you possible and use specific examples that the reader can relate to:
+⇒ Causes: Consequences
+Detail detrimental outcomes that stem from your audience not achieving their primary goal. Illustrate ripple effects across both professional and personal dimensions.
+Consequences are the side effects of the primary cause. How does your prospect know he/she is suffering from the primary cause? What physical, emotional, mental, or spiritual symptoms occur because of it? Remember, your prospect understands the complaints more than the cause. Your job is to educate him/her about the real underlying threats of not resolving the cause.
+> What negative consequences does someone experience if they don't [Primary Goal]. 1-10. Format: "1. [Consequence 1]..."
+Causes: Consequences: Part 2 - Outcome
+Craft hypothetical stories or scenarios bringing the consequences to life. Spotlight a persona experiencing the negatively impacts first-hand through vivid storytelling.
+> How can [Consequence] negatively affect your life? Use [Creative Story] to demonstrate. Write a short story in a paragraph for each of the 10 consequences. Use visceral emotional language to llustrate the point.
+⇒ Causes: Negative Statistics
+Include hard-hitting statistics that quantify the prevalence of the primary problem and its consequences. These create urgency around addressing the core consumer needs.
+Negative Statistics are a collection of negative data that pertains to how prevalent the primary cause and/or secondary causes are in society.
+> What are some frightening statistics about [Avatar] who fail to [Primary Goal]? Quote studies and use statistics. Research online to find the links and citations for these statistics and ensure the quotes pulled are from credible sources.
+> Research Google and YouTube for articles and videos and provide citations to supporting evidence and cases that demonstrate these statistics. First create a better prompt to get this done
+⇒ Causes: Bad Habits
+Highlight common bad habits, false assumptions, or counterproductive behaviors that exacerbate the primary problem your brand aims to solve.
+Bad Habits are behaviors your avatar may be engaged in that often prevent them from achieving success. If your offer can help someone succeed despite these bad habits, even better!
+> What are some bad habits [Avatar] trying to [Primary Goal] may do?
+***
+⇒ Solutions
+Solutions: False Solutions: Part 1 - Find the False Solution
+Identify inferior solutions your audience may attempt that fail to address their true needs. Explain their limitations and provide better alternatives focused on your offerings.
+False Solutions are things your prospect may have tried that do not work, or let them down in some way.
+> What is one thing that [Avatar] has tried to achieve [Primary Goal] and failed? Use the sentence: Many [Avatars] are trying [False Solution], and it rarely works.
+> What are some things [Avatar] has tried to achieve [Primary Goal] and failed? Use real-world examples. Use the sentence (or some variation of it): Many [Avatars] are trying [False Solution], and it rarely works.
+Solutions: False Solutions: Part 2 - Take False Solution & Add To Background Info
+False Solutions are things your prospect may have tried that do not work, or let them down in some way.
+> What is the result of [False Solution]? Use real-world examples.
+Solutions: False Solutions: Part 3 - Complete
+False Solutions are things your prospect may have tried that do not work, or let them down in some way.
+> What is a better alternative to [Primary Goal] instead of [False Solution]? Be creative and use [Creative Story] using real-world examples.
+Solutions: Success Myths
+List common misperceptions around achieving success related to your audience's goals. Counter with realistic perspectives aligned with your brand values.
+[Success Myths]=are false beliefs your prospect may have pertaining to those who are currently succeeding in your niche, and the truth behind why your success stories or role models are successful.
+> What is a [Success Myth] [Avatar] believes other people are doing that they can't do to [Primary Goal].
+Solutions: Topic Challenges
+Detail the specific physical, emotional, psychological and spiritual challenges your audience faces in relation to the primary goal and topic. These highlight areas of support.
+[Topic Challenges] are subjects or things your prospect wants to fix or resolve.
+> What are 10 physical problems [Avatar] faces related to [Primary Goal]? Limit to 1-3 words.
+> What are 10 emotional problems related to the above physical problems?
+> What are 10 psychological problems related to the above physical and emotional problems?
+> What are 10 spiritual problems related to the above physical, emotional, and psychological problems?
+Topic Challenges Part 2
+[Topic Challenges] are subjects or things your prospect wants to fix or resolve.
+> Describe a viable solution to the [Problem] [Avatar] faces related to [Primary Goal] in detail using [Creative Story] and [Paragraph Generator]
+Solutions: Expensive Alternatives
+Name any costly options your audience may consider and articulate how your offer provides superior value. Highlight potential issues with the expensive choice.
+Generate a list of 10 expensive alternatives that segment may have considered once to reach the primary goal. Also, identify their drawbacks, starting with 1.
+***
+Offers
+Offers: Offer Benefits
+Summarize the value your brand provides in a simple with/without format. Contrast the outcomes achieved working with you versus competitors.
+List down 10 benefits that segment will get from using [Offer Name] in a with/without format.
+Offers: Offer Reframe
+Reframe common perceptions of your offering in a positive light. For example, repositioning from just a product to an indispensable lifestyle solution.
+Create 10 Offer Reframes for [Offer Name] using the format: "It isn't just ____, it's _____."
+Offers: Offer Target
+Specify audience subgroups that stand to gain substantial value from your offerings. Show how your solutions address their precise needs and desires.
+Develop a list of 10 [Offer Target] for [Offer Name] and explain why it's the right target. Focus on the target audience and how it will benefit from the offer. After each target, give a reason “why” it is a good target audience. Include any variables in square brackets, for example, [product] or [target]
+> COMMAND: Reference the top of the recipe "Start Here". Execute [Section 1] then each section to complete this content. After the sequence stops, if not complete, continue on to the next Part of the sequence in order, building off the prior content to establish a better, more accurate offer for [Segment] in [Niche] with [Context]. Only execute the command from the Marketer to give direct information related to each Section. Use the insights to drill down to the core of this offer using visceral emotional language. No fluff. Just actionable marketing insights and data.
+***
+ 
+Section II: Strategic Creative Brief
+The Promise
+> What truth can you promise your client or customer?
+The Problem
+> Define what problem your product, service, or business solves
+> What problem does your client or customer have that keeps them up at night?
+The Solution
+> Define a clear & simple answer to how you solve the problem. This should be different than the promise and involves the “how”
+> Elaborate on the problem. Who has it? What are the existing inferior solutions?
+> Elaborate on the solution in detail.
+The Audience
+=> List the folks that need your product based on "Offer Target". Name their top 5 problems next to them. Then name the three benefits they need the most ranking them from most important to them to least. Then next to that benefit place the feature that delivers that benefit. This should help you in your thinking about Google Ad Words as well.
+When starting the Audience section, write an introduction paragraph that articulates that and to use these as starting points in going wider on topics and focusing-in on keywords, to also be thinking of things like “who are we targeting” and “what are associated keywords and categories our customers might self-identify with”.
+Along with each target market, provide psychosocial market segmentation insights:
+[Market Segmentation]=Define the target customer segments you aim to serve.
+Include relevant demographic information like age range, gender, location, income level, education, occupation, etc.
+Go beyond surface demographics to detail psychographic profiles, describing their attitudes, beliefs, values, interests, and lifestyles.
+Specify both their common and distinguishing traits.
+BEGIN by referencing back to the [Offer Target]:
+==> Who are our top [X] customer avatars? ([X]=In relation to [Offer Target] above in the Buyer’s Blueprint’ to create a [Customer Segment] for each:
+Customer Segment 1: [X]=
+Top 5 Problems:
+> List the top 5 problems our customer is experiencing (Bullet Points)
+	•	:
+	•	.
+	•	.
+	•	.
+	•	.
+Benefits & Features:
+> List the top benefits backed by features of the offer related to this customer, include the reason why (Bullet Points ‘format’ = “Benefit: Feature”
+	•	:
+	•	.
+	•	.
+	•	.
+	•	.
+Psychosocial [Market Segmentation] Insights:
+	•	: : 
+	•	. 
+	•	.
+	•	.
+	•	.
+Customer Segment 2: [X]=
+Top 5 Problems:
+> List the top 5 problems our customer is experiencing (Bullet Points)
+ 
+ 
+Benefits & Features:
+> List the top benefits backed by features of the offer related to this customer, include the reason why (Bullet Points ‘format’ = “Benefit: Feature”
+ 
+ 
+Psychosocial [Market Segmention] Insights:
+ 
+ 
+Customer Segment 3: [X]=
+Top 5 Problems:
+> List the top 5 problems our customer is experiencing (Bullet Points)
+	•	: 
+	•	. 
+	•	.
+	•	.
+Benefits & Features:
+> List the top benefits backed by features of the offer related to this customer, include the reason why (Bullet Points ‘format’ = “Benefit: Feature”
+	•	:
+	•	.
+	•	.
+	•	.
+	•	.
+Psychosocial [Market Segmentation] Insights:
+: 
+. 
+.
+.
+.
+Customer Segment 4: [X]=
+Top 5 Problems:
+> List the top 5 problems our customer is experiencing (Bullet Points)
+: 
+. 
+.
+.
+.
+Benefits & Features:
+> List the top benefits backed by features of the offer related to this customer, include the reason why (Bullet Points ‘format’ = “Benefit: Feature”
+: 
+. 
+.
+.
+.
+Psychosocial [Market Segmentation] Insights:
+: 
+. 
+.
+.
+.
+Customer Segment 5: [X]=
+Top 5 Problems:
+> List the top 5 problems our customer is experiencing (Bullet Points)
+: 
+. 
+.
+.
+.
+Benefits & Features:
+> List the top benefits backed by features of the offer related to this customer, include the reason why (Bullet Points ‘format’ = “Benefit: Feature”
+: 
+. 
+.
+.
+.
+Psychosocial [Market Segmentation] Insights:
+: 
+. 
+.
+.
+.
+Customer Segment 6: [X]=
+Top 5 Problems:
+> List the top 5 problems our customer is experiencing (Bullet Points)
+: 
+. 
+.
+.
+.
+Benefits & Features:
+> List the top benefits backed by features of the offer related to this customer, include the reason why (Bullet Points ‘format’ = “Benefit: Feature”
+: 
+. 
+.
+.
+.
+Psychosocial [Market Segmentation] Insights:
+: 
+. 
+.
+.
+.
+Customer Segment 7: [X]=
+Top 5 Problems:
+> List the top 5 problems our customer is experiencing (Bullet Points)
+: 
+. 
+.
+.
+.
+Benefits & Features:
+> List the top benefits backed by features of the offer related to this customer, include the reason why (Bullet Points ‘format’ = “Benefit: Feature”
+: 
+. 
+.
+.
+.
+Psychosocial [Market Segmentation] Insights:
+: 
+. 
+.
+.
+.
+Customer Segment 8: [X]=
+Top 5 Problems:
+> List the top 5 problems our customer is experiencing (Bullet Points)
+: 
+. 
+.
+.
+.
+Benefits & Features:
+> List the top benefits backed by features of the offer related to this customer, include the reason why (Bullet Points ‘format’ = “Benefit: Feature”
+: 
+. 
+.
+.
+.
+Psychosocial [Market Segmentation] Insights:
+: 
+. 
+.
+.
+.
+Customer Segment 9: [X]=
+Top 5 Problems:
+> List the top 5 problems our customer is experiencing (Bullet Points)
+: 
+. 
+.
+.
+.
+Benefits & Features:
+> List the top benefits backed by features of the offer related to this customer, include the reason why (Bullet Points ‘format’ = “Benefit: Feature”
+: 
+. 
+.
+.
+.
+Psychosocial [Market Segmentation] Insights:
+: 
+. 
+.
+.
+.
+Customer Segment 10: [X]=
+Top 5 Problems:
+> List the top 5 problems our customer is experiencing (Bullet Points)
+: 
+. 
+.
+.
+.
+Benefits & Features:
+> List the top benefits backed by features of the offer related to this customer, include the reason why (Bullet Points ‘format’ = “Benefit: Feature”
+: 
+. 
+.
+.
+.
+Psychosocial [Market Segmentation] Insights:
+: 
+. 
+.
+.
+.
+=> Execute ‘The Audience’ and Complete all Customer Segments [X] Following “Offers: Offer Target”
+***
+Sales Argument Essay
+Next, write a long-form essay as if you had unlimited time to speak to all [X] of these customer segments. Describe in detail their problems, your solution to those problems and why/how you can service that need. Address the core problems this segment faces. Get your entire pitch out here in detail. Paid a vivid picture. Use visceral emotional language. Each essay should be at least 3 paragraphs long and follow a storytelling approach using the hero's journey framework inside of a PAS (Problem, Agitate, Solution) Framework along with empathy and perspective of the customer.
+As part of the framework for execution, once the PAS Framework has been executed within the sales argument for the specific customer segment, execute the [Micro-Brand Storytelling] Framework after the PAS. This will follow along with each of the customer segments.
+[Micro-Brand Storytelling]
+Step 1: Avatar Characteristics and Lifestyle
+	•	Prompt: Elaborate on the distinctive characteristics, lifestyle preferences, and aspirations that define your Avatar within the Niche space. Include demographic information, psychographic profiles, and behavioral patterns.
+Step 2: Identifying the Antagonist or Systemic Issue
+	•	Prompt: Investigate and explain the primary antagonist or systemic issue that your Avatar encounters in the Niche, considering the historical and current landscape that contributes to this challenge.
+Step 3: Psychological Journey and Emotional States
+	•	Prompt: Delve into the psychological journey of your Avatar by identifying and discussing the nuanced emotional states or psychological conflicts they endure as a direct consequence of the central problem within the Niche.
+Step 4: Societal, Economic, or Technological Barriers
+	•	Prompt: Identify and describe the specific societal, economic, or technological barriers currently impeding your Avatar from achieving their goals within the Niche, providing context as to how these obstacles came to be.
+Step 5: Existential Questions and Ethical Conundrums
+	•	Prompt: Explore the existential questions or ethical conundrums that your Avatar might face as a result of the central conflict within the Niche, and how these align with broader humanistic or societal concerns.
+Step 6: Brand Compassion and Insight
+	•	Prompt: Articulate how your Brand demonstrates genuine compassion and insight into the struggles faced by Avatar in the Niche, perhaps through storytelling, testimonials, or case studies that resonate with their experiences.
+Step 7: Brand's Qualifications and Credibility
+	•	Prompt: Present a comprehensive portfolio of your Brand's qualifications, including real-world successes, thought leadership, certifications, or any proprietary methodologies that lend credibility in the Niche.
+Step 8: Roadmap or Framework for Resolution and Success
+	•	Prompt: Construct a detailed roadmap or framework that your Brand employs to guide Avatar toward resolution and success in the Niche, detailing each phase with its specific actions, expected results, and support systems.
+Step 9: Promises or Service Level Agreements
+	•	Prompt: Define the explicit promises or service level agreements your Brand offers to Avatar, including any satisfaction guarantees, aftercare support, or performance benchmarks within the Niche.
+Step 10: Call-to-Action for Avatar
+	•	Prompt: Specify the exact step or commitment you seek from Avatar to initiate their transformation journey with your Brand in the Niche, making the call-to-action compelling and clear.
+Step 11: Preliminary Activities or Free Resources
+	•	Prompt: Suggest preliminary activities, free resources, or low-commitment engagements that your Brand can offer to Avatar as a means to demonstrate value and build trust within the Niche before they commit to the main solution.
+Step 12: Advantages or Enhancements from Engaging with the Brand
+	•	Prompt: Illuminate the principal advantages or enhancements Avatar can expect by incorporating your Brand into their Niche-related activities, emphasizing real-life implications, emotional gratifications, and tangible results.
+Step 13: Consequences of Not Partnering with the Brand
+	•	Prompt: Catalog the potential adverse consequences or detriments that Avatar risks by not partnering with your Brand in the Niche, whether that be missed opportunities, continued frustrations, or compounded problems.
+Step 14: Avatar's Original Situation or Baseline
+	•	Prompt: Depict the original situation or baseline from which Avatar is starting before they engage with your Brand, detailing their mindset, capabilities, and resources within the Niche.
+Step 15: Transformative Journey with the Brand
+	•	Prompt: Describe the transformative journey of Avatar as they utilize your Brand, illustrating a vivid before-and-after scenario that encompasses mindset shifts, skill enhancements, and lifestyle improvements within the Niche.
+=> Execute [Sales Argument]
+> After each of the [X] segments are complete, finish with a conclusion that summarizes the Sales Argument Essay and then elaborate with an introduction that introduces the ideas and context of the sales argument and on how [Product/Service] helps each of our customer avatars in detail. Ensure each segment has it’s own essay associated with it, [X] total.
+***
+Define Your USP (Unique Selling Proposition)
+This is what will make you a BRAND. All of your customers should fit under the umbrella of your USP. Do not overcomplicate this. Start with answering the Questions to Consider.
+Questions to Consider when coming up with your USP. Answer these questions:
+> What is the New Category we have created?
+> What does that mean?
+> How does this help my customers or clients?
+> What are the results my customers or clients can expect?
+> What is the “secret sauce” that makes my offer unique?
+> After the Questions to Consider, take the context into account and craft 10 unique USPs based on each of the 10 customer segments above for [Product/Service] that takes into account the Questions to Consider and all the context provided about [Product/Service]
+=> Now write a conclusion about the USPs
+Now, move on to the Reasons For Support and Offer Tiers, with these being umbrella of all the segments
+***
+Reasons For Support
+> How can we support that claim? (Ex: Demo, science, testimonials, outside experts, etc).
+Offer Tiers
+What are 3 ways you can offer your product? The word risk here is relating to the customers risk. What can you offer that will make them say yes! Which consumer segment should respond to which offer. (TEST THEM ALL).
+LOW RISK
+- Trial? (time or price)
+- Contest Entry?
+- Sample for Shipping?
+MEDIUM RISK
+- Payments? (monthly vs annual)
+- Low / Discounted Price?
+- Money Back Guarantee?
+HIGH RISK
+- Full Price?
+- Deluxe Upgraded Offer?
+- 2-Product Offer?
+- Continuity?
+- Subscription?
+Accessories-Related Products (Add-ons that fit the original purchase).
+What are other like items that would improve the experience of purchasing your initial offer? They should as a guide be less expensive....but not as a rule.
+Other accessories that would improve the experience of purchasing your initial offer include:
+***
+Campaign Ideas: 10 Ideas for Campaigns.
+> Create a list of 10 creative unique marketing ideas to promote our product and provide a blurb to provide more insight and information about the campaign.
+> Based on the market segment and context provided and the marketing campaigns, create a detailed prompt then execute on it, to show the proper mediums and channels for reaching these buyers online and in person. Include citations and links to sources for relevant information, groups, industry forums, and other places online where the target market segments will be and how the campaign idea reaches them there through their given mediums.
+=> Execute [Creative Brief]. Customer Segments should expand on “Offers: Offer Target” above from the Buyer’s Blueprint. It should apply to all the outlined customer segments in the buyers blueprint. Complete, The Sales Argument should write a detailed description and paragraph for all the Customer Segments before moving on to the next section of the workflow.
+Now write a conclusion to this part of the Creative Brief that summarizes what was covered as we move on to the next section for the Brand Style Guide.
+***
+Creative Brief: Brand Style Guide
+> Act as a brand strategist. Your task is to create a comprehensive brand style guide based on the provided content while incorporating the brand's core avatar, niche, and unique selling proposition. 
+Start by selecting the approved fonts, logos, and Pantone colors which best align with your brand values, and create a set of guidelines for your creative team to work under.
+These guidelines should include using A.I. or Tiff files instead of jpegs, maintaining a consistent visual format when displayed on black or white backgrounds. 
+Additionally, you should provide directives for graphic layouts, packaging, and communications to ensure the consistent use of brand elements.
+Once you have established the visual guidelines, it's time to define the tone and voice of the brand.
+Consider your brand as a person - how would you describe its personality and character?
+Think about the emotions and feelings that you want to evoke in your target audience and reflect this in your brand's messaging.
+The brand character diamond serves as a strategic marketing tool for defining and effectively communicating a brand's unique personality. It enables brands to convey their essence with precision and resonance, captivating their target audience. Use the Character Diamond framework to help create a personality for your brand.
+***
+AI Brand Voice, Identity & Core Content:
+> Analyze the Creative Brief and identify the perfect brand voice that captures the tone and personality of Product/Service to be used as an AI training tool. Then, act as a brand strategist and content creator. Create LinkedIn profiles for the founder and other profiles for popular social media platforms: YouTube, Facebook, Instagram, LinkedIn, X/Twitter, Pinterest, and TikTok. Then, develop a compelling bio for the website that tells the story of the startup and reinforces the brand's unique value proposition. Aim to create a cohesive and memorable brand identity.
+***
+Section III: Social Micro-Content
+Creating Social Micro-Content
+> Create micro-content: Based on the market segments and Buyer's Brief context in the previous chapter while keeping the brand tone and voice and style guide in mind, analyze the Creative Brief and Context related to the Buyer’s Blueprint and Offer from the website and information provided.
+> Act as a content planner. In order to create engaging micro-content pieces, start by generating an array of content ideas suitable for social media feeds and mobile screens. Using the knowledge you are capable of understanding aligned with the context provided;
+	•	Generate 25 thought-provoking quotes related to [Niche] [Segment] [Audience]
+	•	Generate 25 captivating image captions that align with your brand values and after each caption, a basic prompt for what the image includes in it related to the caption in line with brand style guide and tone of voice, then…
+	•	Create scripts for 25 short, engaging videos promoting our brand based on researching trending topics on Google and YouTube
+	•	Come up with headlines for 25 listicles that our target audience would find interesting - Produce 25 quick tips related to our [product/service] Let each of these pieces possess the ability to be repurposed, adjusted and used across a range of platforms and channels.
+Remember, focus on the goal of fostering engagement, brand visibility and virality while creating the content. Ensure you write out the exact number of each section for outputs in a bullet point listicle format.
+***
+Section IV: Brainstorming Questions
+Consider the following:
+[Big Idea]=[Product/Service]
+[WH Brainstorming Questions]=Who, What, Where, When, How, Why
+[Idea 1]={Topic Idea/Concept related to [Product/Service]}
+[Idea 2]={Topic Idea/Concept related to [Product/Service]}
+[Idea 3]={Topic Idea/Concept related to [Product/Service]}
+[Idea 4]={Topic Idea/Concept related to [Product/Service]}
+[Idea 5]={Topic Idea/Concept related to [Product/Service]}
+[Idea 6]={Topic Idea/Concept related to [Product/Service]}
+[Idea 7]={Topic Idea/Concept related to [Product/Service]}
+[Idea 8]={Topic Idea/Concept related to [Product/Service]}
+[Idea 9]={Topic Idea/Concept related to [Product/Service]}
+[Idea 10]={Topic Idea/Concept related to [Product/Service]}
+Next:
+	•	Write six positive questions; each will start with one of the [WH Questions].
+	•	Then, write six negative questions; following the [WH Questions] framework. Order: [Idea 1] [Idea 2] [Idea 3] all the way through 10.
+	•	List answers out in bullet points along with the [WH Brainstorming Questions] to demonstrate what each question will cover.
+	•	Then execute each series. Each will start with one of the WH questions.
+	•	Ensure each Idea has 6 Positive and 6 Negative questions in the WH Brainstorming format.
+	•	As you begin, write a comprehensive conclusion for this section followed by an introduction that gives an overview of the questions along with context as to the [WH Brainstorming Questions]=Who, What, Where, When, How, Why. Relate to their offer and market segment, taking into consideration the Buyer's Brief context provided.
+Section V: Insights and More!
+Conclusion, Implementation Guide & Introduction
+> Create a conclusion for the Buyer's Brief to summarize the sections delivered above in the Buyer's Brief. Then you will draft an introduction with an executive overview for this delivery top to bottom, followed by implementation ideas.
+> The Implementation Ideas should cover each section above starting with the Master Buyer’s Blueprint, Creative Brief, Social Micro-Content and WH Brainstorming Questions.
+> List these implementation ideas out in a way they would reflect on each section with actionable moves the user can take to put the content into action. Use suggestions based on correlations you can make to inspire strategic ideation for making the next moves.
+***
+Closing Statement from Gen AI University
+Now that you’ve got the recipe, it’s time to run it on your own!
+> Thank you for choosing Gen AI University for your content development needs. We're thankful to have played a part in accelerating your ideas into impactful actions. We encourage you to share your experience with us via email at hey@genaiuniversity.com. Your wins are what drive us forward.

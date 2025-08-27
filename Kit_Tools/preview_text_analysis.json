@@ -1,0 +1,125 @@
+{
+  "length_analysis": {
+    "0-25": {
+      "broadcast_count": 113,
+      "avg_open_rate": 25.82
+    },
+    "26-50": {
+      "broadcast_count": 5,
+      "avg_open_rate": 30.07
+    },
+    "51-75": {
+      "broadcast_count": 14,
+      "avg_open_rate": 32.34
+    },
+    "76-100": {
+      "broadcast_count": 19,
+      "avg_open_rate": 30.01
+    },
+    "101-150": {
+      "broadcast_count": 38,
+      "avg_open_rate": 30.36
+    },
+    "150+": {
+      "broadcast_count": 10,
+      "avg_open_rate": 24.95
+    }
+  },
+  "question_analysis": {
+    "false": {
+      "broadcast_count": 172,
+      "avg_open_rate": 27.6
+    },
+    "true": {
+      "broadcast_count": 27,
+      "avg_open_rate": 27.69
+    }
+  },
+  "keyword_analysis": {
+    "top_keywords": [
+      [
+        "from",
+        2
+      ],
+      [
+        "more",
+        2
+      ],
+      [
+        "life",
+        2
+      ],
+      [
+        "content",
+        2
+      ],
+      [
+        "big",
+        2
+      ],
+      [
+        "here",
+        2
+      ],
+      [
+        "s",
+        2
+      ],
+      [
+        "why",
+        2
+      ],
+      [
+        "m",
+        2
+      ],
+      [
+        "figuring",
+        1
+      ]
+    ],
+    "bottom_keywords": [
+      [
+        "me",
+        2
+      ],
+      [
+        "what",
+        2
+      ],
+      [
+        "quick",
+        1
+      ],
+      [
+        "question",
+        1
+      ],
+      [
+        "that",
+        1
+      ],
+      [
+        "s",
+        1
+      ],
+      [
+        "keeping",
+        1
+      ],
+      [
+        "up",
+        1
+      ],
+      [
+        "if",
+        1
+      ],
+      [
+        "m",
+        1
+      ]
+    ]
+  },
+  "total_broadcasts_analyzed": 199
+}

@@ -1,0 +1,196 @@
+# Advanced AI Email Rules for Inbox Zero
+# Dan Cumberland's Intelligent Email Management System
+
+ai_rules:
+  # 1. Intelligent Prospect Management
+  - name: "Hot Prospect Follow-up"
+    description: "Automatically manage prospect follow-ups and draft personalized responses"
+    conditions:
+      - type: "sender_category"
+        value: "prospect"
+      - type: "days_since_last_reply"
+        operator: ">="
+        value: 7
+      - type: "not_labeled"
+        value: "@Prospect 💰/Hot-10d"
+    actions:
+      - type: "add_label"
+        value: "@Prospect 💰/Hot-10d"
+      - type: "draft_response"
+        template: "prospect_followup"
+        voice_style: "dan_professional_friendly"
+      - type: "set_reminder"
+        days: 3
+      - type: "extract_context"
+        fields: ["company", "project_scope", "budget_mentioned", "timeline"]
+    
+  # 2. Smart Action Prioritization  
+  - name: "Urgent Action Detection"
+    description: "Identify and prioritize emails requiring immediate response"
+    conditions:
+      - type: "urgency_indicators"
+        keywords: ["urgent", "asap", "deadline", "time-sensitive", "emergency"]
+      - type: "requires_response"
+        value: true
+      - type: "not_labeled"
+        value: "@Action ⚡️/Respond"
+    actions:
+      - type: "add_label"
+        value: "@Action ⚡️/Respond"
+      - type: "analyze_priority"
+        factors: ["sender_importance", "urgency_level", "revenue_impact"]
+      - type: "draft_response"
+        template: "urgent_acknowledgment"
+        voice_style: "dan_professional_direct"
+      - type: "flag_if_client"
+        condition: "client_domain_match"
+
+  # 3. Meeting & Calendar Intelligence
+  - name: "Smart Scheduling Assistant"
+    description: "Handle scheduling requests with intelligent calendar awareness"
+    conditions:
+      - type: "content_contains"
+        keywords: ["schedule", "meeting", "call", "calendar", "available", "book time"]
+      - type: "not_labeled"
+        value: "@Action ⚡️/Schedule"
+    actions:
+      - type: "add_label"
+        value: "@Action ⚡️/Schedule"
+      - type: "extract_scheduling_info"
+        fields: ["proposed_times", "meeting_type", "duration", "attendees"]
+      - type: "check_availability"
+        integration: "google_calendar"
+      - type: "draft_response"
+        template: "scheduling_response"
+        voice_style: "dan_professional_helpful"
+        include_available_slots: true
+
+  # 4. Project Context Management
+  - name: "Project Email Router"
+    description: "Intelligently route and contextualize project-related emails"
+    conditions:
+      - type: "project_relevance"
+        method: "ai_analysis"
+        active_projects: ["MRR Method", "Networking", "REIT", "AI Cohort"]
+    actions:
+      - type: "analyze_project_match"
+        confidence_threshold: 0.7
+      - type: "add_project_label"
+        format: "@Projects/{project_name}"
+      - type: "extract_action_items"
+        format: "structured_list"
+      - type: "update_project_status"
+        if_mentioned: ["completed", "delayed", "milestone", "deliverable"]
+      - type: "set_context_reminder"
+        for_next_email: true
+
+  # 5. Client Communication Enhancement
+  - name: "Client Email Intelligence"
+    description: "Enhance client communications with context and voice consistency"
+    conditions:
+      - type: "sender_category"
+        value: "client"
+      - type: "client_domain_match"
+        domains: ["client1.com", "client2.com"] # Add actual client domains
+    actions:
+      - type: "maintain_conversation_context"
+        history_depth: 10
+      - type: "draft_response"
+        template: "client_communication"
+        voice_style: "dan_client_professional"
+        include_context: true
+      - type: "flag_immediate_attention"
+        conditions: ["complaint", "urgent_request", "payment_issue"]
+      - type: "track_satisfaction"
+        sentiment_analysis: true
+
+  # 6. Opportunity Detection
+  - name: "Revenue Opportunity Scanner"
+    description: "Identify and prioritize potential business opportunities"
+    conditions:
+      - type: "content_analysis"
+        keywords: ["budget", "timeline", "project scope", "hire", "consulting", "proposal"]
+      - type: "not_from_existing_client"
+        value: true
+    actions:
+      - type: "add_label"
+        value: "@Prospect 💰/Hot-10d"
+      - type: "extract_opportunity_details"
+        fields: ["budget_range", "timeline", "project_type", "decision_maker"]
+      - type: "generate_qualification_questions"
+        based_on: "extracted_details"
+      - type: "set_follow_up_sequence"
+        intervals: [1, 3, 7, 14] # days
+      - type: "calculate_opportunity_score"
+        factors: ["budget_size", "timeline_urgency", "fit_score"]
+
+  # 7. Newsletter and Marketing Management
+  - name: "Smart Newsletter Handler"
+    description: "Intelligently manage newsletters and marketing emails"
+    conditions:
+      - type: "sender_category"
+        value: "newsletter"
+      - type: "content_type"
+        value: "marketing"
+    actions:
+      - type: "categorize_newsletter"
+        categories: ["industry_news", "tools", "inspiration", "competitors"]
+      - type: "extract_key_insights"
+        if_relevant: true
+      - type: "add_to_swipe_file"
+        if_category: "inspiration"
+        label: "@Reference/Swipes/General"
+      - type: "auto_archive"
+        unless: "high_relevance_score"
+
+# Voice Training Templates
+voice_templates:
+  prospect_followup:
+    tone: "professional_friendly"
+    structure: "greeting + context_reference + value_proposition + clear_cta"
+    sample: "Hi [Name], I wanted to follow up on our conversation about [project]. Based on what you shared about [specific_detail], I think there's a strong opportunity to [value_proposition]. Would you be available for a brief call this week to discuss next steps?"
+    
+  urgent_acknowledgment:
+    tone: "professional_direct"
+    structure: "immediate_acknowledgment + timeline + next_steps"
+    sample: "Thanks for flagging this as urgent. I'm reviewing the details now and will have a response to you by [specific_time]. In the meantime, [immediate_action_if_needed]."
+    
+  scheduling_response:
+    tone: "professional_helpful"
+    structure: "acknowledgment + availability + booking_instructions"
+    sample: "I'd be happy to schedule time to discuss [topic]. I have availability on [specific_slots]. Please let me know what works best for you, or feel free to book directly at [calendar_link]."
+    
+  client_communication:
+    tone: "professional_warm"
+    structure: "personalized_greeting + context_acknowledgment + response + next_steps"
+    sample: "Hi [Name], thanks for your update on [project_context]. [Specific_response_to_their_content]. I'll [specific_action] and follow up with you by [timeline]."
+
+# Integration Settings
+integrations:
+  google_calendar:
+    enabled: true
+    check_availability: true
+    suggest_slots: true
+    
+  crm_system:
+    enabled: false # Set to true when CRM is integrated
+    sync_contacts: true
+    update_opportunities: true
+    
+  voice_training:
+    source: "/Users/dancumberland/Documents/Work/AI Projects & Training Docs/Dan_Personal_Brand/AI_Tools/Gmail_Voice_Doc/Dan_Voice_Training_MASTER_2503.md"
+    update_frequency: "weekly"
+    
+# Performance Settings
+performance:
+  batch_processing: true
+  max_emails_per_batch: 50
+  processing_schedule: "every_15_minutes"
+  confidence_threshold: 0.75
+  
+# Monitoring and Analytics
+monitoring:
+  track_rule_performance: true
+  measure_time_saved: true
+  response_quality_feedback: true
+  weekly_summary_report: true

@@ -1,0 +1,90 @@
+---
+title: "Helping Your Patients Understand Insurance"
+description: "A visual guide to help mental health providers explain the stages of insurance billing to patients, including deductibles, copays, coinsurance, and full coverage."
+service_provider: "Practice Solutions"
+audience:
+  - Mental health providers
+  - Medical billing specialists
+  - Behavioral health clinic staff
+  - Patients learning about insurance billing
+keywords:
+  - insurance deductible
+  - mental health billing
+  - copay vs coinsurance
+  - insurance coverage
+  - patient education
+context:
+  summary: >
+    This infographic breaks down the typical flow of financial responsibility between patients and insurance companies across three stages of insurance coverage: deductible, cost-sharing, and full coverage. It is designed to support therapists and practice staff in explaining insurance billing to clients.
+  ideal_for: >
+    Behavioral and mental health practices educating clients about how much they may owe and why, depending on where they are in their insurance coverage cycle.
+  value_proposition: >
+    Clarifies insurance payment stages using a simple visual format so patients are more likely to understand their financial responsibility. Helps prevent confusion and improves billing transparency.
+---
+
+# 🧾 Helping Your Patients Understand Insurance
+
+This guide illustrates how financial responsibility is divided between the **patient** and the **insurance company** across three stages of insurance billing. It is designed to make conversations around cost and coverage clearer for both staff and clients.
+
+---
+
+## 🏁 Stage 1: Paying the Deductible  
+**Gate 1: Meeting the Deductible**
+
+- **Patient Pays:** 100%  
+  _Unless the deductible does not apply for mental health benefits_  
+- **Insurance Pays:** 0%  
+  _Unless the deductible is waived for mental health_
+
+💡 At this stage, the **patient is fully responsible** for the cost of services until their deductible is met.
+
+---
+
+## 🤝 Stage 2: Cost Sharing with Copay or Coinsurance
+
+After the deductible is met, the patient enters a cost-sharing stage. There are two primary models:
+
+### 💵 Copay  
+- **Patient Pays:** A fixed amount (e.g., **$25**) per session  
+- **Insurance Pays:** The remainder of the contracted rate
+
+### 📊 Coinsurance  
+- **Patient Pays:** A percentage of the contracted rate (e.g., **30%**)  
+- **Insurance Pays:** The remaining percentage
+
+💡 This is the most common stage where billing gets confusing—patients may think they're fully covered but are still responsible for part of the cost.
+
+---
+
+## 🛡️ Stage 3: 100% Insurance Coverage  
+**Gate 2: Meeting the Out-of-Pocket Max**
+
+Once the patient meets their **out-of-pocket maximum** for the year:
+
+- **Patient Pays:** 0%  
+- **Insurance Pays:** 100%
+
+💡 At this point, the **insurance company covers the full cost** of services for the remainder of the year (subject to plan limits and network status).
+
+---
+
+## 📞 Contact & Resources
+
+For more insurance billing tips, visit:  
+🌐 [www.practicesol.com](https://www.practicesol.com)  
+📞 734-437-9432
+
+---
+
+## ✅ Summary Table
+
+| Stage                        | Patient Pays           | Insurance Pays         | Notes                                                  |
+|-----------------------------|------------------------|------------------------|--------------------------------------------------------|
+| Stage 1: Deductible         | 100%                   | 0%                     | Unless deductible is waived for mental health         |
+| Stage 2: Copay              | Fixed $ (e.g., $25)    | Remainder              | Based on insurance plan’s contracted rate             |
+| Stage 2: Coinsurance        | % of rate (e.g., 30%)  | Remaining %            | Based on contracted rate for services                 |
+| Stage 3: Full Coverage      | 0%                     | 100%                   | After out-of-pocket max is met                        |
+
+---
+
+> Use this visual explanation to help your patients understand **why** they may owe money—even when they “have insurance.”
