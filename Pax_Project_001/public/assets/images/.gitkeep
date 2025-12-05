@@ -1,0 +1,9 @@
+# Images Directory
+
+This folder will contain:
+- Sprites (ball, flippers, bumpers)
+- Backgrounds
+- UI elements
+
+For now, we'll use Phaser's shape drawing.
+Later, add sprite assets for visual polish.

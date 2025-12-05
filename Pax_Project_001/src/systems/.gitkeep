@@ -1,0 +1,10 @@
+# Game Systems Directory
+
+This folder will contain system abstractions:
+- PhysicsSystem.js - Physics abstraction (Matter.js -> Planck.js upgrade point)
+- RenderSystem.js - Rendering abstraction (Phaser -> PixiJS upgrade point)
+- AudioSystem.js - Sound management
+- InputSystem.js - Keyboard/touch handling
+- ScoreSystem.js - Scoring and multipliers
+
+See docs/ARCHITECTURE.md for system layer design.

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Pinball - Advanced</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            min-height: 100vh;
+            background: #1a1a1a;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        #gameContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #gameCanvas {
+            border: 3px solid #444;
+            background: #2a2a2a;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            cursor: crosshair;
+        }
+        #gameCanvas.playing {
+            cursor: default;
+        }
+        #ui {
+            margin-top: 15px;
+            display: flex;
+            gap: 30px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .stat {
+            padding: 10px 20px;
+            background: #333;
+            border-radius: 8px;
+        }
+        .multiplier {
+            color: #FFD700;
+            font-size: 24px;
+        }
+        #controls {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .control-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #555;
+        }
+        h3 {
+            margin: 0 0 10px 0;
+            color: #4CAF50;
+            font-size: 16px;
+        }
+        .control-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 13px;
+            color: #aaa;
+        }
+        input[type="range"] {
+            width: 100%;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 4px 0;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+        .btn-secondary {
+            background: #2196F3;
+            color: white;
+        }
+        .btn-danger {
+            background: #f44336;
+            color: white;
+        }
+        .btn-active {
+            background: #FF9800;
+        }
+        .value-display {
+            float: right;
+            color: #4CAF50;
+        }
+        .mode-indicator {
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .mode-play {
+            background: #4CAF50;
+        }
+        .mode-edit {
+            background: #2196F3;
+        }
+        .tilt-warning {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.9);
+            padding: 30px 60px;
+            border-radius: 10px;
+            font-size: 48px;
+            font-weight: bold;
+            display: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="800" height="1000"></canvas>
+        <div id="ui">
+            <div class="stat">Score: <span id="score">0</span></div>
+            <div class="stat">Balls: <span id="balls">3</span></div>
+            <div class="stat multiplier">×<span id="multiplier">1</span></div>
+        </div>
+    </div>
+
+    <div id="controls">
+        <div class="mode-indicator mode-edit" id="modeIndicator">EDIT MODE</div>
+        
+        <div class="control-section">
+            <h3>Game Mode</h3>
+            <button class="btn-primary" onclick="toggleMode()">Switch to Play Mode</button>
+            <button class="btn-secondary" onclick="launchMultiball()">Multiball</button>
+            <button class="btn-danger" onclick="resetGame()">Reset</button>
+        </div>
+
+        <div class="control-section">
+            <h3>Drawing Tools</h3>
+            <button class="btn-secondary btn-active" id="drawBtn" onclick="setTool('draw')">Walls</button>
+            <button class="btn-secondary" id="bouncyBtn" onclick="setTool('bouncy')">Bouncy</button>
+            <button class="btn-secondary" id="oneWayBtn" onclick="setTool('oneway')">One-Way</button>
+            <button class="btn-secondary" id="rampBtn" onclick="setTool('ramp')">Ramps</button>
+            <button class="btn-secondary" id="targetBtn" onclick="setTool('target')">Targets</button>
+            <button class="btn-secondary" id="kickerBtn" onclick="setTool('kicker')">Kickers</button>
+            <button class="btn-secondary" id="eraseBtn" onclick="setTool('erase')">Erase</button>
+            <button class="btn-primary" onclick="saveDrawing()">Save</button>
+            <button class="btn-primary" onclick="loadDrawing()">Load</button>
+            <button class="btn-danger" onclick="clearAll()">Clear</button>
+            <div class="control-group">
+                <label>Brush: <span class="value-display" id="brushSizeVal">20</span></label>
+                <input type="range" id="brushSize" min="5" max="50" value="20" oninput="updateBrushSize(this.value)">
+            </div>
+        </div>
+
+        <div class="control-section">
+            <h3>Physics</h3>
+            <div class="control-group">
+                <label>Gravity: <span class="value-display" id="gravityVal">0.25</span></label>
+                <input type="range" id="gravity" min="0.05" max="0.5" step="0.01" value="0.25" oninput="updateGravity(this.value)">
+            </div>
+            <div class="control-group">
+                <label>Launch: <span class="value-display" id="launchVal">28</span></label>
+                <input type="range" id="launchPower" min="15" max="40" step="1" value="28" oninput="updateLaunch(this.value)">
+            </div>
+            <div class="control-group">
+                <label>Flipper: <span class="value-display" id="flipperVal">16</span></label>
+                <input type="range" id="flipperPower" min="8" max="25" step="1" value="16" oninput="updateFlipper(this.value)">
+            </div>
+            <div class="control-group">
+                <label>Speed: <span class="value-display" id="speedVal">1.0</span></label>
+                <input type="range" id="ballSpeed" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateSpeed(this.value)">
+            </div>
+            <div class="control-group">
+                <label><input type="checkbox" id="soundToggle" checked onchange="toggleSound()"> Sound</label>
+            </div>
+        </div>
+
+        <div class="control-section">
+            <h3>Guide</h3>
+            <p style="font-size: 11px; color: #aaa; line-height: 1.4; margin: 0;">
+                <strong>Colors:</strong><br>
+                Gray=Walls, Orange=Bouncy, Purple=One-way, Cyan=Ramps, Red=Targets, Green=Kickers<br><br>
+                <strong>Play:</strong> SPACE=launch, Arrows/AD=flippers<br>
+                Chain hits for combos!
+            </p>
+        </div>
+    </div>
+
+    <div id="tiltWarning" class="tilt-warning">TILT!</div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let score = 0, ballsLeft = 3, balls = [], gameActive = false, editMode = true, soundEnabled = true;
+        let multiplier = 1, lastHitTime = 0, comboTimer = 0;
+        let flipperPresses = [], tilted = false, tiltCooldown = 0;
+        let gravity = 0.25, launchPower = 28, flipperPower = 16, ballSpeedMultiplier = 1.0;
+        const friction = 0.988;
+        let currentTool = 'draw', brushSize = 20, isDrawing = false;
+        let drawnWalls = [], bouncyWalls = [], oneWayWalls = [], ramps = [], targets = [], kickers = [];
+        
+        let audioContext;
+        try { audioContext = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+        
+        function playSound(freq, dur, type = 'sine') {
+            if (!soundEnabled || !audioContext) return;
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+            osc.frequency.value = freq;
+            osc.type = type;
+            gain.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + dur);
+            osc.start(audioContext.currentTime);
+            osc.stop(audioContext.currentTime + dur);
+        }
+        
+        class Ball {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.vx = 0;
+                this.vy = 0;
+                this.radius = 10;
+                this.launched = false;
+                this.trail = [];
+            }
+            
+            update() {
+                if (this.launched && !tilted) {
+                    this.vy += gravity;
+                    this.vx *= friction;
+                    this.vy *= friction;
+                    this.x += this.vx * ballSpeedMultiplier;
+                    this.y += this.vy * ballSpeedMultiplier;
+                    
+                    this.trail.push({x: this.x, y: this.y});
+                    if (this.trail.length > 15) this.trail.shift();
+                    
+                    this.checkWallCollisions();
+                    this.checkTargets();
+                    this.checkKickers();
+                    this.checkRamps();
+                    
+                    if (this.y > 1000) this.remove();
+                }
+            }
+            
+            checkWallCollisions() {
+                for (let i = 0; i < 5; i++) {
+                    let collided = false;
+                    
+                    for (let wall of drawnWalls) {
+                        if (this.checkWallCollision(wall, 0.75)) {
+                            collided = true;
+                            playSound(300, 0.05);
+                        }
+                    }
+                    
+                    for (let wall of bouncyWalls) {
+                        if (this.checkWallCollision(wall, 1.5)) {
+                            collided = true;
+                            addScore(50);
+                            playSound(400, 0.08);
+                        }
+                    }
+                    
+                    for (let wall of oneWayWalls) {
+                        if (this.vx > 0 && this.checkWallCollision(wall, 0.75)) {
+                            collided = true;
+                        }
+                    }
+                    
+                    if (!collided) break;
+                }
+                
+                const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                if (speed < 0.5 && speed > 0.01) this.vy += 0.5;
+            }
+            
+            checkWallCollision(wall, bounce) {
+                const dx = this.x - wall.x;
+                const dy = this.y - wall.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                
+                if (dist < this.radius + wall.radius) {
+                    const angle = Math.atan2(dy, dx);
+                    this.x += Math.cos(angle) * (this.radius + wall.radius - dist + 0.5);
+                    this.y += Math.sin(angle) * (this.radius + wall.radius - dist + 0.5);
+                    
+                    const nx = Math.cos(angle), ny = Math.sin(angle);
+                    const dot = this.vx * nx + this.vy * ny;
+                    this.vx = (this.vx - 2 * dot * nx) * bounce;
+                    this.vy = (this.vy - 2 * dot * ny) * bounce;
+                    this.vx += (Math.random() - 0.5) * 0.3;
+                    this.vy += (Math.random() - 0.5) * 0.3;
+                    return true;
+                }
+                return false;
+            }
+            
+            checkTargets() {
+                for (let t of targets) {
+                    if (t.hit) continue;
+                    const dist = Math.sqrt((this.x - t.x) ** 2 + (this.y - t.y) ** 2);
+                    if (dist < this.radius + t.radius) {
+                        t.hit = true;
+                        t.hitTime = Date.now();
+                        addScore(100);
+                        updateCombo();
+                        playSound(800, 0.15, 'square');
+                        const angle = Math.atan2(this.y - t.y, this.x - t.x);
+                        this.vx = Math.cos(angle) * 8;
+                        this.vy = Math.sin(angle) * 8;
+                        setTimeout(() => t.hit = false, 3000);
+                    }
+                }
+            }
+            
+            checkKickers() {
+                for (let k of kickers) {
+                    const dist = Math.sqrt((this.x - k.x) ** 2 + (this.y - k.y) ** 2);
+                    if (dist < this.radius + k.radius && !k.active) {
+                        k.active = true;
+                        setTimeout(() => {
+                            if (balls.includes(this)) {
+                                this.vy = -20;
+                                this.vx = (Math.random() - 0.5) * 10;
+                                addScore(75);
+                                playSound(400, 0.2, 'sawtooth');
+                                k.active = false;
+                            }
+                        }, 200);
+                    }
+                }
+            }
+            
+            checkRamps() {
+                for (let r of ramps) {
+                    const dist = Math.sqrt((this.x - r.x) ** 2 + (this.y - r.y) ** 2);
+                    if (dist < this.radius + r.radius) {
+                        this.vx *= 1.1;
+                        this.vy *= 1.1;
+                    }
+                }
+            }
+            
+            launch() {
+                if (!this.launched) {
+                    this.launched = true;
+                    this.vy = -launchPower;
+                    this.vx = 0;
+                    playSound(150, 0.3, 'sawtooth');
+                }
+            }
+            
+            remove() {
+                const idx = balls.indexOf(this);
+                if (idx > -1) {
+                    balls.splice(idx, 1);
+                    if (balls.length === 0) loseBall();
+                }
+            }
+            
+            draw() {
+                ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                this.trail.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+                ctx.stroke();
+                
+                ctx.fillStyle = '#fff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = 'rgba(255,255,255,0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius + 5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        class Flipper {
+            constructor(x, y, isLeft) {
+                this.x = x;
+                this.y = y;
+                this.isLeft = isLeft;
+                this.angle = isLeft ? 0.4 : -0.4;
+                this.restAngle = this.angle;
+                this.activeAngle = isLeft ? -0.6 : 0.6;
+                this.length = 100;
+                this.width = 15;
+                this.active = false;
+            }
+            
+            activate() {
+                if (tilted) return;
+                this.active = true;
+                playSound(200, 0.1, 'square');
+                
+                const now = Date.now();
+                flipperPresses.push(now);
+                flipperPresses = flipperPresses.filter(t => now - t < 1000);
+                if (flipperPresses.length > 8) triggerTilt();
+            }
+            
+            deactivate() {
+                this.active = false;
+            }
+            
+            update() {
+                this.angle += ((this.active ? this.activeAngle : this.restAngle) - this.angle) * 0.3;
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = '#bbb';
+                if (this.isLeft) {
+                    ctx.fillRect(0, -this.width/2, this.length, this.width);
+                } else {
+                    ctx.fillRect(-this.length, -this.width/2, this.length, this.width);
+                }
+                ctx.fillStyle = '#666';
+                ctx.beginPath();
+                ctx.arc(0, 0, this.width/2 + 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+            
+            checkCollision(ball) {
+                if (!ball || !ball.launched) return;
+                
+                const ex = this.isLeft ? 
+                    this.x + Math.cos(this.angle) * this.length :
+                    this.x - Math.cos(this.angle) * this.length;
+                const ey = this.y + Math.sin(this.angle) * this.length;
+                
+                const dx = ex - this.x, dy = ey - this.y;
+                const len = Math.sqrt(dx * dx + dy * dy);
+                const ux = dx / len, uy = dy / len;
+                const dot = (ball.x - this.x) * ux + (ball.y - this.y) * uy;
+                const clamp = Math.max(0, Math.min(len, dot));
+                const cx = this.x + ux * clamp, cy = this.y + uy * clamp;
+                const dist = Math.sqrt((ball.x - cx) ** 2 + (ball.y - cy) ** 2);
+                
+                if (dist < ball.radius + this.width) {
+                    const angle = Math.atan2(ball.y - cy, ball.x - cx);
+                    if (this.active) {
+                        ball.vx = Math.cos(angle) * flipperPower * 1.2;
+                        ball.vy = Math.sin(angle) * flipperPower * 1.2 - 4;
+                        addScore(10);
+                        updateCombo();
+                    } else {
+                        const nx = Math.cos(angle), ny = Math.sin(angle);
+                        const dot = ball.vx * nx + ball.vy * ny;
+                        if (dot < 0) {
+                            ball.vx = (ball.vx - 2 * dot * nx) * 0.7;
+                            ball.vy = (ball.vy - 2 * dot * ny) * 0.7;
+                        }
+                    }
+                    ball.x = cx + Math.cos(angle) * (ball.radius + this.width + 2);
+                    ball.y = cy + Math.sin(angle) * (ball.radius + this.width + 2);
+                }
+            }
+        }
+        
+        class Bumper {
+            constructor(x, y, w, h, pts) {
+                this.x = x;
+                this.y = y;
+                this.width = w;
+                this.height = h;
+                this.points = pts;
+                this.hitTimer = 0;
+            }
+            
+            update() {
+                if (this.hitTimer > 0) this.hitTimer--;
+            }
+            
+            draw() {
+                ctx.fillStyle = this.hitTimer > 0 ? '#ff0' : '#4CAF50';
+                ctx.strokeStyle = this.hitTimer > 0 ? '#ff0' : '#6C6';
+                ctx.lineWidth = 3;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.strokeRect(this.x, this.y, this.width, this.height);
+            }
+            
+            checkCollision(ball) {
+                if (!ball || !ball.launched) return;
+                if (ball.x + ball.radius > this.x && ball.x - ball.radius < this.x + this.width &&
+                    ball.y + ball.radius > this.y && ball.y - ball.radius < this.y + this.height) {
+                    const cx = this.x + this.width / 2, cy = this.y + this.height / 2;
+                    const dx = ball.x - cx, dy = ball.y - cy;
+                    if (Math.abs(dx) > Math.abs(dy)) {
+                        ball.vx = Math.sign(dx) * Math.abs(ball.vx) * 1.3;
+                    } else {
+                        ball.vy = Math.sign(dy) * Math.abs(ball.vy) * 1.3;
+                    }
+                    addScore(this.points);
+                    updateCombo();
+                    this.hitTimer = 10;
+                    playSound(600, 0.1, 'square');
+                }
+            }
+        }
+        
+        const leftFlipper = new Flipper(300, 920, true);
+        const rightFlipper = new Flipper(500, 920, false);
+        const bumpers = [
+            new Bumper(150, 200, 80, 60, 100), new Bumper(300, 250, 60, 50, 150),
+            new Bumper(520, 200, 80, 70, 100), new Bumper(140, 400, 70, 60, 200),
+            new Bumper(350, 450, 90, 50, 150), new Bumper(550, 420, 70, 80, 200)
+        ];
+        
+        function updateCombo() {
+            const now = Date.now();
+            if (now - lastHitTime < 1000) {
+                multiplier = Math.min(multiplier + 1, 10);
+                comboTimer = 60;
+            } else {
+                multiplier = 1;
+                comboTimer = 60;
+            }
+            lastHitTime = now;
+            document.getElementById('multiplier').textContent = multiplier;
+        }
+        
+        function triggerTilt() {
+            if (tilted) return;
+            tilted = true;
+            tiltCooldown = 180;
+            document.getElementById('tiltWarning').style.display = 'block';
+            playSound(100, 1, 'sawtooth');
+            setTimeout(() => document.getElementById('tiltWarning').style.display = 'none', 2000);
+        }
+        
+        function initDefaultWalls() {
+            drawnWalls = [];
+            bouncyWalls = [];
+            oneWayWalls = [];
+            ramps = [];
+            targets = [];
+            kickers = [];
+            
+            for (let i = 0; i < 900; i += 15) {
+                drawnWalls.push({x: 30, y: 50 + i, radius: 12});
+                drawnWalls.push({x: 770, y: 50 + i, radius: 12});
+            }
+            for (let i = 0; i < 740; i += 15) {
+                drawnWalls.push({x: 30 + i, y: 30, radius: 12});
+            }
+            for (let i = 0; i < 80; i += 12) {
+                drawnWalls.push({x: 230 + i, y: 960, radius: 10});
+                drawnWalls.push({x: 520 + i, y: 960, radius: 10});
+            }
+            for (let i = 0; i < 900; i += 15) {
+                drawnWalls.push({x: 690, y: 50 + i, radius: 12});
+            }
+            for (let i = 0; i < 80; i += 12) {
+                drawnWalls.push({x: 690 + i, y: 50, radius: 12});
+            }
+        }
+        
+        function initBall() {
+            balls.push(new Ball(730, 850));
+        }
+        
+        function addScore(pts) {
+            score += pts * multiplier;
+            document.getElementById('score').textContent = score;
+        }
+        
+        function loseBall() {
+            ballsLeft--;
+            document.getElementById('balls').textContent = ballsLeft;
+            if (ballsLeft > 0) {
+                setTimeout(initBall, 1000);
+            } else {
+                alert('Game Over! Final Score: ' + score);
+                resetGame();
+            }
+        }
+        
+        function resetGame() {
+            score = 0;
+            ballsLeft = 3;
+            balls = [];
+            multiplier = 1;
+            tilted = false;
+            tiltCooldown = 0;
+            flipperPresses = [];
+            document.getElementById('score').textContent = score;
+            document.getElementById('balls').textContent = ballsLeft;
+            document.getElementById('multiplier').textContent = multiplier;
+            if (gameActive) initBall();
+        }
+        
+        function toggleMode() {
+            editMode = !editMode;
+            gameActive = !editMode;
+            const btn = document.querySelector('.btn-primary');
+            const indicator = document.getElementById('modeIndicator');
+            
+            if (editMode) {
+                btn.textContent = 'Switch to Play Mode';
+                indicator.textContent = 'EDIT MODE';
+                indicator.className = 'mode-indicator mode-edit';
+                canvas.classList.remove('playing');
+                balls = [];
+            } else {
+                btn.textContent = 'Switch to Edit Mode';
+                indicator.textContent = 'PLAY MODE';
+                indicator.className = 'mode-indicator mode-play';
+                canvas.classList.add('playing');
+                resetGame();
+                initBall();
+            }
+        }
+        
+        function launchMultiball() {
+            if (!gameActive) return;
+            for (let i = 0; i < 2; i++) {
+                setTimeout(() => {
+                    const b = new Ball(730, 850);
+                    balls.push(b);
+                    b.launch();
+                }, i * 500);
+            }
+        }
+        
+        function setTool(tool) {
+            currentTool = tool;
+            ['drawBtn', 'bouncyBtn', 'oneWayBtn', 'rampBtn', 'targetBtn', 'kickerBtn', 'eraseBtn'].forEach(id => {
+                document.getElementById(id).classList.remove('btn-active');
+            });
+            document.getElementById(tool + 'Btn').classList.add('btn-active');
+        }
+        
+        function updateBrushSize(v) {
+            brushSize = parseInt(v);
+            document.getElementById('brushSizeVal').textContent = v;
+        }
+        
+        function updateGravity(v) {
+            gravity = parseFloat(v);
+            document.getElementById('gravityVal').textContent = v;
+        }
+        
+        function updateLaunch(v) {
+            launchPower = parseInt(v);
+            document.getElementById('launchVal').textContent = v;
+        }
+        
+        function updateFlipper(v) {
+            flipperPower = parseInt(v);
+            document.getElementById('flipperVal').textContent = v;
+        }
+        
+        function updateSpeed(v) {
+            ballSpeedMultiplier = parseFloat(v);
+            document.getElementById('speedVal').textContent = v;
+        }
+        
+        function toggleSound() {
+            soundEnabled = document.getElementById('soundToggle').checked;
+        }
+        
+        function clearAll() {
+            drawnWalls = [];
+            bouncyWalls = [];
+            oneWayWalls = [];
+            ramps = [];
+            targets = [];
+            kickers = [];
+            initDefaultWalls();
+        }
+        
+        function saveDrawing() {
+            const data = JSON.stringify({
+                walls: drawnWalls, bouncy: bouncyWalls, oneWay: oneWayWalls,
+                ramps: ramps, targets: targets, kickers: kickers
+            });
+            localStorage.setItem('pinballDrawing', data);
+            alert('Saved!');
+        }
+        
+        function loadDrawing() {
+            const saved = localStorage.getItem('pinballDrawing');
+            if (saved) {
+                const data = JSON.parse(saved);
+                drawnWalls = data.walls || data;
+                bouncyWalls = data.bouncy || [];
+                oneWayWalls = data.oneWay || [];
+                ramps = data.ramps || [];
+                targets = data.targets || [];
+                kickers = data.kickers || [];
+                alert('Loaded!');
+            } else {
+                alert('No saved drawing found.');
+            }
+        }
+        
+        function tryLoadSaved() {
+            const saved = localStorage.getItem('pinballDrawing');
+            if (saved) {
+                const data = JSON.parse(saved);
+                drawnWalls = data.walls || data;
+                bouncyWalls = data.bouncy || [];
+                oneWayWalls = data.oneWay || [];
+                ramps = data.ramps || [];
+                targets = data.targets || [];
+                kickers = data.kickers || [];
+            } else {
+                initDefaultWalls();
+            }
+        }
+        
+        canvas.addEventListener('mousedown', e => {
+            if (!editMode) return;
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            drawAtPosition(e.clientX - rect.left, e.clientY - rect.top);
+        });
+        
+        canvas.addEventListener('mousemove', e => {
+            if (!editMode || !isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            drawAtPosition(e.clientX - rect.left, e.clientY - rect.top);
+        });
+        
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mouseleave', () => isDrawing = false);
+        
+        function drawAtPosition(x, y) {
+            const obj = {x: x, y: y, radius: brushSize / 2};
+            
+            if (currentTool === 'draw') {
+                drawnWalls.push(obj);
+            } else if (currentTool === 'bouncy') {
+                bouncyWalls.push(obj);
+            } else if (currentTool === 'oneway') {
+                oneWayWalls.push(obj);
+            } else if (currentTool === 'ramp') {
+                ramps.push(obj);
+            } else if (currentTool === 'target') {
+                targets.push({...obj, hit: false});
+            } else if (currentTool === 'kicker') {
+                kickers.push({...obj, active: false});
+            } else {
+                drawnWalls = drawnWalls.filter(w => Math.sqrt((w.x - x) ** 2 + (w.y - y) ** 2) > brushSize);
+                bouncyWalls = bouncyWalls.filter(w => Math.sqrt((w.x - x) ** 2 + (w.y - y) ** 2) > brushSize);
+                oneWayWalls = oneWayWalls.filter(w => Math.sqrt((w.x - x) ** 2 + (w.y - y) ** 2) > brushSize);
+                ramps = ramps.filter(w => Math.sqrt((w.x - x) ** 2 + (w.y - y) ** 2) > brushSize);
+                targets = targets.filter(w => Math.sqrt((w.x - x) ** 2 + (w.y - y) ** 2) > brushSize);
+                kickers = kickers.filter(w => Math.sqrt((w.x - x) ** 2 + (w.y - y) ** 2) > brushSize);
+            }
+        }
+        
+        document.addEventListener('keydown', e => {
+            if (!gameActive) return;
+            if (e.key === ' ') {
+                balls.forEach(b => b.launch());
+                e.preventDefault();
+            }
+            if (e.key === 'ArrowLeft' || e.key === 'a') leftFlipper.activate();
+            if (e.key === 'ArrowRight' || e.key === 'd') rightFlipper.activate();
+        });
+        
+        document.addEventListener('keyup', e => {
+            if (e.key === 'ArrowLeft' || e.key === 'a') leftFlipper.deactivate();
+            if (e.key === 'ArrowRight' || e.key === 'd') rightFlipper.deactivate();
+        });
+        
+        function gameLoop() {
+            ctx.fillStyle = '#2a2a2a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw walls
+            ctx.fillStyle = '#888';
+            drawnWalls.forEach(w => {
+                ctx.beginPath();
+                ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            
+            // Draw bouncy walls
+            ctx.fillStyle = '#FFA500';
+            bouncyWalls.forEach(w => {
+                ctx.beginPath();
+                ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#FF0';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            });
+            
+            // Draw one-way walls
+            ctx.fillStyle = '#9C27B0';
+            oneWayWalls.forEach(w => {
+                ctx.beginPath();
+                ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = '#fff';
+                ctx.beginPath();
+                ctx.moveTo(w.x - w.radius * 0.3, w.y);
+                ctx.lineTo(w.x + w.radius * 0.3, w.y - w.radius * 0.4);
+                ctx.lineTo(w.x + w.radius * 0.3, w.y + w.radius * 0.4);
+                ctx.closePath();
+                ctx.fill();
+                ctx.fillStyle = '#9C27B0';
+            });
+            
+            // Draw ramps
+            ctx.fillStyle = '#00BCD4';
+            ramps.forEach(w => {
+                ctx.beginPath();
+                ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            
+            // Draw targets
+            targets.forEach(t => {
+                ctx.fillStyle = t.hit ? '#FF0' : '#F44336';
+                ctx.beginPath();
+                ctx.arc(t.x, t.y, t.radius, 0, Math.PI * 2);
+                ctx.fill();
+                if (t.hit) {
+                    ctx.strokeStyle = '#FF0';
+                    ctx.lineWidth = 4;
+                    ctx.stroke();
+                }
+            });
+            
+            // Draw kickers
+            kickers.forEach(k => {
+                ctx.fillStyle = k.active ? '#FF0' : '#4CAF50';
+                ctx.beginPath();
+                ctx.arc(k.x, k.y, k.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = '#fff';
+                ctx.font = '20px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('↑', k.x, k.y);
+            });
+            
+            // Draw bumpers
+            bumpers.forEach(b => {
+                b.update();
+                b.draw();
+                if (gameActive) balls.forEach(ball => b.checkCollision(ball));
+            });
+            
+            // Draw flippers
+            leftFlipper.update();
+            rightFlipper.update();
+            leftFlipper.draw();
+            rightFlipper.draw();
+            
+            if (gameActive) {
+                balls.forEach(ball => {
+                    leftFlipper.checkCollision(ball);
+                    rightFlipper.checkCollision(ball);
+                });
+            }
+            
+            // Draw balls
+            balls.forEach(ball => {
+                if (gameActive) ball.update();
+                ball.draw();
+                
+                if (!ball.launched && gameActive) {
+                    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+                    ctx.font = '16px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('PRESS SPACE', 730, 800);
+                }
+            });
+            
+            // Update timers
+            if (comboTimer > 0) {
+                comboTimer--;
+                if (comboTimer === 0) {
+                    multiplier = 1;
+                    document.getElementById('multiplier').textContent = multiplier;
+                }
+            }
+            
+            if (tiltCooldown > 0) {
+                tiltCooldown--;
+                if (tiltCooldown === 0) {
+                    tilted = false;
+                    flipperPresses = [];
+                }
+            }
+            
+            requestAnimationFrame(gameLoop);
+        }
+        
+        tryLoadSaved();
+        gameLoop();
+    </script>
+</body>
+</html>

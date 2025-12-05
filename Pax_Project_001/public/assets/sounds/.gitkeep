@@ -1,0 +1,11 @@
+# Sounds Directory
+
+This folder will contain:
+- Flipper sounds
+- Bumper hit sounds
+- Ball launch sound
+- Score sounds
+- Background music (optional)
+
+For now, we'll use Web Audio synthesis like the original.
+Later, add actual audio files for polish.

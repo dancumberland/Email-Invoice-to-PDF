@@ -1,0 +1,12 @@
+# Game Objects Directory
+
+This folder will contain entity classes:
+- Ball.js - Ball physics and rendering
+- Flipper.js - Flipper mechanics
+- Bumper.js - Bumper behavior
+- Target.js - Drop targets
+- Kicker.js - Kicker/slingshot
+- Wall.js - Wall segments
+- Ramp.js - Ramps
+
+See docs/ARCHITECTURE.md for entity pattern.

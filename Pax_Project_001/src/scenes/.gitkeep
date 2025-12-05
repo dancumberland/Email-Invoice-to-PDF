@@ -1,0 +1,9 @@
+# Phaser Scenes Directory
+
+This folder will contain:
+- BootScene.js - Asset loading
+- GameScene.js - Main gameplay
+- EditorScene.js - Table editor
+- UIScene.js - HUD overlay
+
+See docs/ARCHITECTURE.md for details.

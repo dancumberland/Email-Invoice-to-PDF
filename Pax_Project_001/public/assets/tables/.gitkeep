@@ -1,0 +1,14 @@
+# Table Designs Directory
+
+This folder will contain JSON table layouts:
+- default.json - Default table from original game
+
+Table format is documented in docs/ARCHITECTURE.md
+
+Tables include:
+- Dimensions
+- Wall positions
+- Bumper positions
+- Flipper positions
+- Targets, kickers, ramps
+- Physics settings
