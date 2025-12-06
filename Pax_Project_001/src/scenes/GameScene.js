@@ -77,56 +77,63 @@ export default class GameScene extends Phaser.Scene {
   }
 
   createWalls() {
-    const graphics = this.add.graphics();
-    graphics.fillStyle(0x888888);
+    // Wall positions matching EditorScene strokeRect(30, 42, 660, 916) and strokeRect(700, 42, 70, 916)
+    // Main playfield: x=30-690, y=42-958
+    // Launch lane: x=700-770, y=42-958
 
-    // Left wall
-    const leftWall = this.matter.add.rectangle(30, 500, 24, 900, {
+    // Left wall - thin wall at x=30
+    const leftWall = this.matter.add.rectangle(30, 500, 6, 916, {
       isStatic: true,
       label: 'wall'
     });
 
-    // Right wall (main area)
-    const rightWall = this.matter.add.rectangle(690, 500, 24, 900, {
+    // Right wall of playfield - at x=690
+    const rightWall = this.matter.add.rectangle(690, 500, 6, 916, {
       isStatic: true,
       label: 'wall'
     });
 
-    // Launch lane right wall
-    const launchWall = this.matter.add.rectangle(770, 500, 24, 900, {
+    // Launch lane left wall - at x=700
+    const launchLeftWall = this.matter.add.rectangle(700, 500, 6, 916, {
       isStatic: true,
       label: 'wall'
     });
 
-    // Top wall
-    const topWall = this.matter.add.rectangle(400, 30, 740, 24, {
+    // Launch lane right wall - at x=770
+    const launchRightWall = this.matter.add.rectangle(770, 500, 6, 916, {
       isStatic: true,
       label: 'wall'
     });
 
-    // Bottom walls (with gap for drain)
-    const bottomLeft = this.matter.add.rectangle(150, 960, 240, 24, {
-      isStatic: true,
-      label: 'wall'
-    });
-    const bottomRight = this.matter.add.rectangle(650, 960, 240, 24, {
+    // Top wall - at y=42
+    const topWall = this.matter.add.rectangle(400, 42, 740, 6, {
       isStatic: true,
       label: 'wall'
     });
 
-    // Flipper area side walls
-    const leftFlipperWall = this.matter.add.rectangle(200, 900, 24, 100, {
+    // Bottom walls with gap for drain - at y=958
+    const bottomLeft = this.matter.add.rectangle(150, 958, 240, 6, {
+      isStatic: true,
+      label: 'wall'
+    });
+    const bottomRight = this.matter.add.rectangle(550, 958, 280, 6, {
+      isStatic: true,
+      label: 'wall'
+    });
+
+    // Flipper area slingshot walls
+    const leftFlipperWall = this.matter.add.rectangle(180, 870, 6, 100, {
       isStatic: true,
       angle: 0.5,
       label: 'wall'
     });
-    const rightFlipperWall = this.matter.add.rectangle(600, 900, 24, 100, {
+    const rightFlipperWall = this.matter.add.rectangle(520, 870, 6, 100, {
       isStatic: true,
       angle: -0.5,
       label: 'wall'
     });
 
-    this.walls = [leftWall, rightWall, launchWall, topWall, bottomLeft, bottomRight, leftFlipperWall, rightFlipperWall];
+    this.walls = [leftWall, rightWall, launchLeftWall, launchRightWall, topWall, bottomLeft, bottomRight, leftFlipperWall, rightFlipperWall];
 
     // Create custom drawn walls from editor
     this.createCustomWalls();
@@ -164,19 +171,11 @@ export default class GameScene extends Phaser.Scene {
 
   drawWalls() {
     const graphics = this.add.graphics();
-    graphics.fillStyle(0x888888);
 
-    // Left wall
-    graphics.fillRect(18, 50, 24, 900);
-    // Right wall (main area)
-    graphics.fillRect(678, 50, 24, 900);
-    // Launch lane wall
-    graphics.fillRect(758, 50, 24, 900);
-    // Top wall
-    graphics.fillRect(30, 18, 740, 24);
-    // Bottom walls
-    graphics.fillRect(30, 948, 240, 24);
-    graphics.fillRect(530, 948, 240, 24);
+    // Match EditorScene exactly - table boundary and launch lane
+    graphics.lineStyle(3, 0x888888);
+    graphics.strokeRect(30, 42, 660, 916);
+    graphics.strokeRect(700, 42, 70, 916);
 
     // Draw custom walls from editor
     if (this.customTable) {
@@ -236,7 +235,7 @@ export default class GameScene extends Phaser.Scene {
 
   createTargets() {
     // Use custom table data if available, otherwise use defaults
-    const targetData = (this.customTable && this.customTable.targets.length > 0)
+    const targetData = (this.customTable && this.customTable.targets && this.customTable.targets.length > 0)
       ? this.customTable.targets
       : [
           { x: 100, y: 350, radius: 15, points: 100 },
@@ -267,7 +266,7 @@ export default class GameScene extends Phaser.Scene {
 
   createKickers() {
     // Use custom table data if available, otherwise use defaults
-    const kickerData = (this.customTable && this.customTable.kickers.length > 0)
+    const kickerData = (this.customTable && this.customTable.kickers && this.customTable.kickers.length > 0)
       ? this.customTable.kickers
       : [
           { x: 80, y: 700, radius: 20 },
@@ -291,7 +290,7 @@ export default class GameScene extends Phaser.Scene {
 
   createRamps() {
     // Use custom table data if available, otherwise use defaults
-    const rampData = (this.customTable && this.customTable.ramps.length > 0)
+    const rampData = (this.customTable && this.customTable.ramps && this.customTable.ramps.length > 0)
       ? this.customTable.ramps
       : [
           { x: 150, y: 600, radius: 25 },
@@ -315,10 +314,14 @@ export default class GameScene extends Phaser.Scene {
   createFlippers() {
     const flipperLength = 100;
     const flipperWidth = 15;
+    const MatterConstraint = Phaser.Physics.Matter.Matter.Constraint;
 
-    // Left flipper
-    const leftPivotX = 280;
-    const leftPivotY = 900;
+    // Flipper Y position - above the drain gap at y=958, accounting for slingshots
+    const flipperY = 920;
+
+    // Left flipper - positioned to meet the left slingshot wall
+    const leftPivotX = 250;
+    const leftPivotY = flipperY;
 
     this.leftFlipperBody = this.matter.add.rectangle(
       leftPivotX + flipperLength / 2,
@@ -326,20 +329,23 @@ export default class GameScene extends Phaser.Scene {
       flipperLength,
       flipperWidth,
       {
-        chamfer: { radius: flipperWidth / 2 },
         label: 'flipper'
       }
     );
 
-    // Pin constraint for left flipper pivot
-    this.matter.add.constraint(this.leftFlipperBody, null, 0, 1, {
+    // Pin constraint for left flipper pivot (world-pinned)
+    const leftConstraint = MatterConstraint.create({
+      bodyA: this.leftFlipperBody,
       pointA: { x: -flipperLength / 2, y: 0 },
-      pointB: { x: leftPivotX, y: leftPivotY }
+      pointB: { x: leftPivotX, y: leftPivotY },
+      stiffness: 1,
+      length: 0
     });
+    this.matter.world.add(leftConstraint);
 
-    // Right flipper
-    const rightPivotX = 520;
-    const rightPivotY = 900;
+    // Right flipper - positioned to meet the right slingshot wall
+    const rightPivotX = 450;
+    const rightPivotY = flipperY;
 
     this.rightFlipperBody = this.matter.add.rectangle(
       rightPivotX - flipperLength / 2,
@@ -347,16 +353,19 @@ export default class GameScene extends Phaser.Scene {
       flipperLength,
       flipperWidth,
       {
-        chamfer: { radius: flipperWidth / 2 },
         label: 'flipper'
       }
     );
 
-    // Pin constraint for right flipper pivot
-    this.matter.add.constraint(this.rightFlipperBody, null, 0, 1, {
+    // Pin constraint for right flipper pivot (world-pinned)
+    const rightConstraint = MatterConstraint.create({
+      bodyA: this.rightFlipperBody,
       pointA: { x: flipperLength / 2, y: 0 },
-      pointB: { x: rightPivotX, y: rightPivotY }
+      pointB: { x: rightPivotX, y: rightPivotY },
+      stiffness: 1,
+      length: 0
     });
+    this.matter.world.add(rightConstraint);
 
     // Set initial angles
     this.matter.body.setAngle(this.leftFlipperBody, 0.4);
@@ -368,8 +377,8 @@ export default class GameScene extends Phaser.Scene {
   }
 
   createBall() {
-    // Ball starts in launch lane
-    this.ball = this.matter.add.circle(730, 850, 10, {
+    // Ball starts in launch lane (centered between x=700 and x=770 = 735)
+    this.ball = this.matter.add.circle(735, 850, 10, {
       restitution: 0.6,
       friction: 0.001,
       frictionAir: 0.01,
@@ -384,7 +393,7 @@ export default class GameScene extends Phaser.Scene {
     this.launched = false;
 
     // Launch text
-    this.launchText = this.add.text(730, 800, 'PRESS\nSPACE', {
+    this.launchText = this.add.text(735, 800, 'PRESS\nSPACE', {
       fontSize: '14px',
       color: '#ffffff',
       align: 'center'
