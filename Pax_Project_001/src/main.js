@@ -1,30 +1,25 @@
 // ABOUTME: Phaser game initialization and configuration
 // ABOUTME: Entry point for the Dream Pinball game
 
-// TODO: Implement after learning Phaser fundamentals
-// See docs/PROJECT_BACKLOG.md for learning resources
-
-/*
 import Phaser from 'phaser';
-import BootScene from './scenes/BootScene';
-import GameScene from './scenes/GameScene';
+import BootScene from './scenes/BootScene.js';
+import GameScene from './scenes/GameScene.js';
+import EditorScene from './scenes/EditorScene.js';
 
 const config = {
   type: Phaser.WEBGL,
   width: 800,
   height: 1000,
+  parent: 'game-container',
+  backgroundColor: '#2a2a2a',
   physics: {
     default: 'matter',
     matter: {
       gravity: { y: 0.5 },
-      debug: true // Set false for production
+      debug: true
     }
   },
-  scene: [BootScene, GameScene]
+  scene: [BootScene, EditorScene, GameScene]
 };
 
 const game = new Phaser.Game(config);
-*/
-
-console.log('Dream Pinball - Ready to build!');
-console.log('See docs/PROJECT_BACKLOG.md for next steps.');

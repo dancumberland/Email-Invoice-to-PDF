@@ -18,25 +18,21 @@ Before building, Dan and son should understand what Phaser is and how it works.
 
 #### Videos (Recommended Order)
 
-1. **"Phaser 3 Tutorial for Beginners"** - WornOffKeys
-   - YouTube: https://www.youtube.com/watch?v=U0K8pLcFI8A
-   - Duration: ~30 min
-   - Why: Explains Phaser from scratch, very beginner-friendly
+1. **Space Shooter Tutorial Series** - Scott Westover (DevShare Academy)
+   - YouTube Playlist: https://www.youtube.com/playlist?list=PLmcXe0-sfoShHpVWLDW2gqsyH1UFRni_2
+   - Duration: 11 videos, complete series
+   - GitHub: https://github.com/devshareacademy/phaser-3-space-shooter
+   - Why: Complete beginner-friendly series, starts from scratch, vanilla JS (no build tools)
 
-2. **"Make Your First Phaser 3 Game"** - Official Phaser Tutorial
-   - YouTube: https://www.youtube.com/watch?v=5v5SnP7Dq_A
-   - Duration: ~45 min
-   - Why: Official tutorial, step-by-step simple game
+2. **Breakout Game with Matter.js Physics** - Ourcade
+   - YouTube Playlist: https://www.youtube.com/playlist?list=PLNwtXgWIx3rh23MYaPLgqLDePAQgK1kQN
+   - Duration: 6 videos
+   - GitHub: https://github.com/ourcade/phaser3-breakout-matterjs-starter
+   - Why: Uses Matter.js physics (same as our pinball), ball + paddle mechanics similar to flippers
 
-3. **"Phaser 3 Physics with Matter.js"** - Game Dev Academy
-   - YouTube: Search "Phaser 3 Matter.js tutorial"
-   - Duration: ~20-30 min
-   - Why: Shows exactly the physics system we'll use
-
-4. **"Building a Breakout Game in Phaser 3"** - Ourcade
-   - YouTube: https://www.youtube.com/watch?v=tpNZ3V31EWM
-   - Duration: ~1 hour
-   - Why: Breakout has similar physics to pinball (ball, paddles, bouncing)
+3. **Frogger-Style Game Tutorial** - GameDev Academy
+   - Written: https://gamedevacademy.org/phaser-3-tutorial/
+   - Why: Good fundamentals, teaches core Phaser concepts through building a complete game
 
 #### Written Tutorials
 
@@ -57,8 +53,9 @@ Instead of building every piece yourself:
 You just tell Phaser WHAT you want, and it figures out HOW.
 
 **Deliverables**:
-- Watch at least videos 1 and 2
-- Run the official "First Game" tutorial
+- Watch Space Shooter series (at least first few videos)
+- Watch Breakout series (most relevant to pinball physics)
+- Run the official "First Game" written tutorial
 - Understand: Scenes, Sprites, Physics, Input
 
 **Dependencies**:
