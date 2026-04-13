@@ -1,0 +1,176 @@
+{
+  "findings": [
+    {
+      "id": 1,
+      "statement": "Deltek Vantagepoint is at ~30% utilization despite being the most expensive system. Dela AI is free and nobody has turned it on.",
+      "evidence_count": 9,
+      "departments": ["Accounting", "PM", "Engineering", "Admin"],
+      "roadmap_implication": "Activate Dela AI before buying new tools. Build Deltek MCP server for AI agent access to project data.",
+      "theme": "tool_underutilization"
+    },
+    {
+      "id": 2,
+      "statement": "Panzura stores 50TB across 12 edge nodes but has zero search capability. People can't find files they know exist.",
+      "evidence_count": 7,
+      "departments": ["Engineering", "Marketing", "PM"],
+      "roadmap_implication": "File Share Connector for Copilot can index Panzura via SMB. Quick win that unlocks institutional knowledge.",
+      "theme": "data_accessibility"
+    },
+    {
+      "id": 3,
+      "statement": "~40% of staff are already using ChatGPT with client data, without guidance or guardrails.",
+      "evidence_count": 5,
+      "departments": ["Engineering", "Marketing", "PM"],
+      "roadmap_implication": "AI security guidelines needed BEFORE the shareholder meeting. Board-level blocker if not addressed.",
+      "theme": "shadow_ai"
+    },
+    {
+      "id": 4,
+      "statement": "CRM (eway) has 50 licenses but only 2-3 active users. The firm tracks BD in Excel spreadsheets.",
+      "evidence_count": 4,
+      "departments": ["Marketing", "PM", "Leadership"],
+      "roadmap_implication": "CRM is a symptom of a broader data input problem. Don't add another tool; fix the input friction.",
+      "theme": "tool_underutilization"
+    },
+    {
+      "id": 5,
+      "statement": "Institutional knowledge lives in individual people's heads, not in systems. Jason gets 5-10 requests/week because he IS the search engine for W/WW.",
+      "evidence_count": 6,
+      "departments": ["Engineering", "PM"],
+      "roadmap_implication": "Knowledge capture is urgent — key people retiring within 3-5 years. AI-powered knowledge base is a Tier 1 recommendation.",
+      "theme": "institutional_knowledge"
+    },
+    {
+      "id": 6,
+      "statement": "Copilot is deployed but most people got zero training. Usage is accidental discovery, not systematic adoption.",
+      "evidence_count": 8,
+      "departments": ["Engineering", "PM", "Leadership", "Admin"],
+      "roadmap_implication": "Copilot 101/201 training program is the lowest-friction, highest-impact starting point.",
+      "theme": "tool_underutilization"
+    }
+  ],
+  "themes": [
+    {
+      "name": "Tool Underutilization",
+      "slug": "tool_underutilization",
+      "description": "Multiple systems purchased but running at a fraction of their capability. The problem isn't the tools — it's activation and training.",
+      "finding_ids": [1, 4, 6]
+    },
+    {
+      "name": "Data Accessibility",
+      "slug": "data_accessibility",
+      "description": "Information exists but can't be found. Files on Panzura, knowledge in people's heads, project data locked in Deltek.",
+      "finding_ids": [2, 5]
+    },
+    {
+      "name": "Shadow AI",
+      "slug": "shadow_ai",
+      "description": "Staff are already using AI tools on their own, without guidance. The firm needs to lead, not chase.",
+      "finding_ids": [3]
+    },
+    {
+      "name": "Institutional Knowledge Risk",
+      "slug": "institutional_knowledge",
+      "description": "Critical knowledge lives in individual people. Retirements and departures create knowledge loss the firm can't recover from.",
+      "finding_ids": [5]
+    }
+  ],
+  "quickWins": [
+    {
+      "title": "Activate Dela AI in Deltek",
+      "description": "Free AI assistant included with Vantagepoint license. Natural language querying of projects, contacts, activities. Nobody has turned it on.",
+      "who_benefits": "PMs, Accounting, Riley Hoskins",
+      "effort": "trivial",
+      "prerequisite": null
+    },
+    {
+      "title": "Copilot 101/201 Training Sessions",
+      "description": "Most staff have Copilot but got zero training. 2-3 sessions covering email drafting, meeting summaries, document generation.",
+      "who_benefits": "All 250 staff with M365 licenses",
+      "effort": "low",
+      "prerequisite": null
+    },
+    {
+      "title": "Panzura File Share Connector",
+      "description": "Graph Connector Agent indexes Panzura files via SMB for Copilot search. Supports DOC, PDF, PPT, XLS. Respects NTFS ACLs.",
+      "who_benefits": "All staff (solves 'can't find the file' problem)",
+      "effort": "medium",
+      "prerequisite": "Confirm Copilot license tier with Tim. Install Graph Connector Agent on-premises."
+    },
+    {
+      "title": "AI Usage Guidelines One-Pager",
+      "description": "Clear, practical guide: what you CAN share with AI (non-client, internal processes) vs. what needs enterprise tools (client data, financials).",
+      "who_benefits": "Board (removes blocker), staff (removes uncertainty)",
+      "effort": "low",
+      "prerequisite": null
+    }
+  ],
+  "quotes": [
+    {
+      "text": "I spend probably 5-10 hours a week answering questions that are in the files somewhere, people just can't find them.",
+      "attribution": "Discipline Lead, W/WW",
+      "theme": "data_accessibility",
+      "usable_in_presentation": true
+    },
+    {
+      "text": "I would imagine it's like adding a couple staff.",
+      "attribution": "TI Committee Chair, on Joist AI",
+      "theme": "tool_underutilization",
+      "usable_in_presentation": true
+    },
+    {
+      "text": "We don't want to cram AI down people's throats.",
+      "attribution": "CEO",
+      "theme": "culture",
+      "usable_in_presentation": true
+    },
+    {
+      "text": "I've been using ChatGPT for two years. It's changed how I work entirely.",
+      "attribution": "Proposal Coordinator, Marketing",
+      "theme": "shadow_ai",
+      "usable_in_presentation": true
+    },
+    {
+      "text": "We have tools we don't even know we have.",
+      "attribution": "VP / Board Chair",
+      "theme": "tool_underutilization",
+      "usable_in_presentation": true
+    }
+  ],
+  "contradictions": [
+    {
+      "statement": "Culture-first philosophy ('don't cram AI down people's throats') vs. 40% already using uncontrolled ChatGPT with client data",
+      "sources": ["CEO", "Multiple Discipline Leads", "Baseline Survey"]
+    },
+    {
+      "statement": "T&M billing model means efficiency gains reduce revenue, yet leadership wants AI to make people more productive",
+      "sources": ["VP / Board Chair", "CEO", "Multiple PMs"]
+    },
+    {
+      "statement": "Desire for data-driven decisions vs. CRM with 2-3 active users out of 50 licenses",
+      "sources": ["Marketing Manager", "CEO", "Admin Manager"]
+    }
+  ],
+  "gaps": [
+    {
+      "question": "What is the board's detailed position on AI data security and professional liability?",
+      "priority": "critical",
+      "plan_to_fill": "Colter interview completed 4/2 — extract for security stance. May need follow-up."
+    },
+    {
+      "question": "What specific Copilot license tier does Keller have and which features are enabled?",
+      "priority": "critical",
+      "plan_to_fill": "Waiting on Tim Trumbo — follow up needed"
+    },
+    {
+      "question": "How do field/construction teams use technology differently from office staff?",
+      "priority": "important",
+      "plan_to_fill": "No field/construction interviews scheduled. Consider Wave 3 or AI agent."
+    },
+    {
+      "question": "What is the actual cost of cross-office coordination friction?",
+      "priority": "important",
+      "plan_to_fill": "Can estimate from interview data during synthesis"
+    }
+  ]
+}

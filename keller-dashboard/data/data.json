@@ -1,0 +1,1635 @@
+{
+  "generated_at": "2026-04-13T15:47:17.754151",
+  "engagement": {
+    "name": "Keller Associates AI Roadmap",
+    "value": 28000,
+    "start_date": "2026-03-19",
+    "end_date": "2026-05-07",
+    "current_week": 4,
+    "days_remaining": 24,
+    "phase": "discovery"
+  },
+  "people": [
+    {
+      "name": "Larry Rupp",
+      "role": "President/CEO",
+      "office": "Meridian",
+      "discipline": "Leadership",
+      "wave": 1,
+      "interview_date": "2026-03-24",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Larry_Rupp.md",
+      "profile_path": "Discovery/Profiles/Larry_Rupp.md",
+      "questions_path": "Discovery/Interview_Questions/Larry.md",
+      "readiness_tier": "pragmatist",
+      "key_insight": null
+    },
+    {
+      "name": "Kyle Meschko",
+      "role": "Branch Office Manager / TI Chair",
+      "office": "Meridian",
+      "discipline": "Leadership",
+      "wave": 1,
+      "interview_date": "2026-03-23",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Kyle_Meschko.md",
+      "profile_path": "Discovery/Profiles/Kyle_Meschko.md",
+      "questions_path": "Discovery/Interview_Questions/Kyle.md",
+      "readiness_tier": "early_adopter",
+      "key_insight": null
+    },
+    {
+      "name": "Andrea Sams",
+      "role": "HR Director",
+      "office": "Meridian",
+      "discipline": "HR",
+      "wave": 1,
+      "interview_date": "2026-03-23",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Andrea_Sams.md",
+      "profile_path": "Discovery/Profiles/Andrea_Sams.md",
+      "questions_path": "Discovery/Interview_Questions/Andrea.md",
+      "readiness_tier": "early_adopter",
+      "key_insight": null
+    },
+    {
+      "name": "Tim Trumbo",
+      "role": "IT Manager",
+      "office": "Meridian",
+      "discipline": "IT",
+      "wave": 1,
+      "interview_date": "2026-03-27",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Tim_Trumbo.md",
+      "profile_path": "Discovery/Profiles/Tim_Trumbo.md",
+      "questions_path": "Discovery/Interview_Questions/Tim.md",
+      "readiness_tier": "pragmatist",
+      "key_insight": null
+    },
+    {
+      "name": "Nathan Cleaver",
+      "role": "Chief Engineer/Principal",
+      "office": "Meridian",
+      "discipline": "Engineering",
+      "wave": 1,
+      "interview_date": "2026-03-24",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Nathan_Cleaver.md",
+      "profile_path": "Discovery/Profiles/Nathan_Cleaver.md",
+      "questions_path": "Discovery/Interview_Questions/Nathan.md",
+      "readiness_tier": "champion",
+      "key_insight": null
+    },
+    {
+      "name": "Riley Hoskins",
+      "role": "Accounting Manager",
+      "office": "Meridian",
+      "discipline": "Accounting",
+      "wave": 1,
+      "interview_date": "2026-03-25",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Riley_Hoskins.md",
+      "profile_path": "Discovery/Profiles/Riley_Hoskins.md",
+      "questions_path": "Discovery/Interview_Questions/Riley.md",
+      "readiness_tier": "pragmatist",
+      "key_insight": null
+    },
+    {
+      "name": "Jason King",
+      "role": "Discipline Lead, W/WW",
+      "office": "Meridian",
+      "discipline": "Water/Wastewater",
+      "wave": 2,
+      "interview_date": "2026-03-30",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Jason_King.md",
+      "profile_path": "Discovery/Profiles/Jason_King.md",
+      "questions_path": "Discovery/Interview_Questions/Jason.md",
+      "readiness_tier": "pragmatist",
+      "key_insight": null
+    },
+    {
+      "name": "James Bledsoe",
+      "role": "VP / Board Chair",
+      "office": "Meridian",
+      "discipline": "Leadership",
+      "wave": 2,
+      "interview_date": "2026-03-30",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/James_Bledsoe.md",
+      "profile_path": "Discovery/Profiles/James_Bledsoe.md",
+      "questions_path": "Discovery/Interview_Questions/James.md",
+      "readiness_tier": "pragmatist",
+      "key_insight": null
+    },
+    {
+      "name": "Brandon Keller",
+      "role": "Discipline Lead, Structural",
+      "office": "Meridian",
+      "discipline": "Structural",
+      "wave": 2,
+      "interview_date": "2026-03-31",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Brandon_Keller.md",
+      "profile_path": "Discovery/Profiles/Brandon_Keller.md",
+      "questions_path": "Discovery/Interview_Questions/Brandon.md",
+      "readiness_tier": "champion",
+      "key_insight": null
+    },
+    {
+      "name": "Stillman Norton",
+      "role": "WA Area Manager / Board Secretary",
+      "office": "Richland",
+      "discipline": "PM",
+      "wave": 2,
+      "interview_date": "2026-03-31",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Stillman_Norton.md",
+      "profile_path": "Discovery/Profiles/Stillman_Norton.md",
+      "questions_path": "Discovery/Interview_Questions/Stillman.md",
+      "readiness_tier": "pragmatist",
+      "key_insight": null
+    },
+    {
+      "name": "Morgan Cushing",
+      "role": "Admin Manager",
+      "office": "Meridian",
+      "discipline": "Admin",
+      "wave": 2,
+      "interview_date": "2026-03-31",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Morgan_Cushing.md",
+      "profile_path": "Discovery/Profiles/Morgan_Cushing.md",
+      "questions_path": "Discovery/Interview_Questions/Morgan.md",
+      "readiness_tier": "early_adopter",
+      "key_insight": null
+    },
+    {
+      "name": "Breck Dalley",
+      "role": "Marketing & Proposals Manager",
+      "office": "Pocatello",
+      "discipline": "Marketing",
+      "wave": 2,
+      "interview_date": "2026-03-31",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Breck_Dalley.md",
+      "profile_path": "Discovery/Profiles/Breck_Dalley.md",
+      "questions_path": "Discovery/Interview_Questions/Breck.md",
+      "readiness_tier": "early_adopter",
+      "key_insight": null
+    },
+    {
+      "name": "Jeny Thornton",
+      "role": "CAD Manager",
+      "office": "Meridian",
+      "discipline": "Engineering",
+      "wave": 2,
+      "interview_date": "2026-04-01",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Jeny_Thornton.md",
+      "profile_path": "Discovery/Profiles/Jeny_Thornton.md",
+      "questions_path": "Discovery/Interview_Questions/Jeny.md",
+      "readiness_tier": null,
+      "key_insight": null
+    },
+    {
+      "name": "Crystal Warner",
+      "role": "Proposal Writer/Coordinator",
+      "office": "Meridian",
+      "discipline": "Marketing",
+      "wave": 2,
+      "interview_date": "2026-04-02",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Crystal_Warner.md",
+      "profile_path": "Discovery/Profiles/Crystal_Warner.md",
+      "questions_path": "Discovery/Interview_Questions/Crystal.md",
+      "readiness_tier": "champion",
+      "key_insight": null
+    },
+    {
+      "name": "Colter Hollingshead",
+      "role": "Pocatello BOM / Board Member",
+      "office": "Pocatello",
+      "discipline": "PM",
+      "wave": 2,
+      "interview_date": "2026-04-02",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Colter_Hollingshead.md",
+      "profile_path": "Discovery/Profiles/Colter_Hollingshead.md",
+      "questions_path": "Discovery/Interview_Questions/Colter.md",
+      "readiness_tier": "skeptic",
+      "key_insight": null
+    },
+    {
+      "name": "Ben Davis",
+      "role": "Transportation DL, CdA",
+      "office": "Coeur d'Alene",
+      "discipline": "Transportation",
+      "wave": 2,
+      "interview_date": "2026-04-02",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Ben_Davis.md",
+      "profile_path": "Discovery/Profiles/Ben_Davis.md",
+      "questions_path": "Discovery/Interview_Questions/Ben.md",
+      "readiness_tier": null,
+      "key_insight": null
+    },
+    {
+      "name": "Dallin Stephens",
+      "role": "Senior WW Engineer",
+      "office": "Pocatello",
+      "discipline": "Water/Wastewater",
+      "wave": 2,
+      "interview_date": "2026-04-06",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Dallin_Stephens.md",
+      "profile_path": "Discovery/Profiles/Dallin_Stephens.md",
+      "questions_path": "Discovery/Interview_Questions/Dallin.md",
+      "readiness_tier": null,
+      "key_insight": null
+    },
+    {
+      "name": "Justin Walker",
+      "role": "Meridian BOM / Principal Engineer",
+      "office": "Meridian",
+      "discipline": "Engineering",
+      "wave": 2,
+      "interview_date": "2026-04-07",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Justin_Walker.md",
+      "profile_path": "Discovery/Profiles/Justin_Walker.md",
+      "questions_path": "Discovery/Interview_Questions/Justin.md",
+      "readiness_tier": null,
+      "key_insight": null
+    },
+    {
+      "name": "Dawn Carroll",
+      "role": "Help Desk / Business Analyst",
+      "office": "Meridian",
+      "discipline": "IT",
+      "wave": 2,
+      "interview_date": "2026-04-07",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Dawn_Carroll.md",
+      "profile_path": "Discovery/Profiles/Dawn_Carroll.md",
+      "questions_path": "Discovery/Interview_Questions/Dawn.md",
+      "readiness_tier": null,
+      "key_insight": null
+    },
+    {
+      "name": "TJ Centanni",
+      "role": "Transportation DL, Dept Head",
+      "office": "Meridian",
+      "discipline": "Transportation",
+      "wave": 2,
+      "interview_date": "2026-04-08",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/TJ_Centanni.md",
+      "profile_path": "Discovery/Profiles/TJ_Centanni.md",
+      "questions_path": "Discovery/Interview_Questions/TJ.md",
+      "readiness_tier": null,
+      "key_insight": null
+    },
+    {
+      "name": "Matt Hill",
+      "role": "PM II / Computer Committee Chair",
+      "office": "Meridian",
+      "discipline": "PM",
+      "wave": 2,
+      "interview_date": "2026-04-08",
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Matt_Hill.md",
+      "profile_path": "Discovery/Profiles/Matt_Hill.md",
+      "questions_path": "Discovery/Interview_Questions/Matt.md",
+      "readiness_tier": null,
+      "key_insight": null
+    },
+    {
+      "name": "Eric Roundy",
+      "role": "Senior WW Engineer / Board Treasurer",
+      "office": "Meridian",
+      "discipline": "Water/Wastewater",
+      "wave": 3,
+      "interview_date": "2026-04-15",
+      "interview_status": "scheduled",
+      "brief_path": null,
+      "profile_path": "Discovery/Profiles/Eric_Roundy.md",
+      "questions_path": "Discovery/Interview_Questions/Eric.md",
+      "readiness_tier": null,
+      "key_insight": null
+    },
+    {
+      "name": "Ashley Wolgast",
+      "role": "Project Coordinator",
+      "office": "Meridian",
+      "discipline": "PM",
+      "wave": 3,
+      "interview_date": "2026-04-15",
+      "interview_status": "scheduled",
+      "brief_path": null,
+      "profile_path": "Discovery/Profiles/Ashley_Wolgast.md",
+      "questions_path": "Discovery/Interview_Questions/Ashley.md",
+      "readiness_tier": null,
+      "key_insight": null
+    },
+    {
+      "name": "Jared Richins",
+      "role": "Engineer",
+      "office": "Pocatello",
+      "discipline": "Engineering",
+      "wave": 3,
+      "interview_date": null,
+      "interview_status": "scheduled",
+      "brief_path": null,
+      "profile_path": "Discovery/Profiles/Jared_Richins.md",
+      "questions_path": "Discovery/Interview_Questions/Jared.md",
+      "readiness_tier": null,
+      "key_insight": null
+    }
+  ],
+  "coverage": {
+    "offices": [
+      "Coeur d'Alene",
+      "Meridian",
+      "Pocatello",
+      "Richland"
+    ],
+    "disciplines": [
+      "Accounting",
+      "Admin",
+      "Engineering",
+      "HR",
+      "IT",
+      "Leadership",
+      "Marketing",
+      "PM",
+      "Structural",
+      "Transportation",
+      "Water/Wastewater"
+    ],
+    "matrix": {
+      "Coeur d'Alene": {
+        "Transportation": [
+          "Ben Davis"
+        ]
+      },
+      "Meridian": {
+        "Accounting": [
+          "Riley Hoskins"
+        ],
+        "Admin": [
+          "Morgan Cushing"
+        ],
+        "Engineering": [
+          "Nathan Cleaver",
+          "Jeny Thornton",
+          "Justin Walker"
+        ],
+        "HR": [
+          "Andrea Sams"
+        ],
+        "IT": [
+          "Tim Trumbo",
+          "Dawn Carroll"
+        ],
+        "Leadership": [
+          "Larry Rupp",
+          "Kyle Meschko",
+          "James Bledsoe"
+        ],
+        "Marketing": [
+          "Crystal Warner"
+        ],
+        "PM": [
+          "Matt Hill",
+          "Ashley Wolgast"
+        ],
+        "Structural": [
+          "Brandon Keller"
+        ],
+        "Transportation": [
+          "TJ Centanni"
+        ],
+        "Water/Wastewater": [
+          "Jason King",
+          "Eric Roundy"
+        ]
+      },
+      "Pocatello": {
+        "Engineering": [
+          "Jared Richins"
+        ],
+        "Marketing": [
+          "Breck Dalley"
+        ],
+        "PM": [
+          "Colter Hollingshead"
+        ],
+        "Water/Wastewater": [
+          "Dallin Stephens"
+        ]
+      },
+      "Richland": {
+        "PM": [
+          "Stillman Norton"
+        ]
+      }
+    }
+  },
+  "readiness": [
+    {
+      "name": "Nathan Cleaver",
+      "tier": "champion",
+      "role": "Chief Engineer"
+    },
+    {
+      "name": "Brandon Keller",
+      "tier": "champion",
+      "role": "Structural DL"
+    },
+    {
+      "name": "Crystal Warner",
+      "tier": "champion",
+      "role": "Proposal Coordinator"
+    },
+    {
+      "name": "Andrea Sams",
+      "tier": "early_adopter",
+      "role": "HR Director"
+    },
+    {
+      "name": "Kyle Meschko",
+      "tier": "early_adopter",
+      "role": "TI Committee Chair"
+    },
+    {
+      "name": "Breck Dalley",
+      "tier": "early_adopter",
+      "role": "Marketing Manager"
+    },
+    {
+      "name": "Morgan Cushing",
+      "tier": "early_adopter",
+      "role": "Admin Manager"
+    },
+    {
+      "name": "Riley Hoskins",
+      "tier": "pragmatist",
+      "role": "Accounting Manager"
+    },
+    {
+      "name": "Tim Trumbo",
+      "tier": "pragmatist",
+      "role": "IT Manager"
+    },
+    {
+      "name": "Jason King",
+      "tier": "pragmatist",
+      "role": "W/WW DL"
+    },
+    {
+      "name": "James Bledsoe",
+      "tier": "pragmatist",
+      "role": "VP / Board Chair"
+    },
+    {
+      "name": "Larry Rupp",
+      "tier": "pragmatist",
+      "role": "CEO"
+    },
+    {
+      "name": "Stillman Norton",
+      "tier": "pragmatist",
+      "role": "WA Area Manager"
+    },
+    {
+      "name": "Colter Hollingshead",
+      "tier": "skeptic",
+      "role": "Pocatello BOM"
+    }
+  ],
+  "waves": [
+    {
+      "number": 1,
+      "date_range": "Mar 19-28",
+      "people": [
+        "Larry Rupp",
+        "Kyle Meschko",
+        "Andrea Sams",
+        "Tim Trumbo",
+        "Nathan Cleaver",
+        "Riley Hoskins"
+      ],
+      "completed": 6,
+      "total": 6
+    },
+    {
+      "number": 2,
+      "date_range": "Mar 31 - Apr 11",
+      "people": [
+        "Jason King",
+        "James Bledsoe",
+        "Brandon Keller",
+        "Stillman Norton",
+        "Morgan Cushing",
+        "Breck Dalley",
+        "Jeny Thornton",
+        "Crystal Warner",
+        "Colter Hollingshead",
+        "Ben Davis",
+        "Dallin Stephens",
+        "Justin Walker",
+        "Dawn Carroll",
+        "TJ Centanni",
+        "Matt Hill"
+      ],
+      "completed": 15,
+      "total": 15
+    },
+    {
+      "number": 3,
+      "date_range": "Apr 14-22",
+      "people": [
+        "Eric Roundy",
+        "Ashley Wolgast",
+        "Jared Richins"
+      ],
+      "completed": 0,
+      "total": 3
+    }
+  ],
+  "deliverables": [
+    {
+      "id": 1,
+      "title": "Technology & Infrastructure Audit",
+      "sow_spec": "Written report, 5-10 pages covering each system",
+      "status": "inputs_gathering",
+      "target_date": "2026-05-01",
+      "inputs_needed": [
+        {
+          "label": "Tim Trumbo tool audit sessions",
+          "type": "interview",
+          "available": true
+        },
+        {
+          "label": "Synoptek IT plan review",
+          "type": "research",
+          "available": true
+        },
+        {
+          "label": "Technology.md analysis doc",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Panzura/LucidLink research",
+          "type": "research",
+          "available": true
+        },
+        {
+          "label": "Deltek ecosystem research",
+          "type": "research",
+          "available": true
+        },
+        {
+          "label": "Copilot capabilities deep dive",
+          "type": "research",
+          "available": false
+        },
+        {
+          "label": "IT Glue / full systems inventory",
+          "type": "other",
+          "available": false
+        }
+      ],
+      "inputs_available": 5,
+      "inputs_total": 7,
+      "depends_on": [],
+      "notes": "Technology.md heavily populated. Need Tim's systems access to complete."
+    },
+    {
+      "id": 2,
+      "title": "AI Readiness Assessment",
+      "sow_spec": "Written assessment, 8-12 pages, department by department",
+      "status": "inputs_gathering",
+      "target_date": "2026-05-01",
+      "inputs_needed": [
+        {
+          "label": "All Wave 2 interviews extracted",
+          "type": "interview",
+          "available": false
+        },
+        {
+          "label": "AI Baseline Survey analysis",
+          "type": "research",
+          "available": true
+        },
+        {
+          "label": "People.md analysis doc",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Culture.md analysis doc",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Wave 3 targeted follow-ups",
+          "type": "interview",
+          "available": false
+        }
+      ],
+      "inputs_available": 3,
+      "inputs_total": 5,
+      "depends_on": [],
+      "notes": "People.md and Culture.md heavily populated. Baseline survey analyzed."
+    },
+    {
+      "id": 3,
+      "title": "Prioritized Workflow Opportunity Map",
+      "sow_spec": "Summary page (impact vs effort) + page per department",
+      "status": "inputs_gathering",
+      "target_date": "2026-05-01",
+      "inputs_needed": [
+        {
+          "label": "Workflows.md analysis doc",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "AEC AI plan review tools research",
+          "type": "research",
+          "available": false
+        },
+        {
+          "label": "All department interviews extracted",
+          "type": "interview",
+          "available": false
+        },
+        {
+          "label": "Technology.md for tool capabilities",
+          "type": "analysis",
+          "available": true
+        }
+      ],
+      "inputs_available": 2,
+      "inputs_total": 4,
+      "depends_on": [],
+      "notes": "Workflows.md is the most populated analysis doc (~92KB)."
+    },
+    {
+      "id": 4,
+      "title": "Implementation Roadmap",
+      "sow_spec": "Visual timeline + written companion (4-8 pages)",
+      "status": "not_started",
+      "target_date": "2026-05-05",
+      "inputs_needed": [
+        {
+          "label": "Technology Audit (draft)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Readiness Assessment (draft)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Workflow Opportunity Map (draft)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Budget/resource constraints from Larry",
+          "type": "other",
+          "available": false
+        }
+      ],
+      "inputs_available": 0,
+      "inputs_total": 4,
+      "depends_on": [
+        1,
+        2,
+        3
+      ],
+      "notes": "Can't start until Tech Audit, Readiness Assessment, and Workflow Map are drafted."
+    },
+    {
+      "id": 5,
+      "title": "Training Program Design",
+      "sow_spec": "Workshop outlines, 1-2 pages each, with agenda and exercises",
+      "status": "not_started",
+      "target_date": "2026-05-05",
+      "inputs_needed": [
+        {
+          "label": "Readiness Assessment (draft)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Department-level skill gaps identified",
+          "type": "analysis",
+          "available": false
+        },
+        {
+          "label": "Copilot capabilities confirmed",
+          "type": "research",
+          "available": false
+        }
+      ],
+      "inputs_available": 0,
+      "inputs_total": 3,
+      "depends_on": [
+        2
+      ],
+      "notes": "Scaffold exists at Analysis/Deliverables/Training_Program_Scaffold.md"
+    },
+    {
+      "id": 6,
+      "title": "Change Management Framework",
+      "sow_spec": "Practical playbook, ~10 pages",
+      "status": "not_started",
+      "target_date": "2026-05-05",
+      "inputs_needed": [
+        {
+          "label": "Culture.md analysis doc",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Champions/early adopters identified",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Readiness Assessment (draft)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Adoption patterns from interviews",
+          "type": "interview",
+          "available": true
+        }
+      ],
+      "inputs_available": 3,
+      "inputs_total": 4,
+      "depends_on": [
+        2
+      ],
+      "notes": null
+    },
+    {
+      "id": 7,
+      "title": "Interactive Shareholder Workshop",
+      "sow_spec": "~2 hours, afternoon session, May 7 at JUMP Boise",
+      "status": "not_started",
+      "target_date": "2026-05-07",
+      "inputs_needed": [
+        {
+          "label": "Implementation Roadmap (draft)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Larry review session (~Apr 30)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Presentation deck created",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Workshop exercises designed",
+          "type": "other",
+          "available": false
+        }
+      ],
+      "inputs_available": 0,
+      "inputs_total": 4,
+      "depends_on": [
+        4
+      ],
+      "notes": "2:15 PM at JUMP Level 4, INSPIRE Studio. Top Golf dinner after."
+    },
+    {
+      "id": 8,
+      "title": "AI Foundations Workshop Series",
+      "sow_spec": "2-3 hands-on sessions, 60-90 min each (complimentary)",
+      "status": "not_started",
+      "target_date": "2026-05-21",
+      "inputs_needed": [
+        {
+          "label": "Training Program Design (final)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Shareholder meeting outcomes",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Workshop attendees identified",
+          "type": "other",
+          "available": false
+        }
+      ],
+      "inputs_available": 0,
+      "inputs_total": 3,
+      "depends_on": [
+        5,
+        7
+      ],
+      "notes": "Attendees identified based on shareholder meeting outcomes. Post-May 7."
+    }
+  ],
+  "research": [
+    {
+      "topic": "Deltek VantagePoint API / Ecosystem",
+      "priority": "P1",
+      "status": "complete",
+      "file_path": "Analysis/Research/Deltek_Ecosystem_Research.md",
+      "feeds_deliverable": [
+        1,
+        3
+      ]
+    },
+    {
+      "topic": "Deltek MCP Server Feasibility",
+      "priority": "P1",
+      "status": "complete",
+      "file_path": "Analysis/Research/Deltek_MCP_Server_Feasibility.md",
+      "feeds_deliverable": [
+        1,
+        4
+      ]
+    },
+    {
+      "topic": "Copilot Capabilities Deep Dive",
+      "priority": "P1",
+      "status": "in_progress",
+      "file_path": "Analysis/Research/RAG_Architecture_Research.md",
+      "feeds_deliverable": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "topic": "AI-Powered Plan Review & QC Tools",
+      "priority": "P1",
+      "status": "queued",
+      "file_path": null,
+      "feeds_deliverable": [
+        3,
+        4
+      ]
+    },
+    {
+      "topic": "AI Security & Data Guidelines",
+      "priority": "P1",
+      "status": "queued",
+      "file_path": null,
+      "feeds_deliverable": [
+        2,
+        6,
+        7
+      ]
+    },
+    {
+      "topic": "Joist AI Assessment",
+      "priority": "P1",
+      "status": "complete",
+      "file_path": "Analysis/Research/Joist_AI_Research.md",
+      "feeds_deliverable": [
+        1,
+        3
+      ]
+    },
+    {
+      "topic": "Panzura / File Architecture AI-Readiness",
+      "priority": "P1",
+      "status": "complete",
+      "file_path": "Analysis/Research/RAG_Architecture_Research.md",
+      "feeds_deliverable": [
+        1,
+        4
+      ]
+    },
+    {
+      "topic": "OpenAsset / DAM Research",
+      "priority": "P2",
+      "status": "complete",
+      "file_path": "Analysis/Research/OpenAsset_Research.md",
+      "feeds_deliverable": [
+        1,
+        3
+      ]
+    },
+    {
+      "topic": "LucidLink Deep Research",
+      "priority": "P2",
+      "status": "complete",
+      "file_path": "Analysis/Research/LucidLink_Deep_Research.md",
+      "feeds_deliverable": [
+        1
+      ]
+    },
+    {
+      "topic": "Synoptek IT Plan Review",
+      "priority": "P2",
+      "status": "complete",
+      "file_path": "Analysis/Research/Synoptek_IT_Plan_Review.md",
+      "feeds_deliverable": [
+        1
+      ]
+    },
+    {
+      "topic": "AI Baseline Survey Analysis",
+      "priority": "P2",
+      "status": "complete",
+      "file_path": "Analysis/Research/AI_Baseline_Survey_Analysis.md",
+      "feeds_deliverable": [
+        2
+      ]
+    },
+    {
+      "topic": "Data Pipeline Feasibility",
+      "priority": "P2",
+      "status": "complete",
+      "file_path": "Analysis/Research/Data_Pipeline_Feasibility.md",
+      "feeds_deliverable": [
+        4
+      ]
+    },
+    {
+      "topic": "Piros Tool Investigation",
+      "priority": "P3",
+      "status": "queued",
+      "file_path": null,
+      "feeds_deliverable": [
+        3
+      ]
+    }
+  ],
+  "interviews": [
+    {
+      "person": "Eric Roundy",
+      "role": "Senior WW Engineer / Board Treasurer",
+      "date": "2026-04-15",
+      "time": "11:00am",
+      "time_mt": "11:00am",
+      "questions_path": "Discovery/Interview_Questions/Eric.md",
+      "profile_path": "Discovery/Profiles/Eric_Roundy.md"
+    },
+    {
+      "person": "Ashley Wolgast",
+      "role": "Project Coordinator",
+      "date": "2026-04-15",
+      "time": "2:00pm",
+      "time_mt": "2:00pm",
+      "questions_path": "Discovery/Interview_Questions/Ashley.md",
+      "profile_path": "Discovery/Profiles/Ashley_Wolgast.md"
+    }
+  ],
+  "pipeline": [],
+  "actions": [
+    {
+      "description": "Send Dianna announcement email \u2014 phone option for agent interviews",
+      "owner": "Dan",
+      "waiting_on": null,
+      "priority": "high"
+    },
+    {
+      "description": "Nudge email for non-respondents (Apr 17-18)",
+      "owner": "Dan",
+      "waiting_on": null,
+      "priority": "high"
+    },
+    {
+      "description": "Follow up with Tim \u2014 VPN resend + Copilot + IT Glue track",
+      "owner": "Dan",
+      "waiting_on": "Tim Trumbo",
+      "priority": "high"
+    },
+    {
+      "description": "AI Security & Data Guidelines research (board blocker)",
+      "owner": "Dan",
+      "waiting_on": null,
+      "priority": "high"
+    },
+    {
+      "description": "Follow up: Ryan (Pocatello) \u2014 abnormal termination at 25s",
+      "owner": "Dan",
+      "waiting_on": null,
+      "priority": "medium"
+    },
+    {
+      "description": "Follow up: Sanaz \u2014 no audio output, emailed 4/10",
+      "owner": "Dan",
+      "waiting_on": "Sanaz Malaki",
+      "priority": "medium"
+    },
+    {
+      "description": "Follow up: Christopher Manos \u2014 dropped at 42s, emailed 4/10",
+      "owner": "Dan",
+      "waiting_on": "Christopher Manos",
+      "priority": "medium"
+    },
+    {
+      "description": "Begin Copilot capabilities deep dive (blocked on Tim VPN)",
+      "owner": "Dan",
+      "waiting_on": "Tim Trumbo",
+      "priority": "medium"
+    },
+    {
+      "description": "Start draft deliverables \u2014 target week of 4/20 for Larry review",
+      "owner": "Dan",
+      "waiting_on": null,
+      "priority": "medium"
+    },
+    {
+      "description": "James Bledsoe \u2014 E&O insurance question reply",
+      "owner": "Dan",
+      "waiting_on": "James Bledsoe",
+      "priority": "low"
+    },
+    {
+      "description": "Breck Dalley \u2014 win rate on proposals (sent 4/3, nudged 4/7)",
+      "owner": "Dan",
+      "waiting_on": "Breck Dalley",
+      "priority": "low"
+    }
+  ],
+  "comms": [
+    {
+      "date": "2026-04-10",
+      "type": "email",
+      "with_person": "Larry Rupp",
+      "summary": "Reimbursement request \u2014 flight ($959.13) + hotel ($427.05) = $1,386.18"
+    },
+    {
+      "date": "2026-04-10",
+      "type": "email",
+      "with_person": "Dianna Smith",
+      "summary": "Agent issues follow-up \u2014 Tim Heald VAD fix, Chris Clark mic issue"
+    },
+    {
+      "date": "2026-04-07",
+      "type": "email",
+      "with_person": "James Bledsoe",
+      "summary": "E&O insurance question sent \u2014 awaiting reply"
+    },
+    {
+      "date": "2026-04-07",
+      "type": "email",
+      "with_person": "Riley Hoskins",
+      "summary": "KPI report data + T&M tracking request \u2014 awaiting reply"
+    },
+    {
+      "date": "2026-04-01",
+      "type": "email",
+      "with_person": "Crystal Warner",
+      "summary": "RFP site list discussion \u2014 forwarding to Breck for follow-up"
+    }
+  ],
+  "invoices": [
+    {
+      "milestone": 1,
+      "amount": 5000,
+      "description": "Project kickoff",
+      "due_description": "Upon signing",
+      "status": "sent"
+    },
+    {
+      "milestone": 2,
+      "amount": 5000,
+      "description": "Discovery complete",
+      "due_description": "~Apr 22",
+      "status": "upcoming"
+    },
+    {
+      "milestone": 3,
+      "amount": 8000,
+      "description": "Shareholder meeting",
+      "due_description": "May 7",
+      "status": "upcoming"
+    },
+    {
+      "milestone": 4,
+      "amount": 10000,
+      "description": "Final deliverables",
+      "due_description": "~May 21",
+      "status": "upcoming"
+    }
+  ],
+  "agent": {
+    "total_conversations": 48,
+    "good_conversations": 10,
+    "completed_people": [
+      {
+        "first_name": "Larry",
+        "role": "President/CEO",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Quinn",
+        "role": "Licensed E.I.T.",
+        "office": "Idaho Falls"
+      },
+      {
+        "first_name": "Timothy",
+        "role": "Controls/Integration Technical Lead",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "David",
+        "role": "Marketing/Proposal Coordinator",
+        "office": "Coeur d'Alene"
+      },
+      {
+        "first_name": "Sanaz",
+        "role": "Branch Office Manager I",
+        "office": "Kent"
+      },
+      {
+        "first_name": "Breanne",
+        "role": "Administrative Support Specialist",
+        "office": "Pocatello"
+      },
+      {
+        "first_name": "Dylan",
+        "role": "Deputy/Assistant PM",
+        "office": "Reno"
+      },
+      {
+        "first_name": "Eric",
+        "role": "Design Manager",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Christopher",
+        "role": "Senior Civil Designer",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Carter",
+        "role": "Survey Technician",
+        "office": "Meridian"
+      }
+    ],
+    "person_attempts": {
+      "Carter|Survey Technician|Meridian": 1,
+      "Unknown|Unknown|Unknown": 22,
+      "David|Marketing/Proposal Coordinator|Coeur d'Alene": 2,
+      "Dylan|Deputy/Assistant PM|Reno": 1,
+      "Peter|Field Representative|Idaho Falls": 2,
+      "Ryan|Intern|Pocatello": 1,
+      "Sanaz|Branch Office Manager I|Kent": 1,
+      "Jody|Accounts Payable Specialist|Meridian": 1
+    },
+    "last_check": "2026-04-13T21:46:12.708737+00:00",
+    "phone_number": "+1 (208) 567-9434",
+    "phone_active": true
+  },
+  "clicks": {
+    "last_updated": "2026-04-13",
+    "employees_total": 226,
+    "clickers": [
+      {
+        "first_name": "Danielle",
+        "role": "Administrative Support Specialist",
+        "office": "Idaho Falls",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Michael",
+        "role": "Project Engineer I/Technician",
+        "office": "Meridian",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Carter",
+        "role": "Survey Technician",
+        "office": "Meridian",
+        "first_click": "2026-04-10",
+        "interviewed": true
+      },
+      {
+        "first_name": "Jesus",
+        "role": "Transportation Regional Manager",
+        "office": "Meridian",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "David",
+        "role": "Marketing/Proposal Coordinator",
+        "office": "Coeur d'Alene",
+        "first_click": "2026-04-10",
+        "interviewed": true
+      },
+      {
+        "first_name": "Dylan",
+        "role": "Deputy/Assistant PM",
+        "office": "Reno",
+        "first_click": "2026-04-10",
+        "interviewed": true
+      },
+      {
+        "first_name": "Quinn",
+        "role": "Licensed E.I.T.",
+        "office": "Idaho Falls",
+        "first_click": "2026-04-10",
+        "interviewed": true
+      },
+      {
+        "first_name": "Breanne",
+        "role": "Administrative Support Specialist",
+        "office": "Pocatello",
+        "first_click": "2026-04-10",
+        "interviewed": true
+      },
+      {
+        "first_name": "Chris",
+        "role": "Senior Civil Designer",
+        "office": "Coeur d'Alene",
+        "first_click": "2026-04-10",
+        "interviewed": false,
+        "issue": "Mic issue \u2014 15+ clicks, still struggling"
+      },
+      {
+        "first_name": "Adam",
+        "role": "Inspector",
+        "office": "Coeur d'Alene",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Timothy",
+        "role": "Senior Bridge Engineer",
+        "office": "Coeur d'Alene",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Megan",
+        "role": "Licensed E.I.T. - Project Engineer I",
+        "office": "Reno",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Michael",
+        "role": "Intern",
+        "office": "Meridian",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Katrina",
+        "role": "Assistant Project Manager",
+        "office": "Meridian",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Ryan",
+        "role": "Intern",
+        "office": "Pocatello",
+        "first_click": "2026-04-10",
+        "interviewed": false,
+        "issue": "Abnormal termination at 25s"
+      },
+      {
+        "first_name": "Lonny",
+        "role": "Structural Designer",
+        "office": "Meridian",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Spencer",
+        "role": "Intern",
+        "office": "Provo",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Elliott",
+        "role": "E&C Designer",
+        "office": "Beaverton",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Peter",
+        "role": "Field Representative",
+        "office": "Idaho Falls",
+        "first_click": "2026-04-10",
+        "interviewed": false,
+        "issue": "Clicked again after saying couldn't use it \u2014 offered phone option"
+      },
+      {
+        "first_name": "Chase",
+        "role": "Senior Project Manager",
+        "office": "Beaverton",
+        "first_click": "2026-04-10",
+        "interviewed": false
+      },
+      {
+        "first_name": "Michael",
+        "role": "Senior Project Manager",
+        "office": "Idaho Falls",
+        "first_click": "2026-04-12",
+        "interviewed": false
+      },
+      {
+        "first_name": "Andrew",
+        "role": "Senior Project Manager",
+        "office": "Meridian",
+        "first_click": "2026-04-12",
+        "interviewed": false
+      },
+      {
+        "first_name": "John",
+        "role": "Construction Inspector",
+        "office": "Coeur d'Alene",
+        "first_click": "2026-04-13",
+        "interviewed": false
+      },
+      {
+        "first_name": "Sanaz",
+        "role": "Branch Office Manager I",
+        "office": "Kent",
+        "first_click": "2026-04-13",
+        "interviewed": true,
+        "issue": "No audio output \u2014 emailed 4/10, waiting"
+      },
+      {
+        "first_name": "Mathew",
+        "role": "Civil Designer",
+        "office": "Meridian",
+        "first_click": "2026-04-13",
+        "interviewed": false
+      },
+      {
+        "first_name": "Christopher",
+        "role": "Licensed E.I.T.",
+        "office": "Salem",
+        "first_click": "2026-04-13",
+        "interviewed": false
+      },
+      {
+        "first_name": "Franziska",
+        "role": "Deputy/Assistant PM",
+        "office": "Salem",
+        "first_click": "2026-04-13",
+        "interviewed": false
+      },
+      {
+        "first_name": "Isabella",
+        "role": "Intern",
+        "office": "Reno",
+        "first_click": "2026-04-13",
+        "interviewed": false
+      },
+      {
+        "first_name": "Jody",
+        "role": "Accounts Payable Specialist",
+        "office": "Meridian",
+        "first_click": "2026-04-13",
+        "interviewed": false
+      }
+    ],
+    "unique_clickers": 29
+  },
+  "findings": [
+    {
+      "id": 1,
+      "statement": "Deltek Vantagepoint is at ~30% utilization despite being the most expensive system. Dela AI is free and nobody has turned it on.",
+      "evidence_count": 9,
+      "departments": [
+        "Accounting",
+        "PM",
+        "Engineering",
+        "Admin"
+      ],
+      "roadmap_implication": "Activate Dela AI before buying new tools. Build Deltek MCP server for AI agent access to project data.",
+      "theme": "tool_underutilization"
+    },
+    {
+      "id": 2,
+      "statement": "Panzura stores 50TB across 12 edge nodes but has zero search capability. People can't find files they know exist.",
+      "evidence_count": 7,
+      "departments": [
+        "Engineering",
+        "Marketing",
+        "PM"
+      ],
+      "roadmap_implication": "File Share Connector for Copilot can index Panzura via SMB. Quick win that unlocks institutional knowledge.",
+      "theme": "data_accessibility"
+    },
+    {
+      "id": 3,
+      "statement": "~40% of staff are already using ChatGPT with client data, without guidance or guardrails.",
+      "evidence_count": 5,
+      "departments": [
+        "Engineering",
+        "Marketing",
+        "PM"
+      ],
+      "roadmap_implication": "AI security guidelines needed BEFORE the shareholder meeting. Board-level blocker if not addressed.",
+      "theme": "shadow_ai"
+    },
+    {
+      "id": 4,
+      "statement": "CRM (eway) has 50 licenses but only 2-3 active users. The firm tracks BD in Excel spreadsheets.",
+      "evidence_count": 4,
+      "departments": [
+        "Marketing",
+        "PM",
+        "Leadership"
+      ],
+      "roadmap_implication": "CRM is a symptom of a broader data input problem. Don't add another tool; fix the input friction.",
+      "theme": "tool_underutilization"
+    },
+    {
+      "id": 5,
+      "statement": "Institutional knowledge lives in individual people's heads, not in systems. Jason gets 5-10 requests/week because he IS the search engine for W/WW.",
+      "evidence_count": 6,
+      "departments": [
+        "Engineering",
+        "PM"
+      ],
+      "roadmap_implication": "Knowledge capture is urgent \u2014 key people retiring within 3-5 years. AI-powered knowledge base is a Tier 1 recommendation.",
+      "theme": "institutional_knowledge"
+    },
+    {
+      "id": 6,
+      "statement": "Copilot is deployed but most people got zero training. Usage is accidental discovery, not systematic adoption.",
+      "evidence_count": 8,
+      "departments": [
+        "Engineering",
+        "PM",
+        "Leadership",
+        "Admin"
+      ],
+      "roadmap_implication": "Copilot 101/201 training program is the lowest-friction, highest-impact starting point.",
+      "theme": "tool_underutilization"
+    }
+  ],
+  "themes": [
+    {
+      "name": "Tool Underutilization",
+      "slug": "tool_underutilization",
+      "description": "Multiple systems purchased but running at a fraction of their capability. The problem isn't the tools \u2014 it's activation and training.",
+      "finding_ids": [
+        1,
+        4,
+        6
+      ]
+    },
+    {
+      "name": "Data Accessibility",
+      "slug": "data_accessibility",
+      "description": "Information exists but can't be found. Files on Panzura, knowledge in people's heads, project data locked in Deltek.",
+      "finding_ids": [
+        2,
+        5
+      ]
+    },
+    {
+      "name": "Shadow AI",
+      "slug": "shadow_ai",
+      "description": "Staff are already using AI tools on their own, without guidance. The firm needs to lead, not chase.",
+      "finding_ids": [
+        3
+      ]
+    },
+    {
+      "name": "Institutional Knowledge Risk",
+      "slug": "institutional_knowledge",
+      "description": "Critical knowledge lives in individual people. Retirements and departures create knowledge loss the firm can't recover from.",
+      "finding_ids": [
+        5
+      ]
+    }
+  ],
+  "quickWins": [
+    {
+      "title": "Activate Dela AI in Deltek",
+      "description": "Free AI assistant included with Vantagepoint license. Natural language querying of projects, contacts, activities. Nobody has turned it on.",
+      "who_benefits": "PMs, Accounting, Riley Hoskins",
+      "effort": "trivial",
+      "prerequisite": null
+    },
+    {
+      "title": "Copilot 101/201 Training Sessions",
+      "description": "Most staff have Copilot but got zero training. 2-3 sessions covering email drafting, meeting summaries, document generation.",
+      "who_benefits": "All 250 staff with M365 licenses",
+      "effort": "low",
+      "prerequisite": null
+    },
+    {
+      "title": "Panzura File Share Connector",
+      "description": "Graph Connector Agent indexes Panzura files via SMB for Copilot search. Supports DOC, PDF, PPT, XLS. Respects NTFS ACLs.",
+      "who_benefits": "All staff (solves 'can't find the file' problem)",
+      "effort": "medium",
+      "prerequisite": "Confirm Copilot license tier with Tim. Install Graph Connector Agent on-premises."
+    },
+    {
+      "title": "AI Usage Guidelines One-Pager",
+      "description": "Clear, practical guide: what you CAN share with AI (non-client, internal processes) vs. what needs enterprise tools (client data, financials).",
+      "who_benefits": "Board (removes blocker), staff (removes uncertainty)",
+      "effort": "low",
+      "prerequisite": null
+    }
+  ],
+  "quotes": [
+    {
+      "text": "I spend probably 5-10 hours a week answering questions that are in the files somewhere, people just can't find them.",
+      "attribution": "Discipline Lead, W/WW",
+      "theme": "data_accessibility",
+      "usable_in_presentation": true
+    },
+    {
+      "text": "I would imagine it's like adding a couple staff.",
+      "attribution": "TI Committee Chair, on Joist AI",
+      "theme": "tool_underutilization",
+      "usable_in_presentation": true
+    },
+    {
+      "text": "We don't want to cram AI down people's throats.",
+      "attribution": "CEO",
+      "theme": "culture",
+      "usable_in_presentation": true
+    },
+    {
+      "text": "I've been using ChatGPT for two years. It's changed how I work entirely.",
+      "attribution": "Proposal Coordinator, Marketing",
+      "theme": "shadow_ai",
+      "usable_in_presentation": true
+    },
+    {
+      "text": "We have tools we don't even know we have.",
+      "attribution": "VP / Board Chair",
+      "theme": "tool_underutilization",
+      "usable_in_presentation": true
+    }
+  ],
+  "contradictions": [
+    {
+      "statement": "Culture-first philosophy ('don't cram AI down people's throats') vs. 40% already using uncontrolled ChatGPT with client data",
+      "sources": [
+        "CEO",
+        "Multiple Discipline Leads",
+        "Baseline Survey"
+      ]
+    },
+    {
+      "statement": "T&M billing model means efficiency gains reduce revenue, yet leadership wants AI to make people more productive",
+      "sources": [
+        "VP / Board Chair",
+        "CEO",
+        "Multiple PMs"
+      ]
+    },
+    {
+      "statement": "Desire for data-driven decisions vs. CRM with 2-3 active users out of 50 licenses",
+      "sources": [
+        "Marketing Manager",
+        "CEO",
+        "Admin Manager"
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "question": "What is the board's detailed position on AI data security and professional liability?",
+      "priority": "critical",
+      "plan_to_fill": "Colter interview completed 4/2 \u2014 extract for security stance. May need follow-up."
+    },
+    {
+      "question": "What specific Copilot license tier does Keller have and which features are enabled?",
+      "priority": "critical",
+      "plan_to_fill": "Waiting on Tim Trumbo \u2014 follow up needed"
+    },
+    {
+      "question": "How do field/construction teams use technology differently from office staff?",
+      "priority": "important",
+      "plan_to_fill": "No field/construction interviews scheduled. Consider Wave 3 or AI agent."
+    },
+    {
+      "question": "What is the actual cost of cross-office coordination friction?",
+      "priority": "important",
+      "plan_to_fill": "Can estimate from interview data during synthesis"
+    }
+  ]
+}
