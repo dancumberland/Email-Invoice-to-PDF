@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-13T15:47:17.754151",
+  "generated_at": "2026-04-13T16:11:35.839027",
   "engagement": {
     "name": "Keller Associates AI Roadmap",
     "value": 28000,
@@ -340,7 +340,7 @@
       "wave": 3,
       "interview_date": null,
       "interview_status": "scheduled",
-      "brief_path": null,
+      "brief_path": "Analysis/Briefs/Jared_Richins.md",
       "profile_path": "Discovery/Profiles/Jared_Richins.md",
       "questions_path": "Discovery/Interview_Questions/Jared.md",
       "readiness_tier": null,
@@ -974,6 +974,17 @@
       "feeds_deliverable": [
         3
       ]
+    },
+    {
+      "topic": "Copilot for Excel \u2014 AI module capabilities for EVR + spreadsheet workflows",
+      "priority": "P1",
+      "status": "queued",
+      "file_path": null,
+      "feeds_deliverable": [
+        1,
+        3,
+        4
+      ]
     }
   ],
   "interviews": [
@@ -1128,43 +1139,23 @@
     }
   ],
   "agent": {
-    "total_conversations": 48,
+    "total_conversations": 49,
     "good_conversations": 10,
     "completed_people": [
-      {
-        "first_name": "Larry",
-        "role": "President/CEO",
-        "office": "Meridian"
-      },
-      {
-        "first_name": "Quinn",
-        "role": "Licensed E.I.T.",
-        "office": "Idaho Falls"
-      },
       {
         "first_name": "Timothy",
         "role": "Controls/Integration Technical Lead",
         "office": "Meridian"
       },
       {
-        "first_name": "David",
-        "role": "Marketing/Proposal Coordinator",
-        "office": "Coeur d'Alene"
-      },
-      {
-        "first_name": "Sanaz",
-        "role": "Branch Office Manager I",
-        "office": "Kent"
-      },
-      {
-        "first_name": "Breanne",
-        "role": "Administrative Support Specialist",
-        "office": "Pocatello"
-      },
-      {
         "first_name": "Dylan",
         "role": "Deputy/Assistant PM",
         "office": "Reno"
+      },
+      {
+        "first_name": "David",
+        "role": "Marketing/Proposal Coordinator",
+        "office": "Coeur d'Alene"
       },
       {
         "first_name": "Eric",
@@ -1177,14 +1168,34 @@
         "office": "Meridian"
       },
       {
+        "first_name": "Quinn",
+        "role": "Licensed E.I.T.",
+        "office": "Idaho Falls"
+      },
+      {
         "first_name": "Carter",
         "role": "Survey Technician",
         "office": "Meridian"
+      },
+      {
+        "first_name": "Larry",
+        "role": "President/CEO",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Sanaz",
+        "role": "Branch Office Manager I",
+        "office": "Kent"
+      },
+      {
+        "first_name": "Breanne",
+        "role": "Administrative Support Specialist",
+        "office": "Pocatello"
       }
     ],
     "person_attempts": {
       "Carter|Survey Technician|Meridian": 1,
-      "Unknown|Unknown|Unknown": 22,
+      "Unknown|Unknown|Unknown": 23,
       "David|Marketing/Proposal Coordinator|Coeur d'Alene": 2,
       "Dylan|Deputy/Assistant PM|Reno": 1,
       "Peter|Field Representative|Idaho Falls": 2,
@@ -1192,7 +1203,7 @@
       "Sanaz|Branch Office Manager I|Kent": 1,
       "Jody|Accounts Payable Specialist|Meridian": 1
     },
-    "last_check": "2026-04-13T21:46:12.708737+00:00",
+    "last_check": "2026-04-13T22:10:26.713394+00:00",
     "phone_number": "+1 (208) 567-9434",
     "phone_active": true
   },

@@ -196,6 +196,7 @@ RESEARCH_ITEMS = [
     {"topic": "AI Baseline Survey Analysis", "priority": "P2", "status": "complete", "file": "AI_Baseline_Survey_Analysis.md", "feeds": [2]},
     {"topic": "Data Pipeline Feasibility", "priority": "P2", "status": "complete", "file": "Data_Pipeline_Feasibility.md", "feeds": [4]},
     {"topic": "Piros Tool Investigation", "priority": "P3", "status": "queued", "file": None, "feeds": [3]},
+    {"topic": "Copilot for Excel — AI module capabilities for EVR + spreadsheet workflows", "priority": "P1", "status": "queued", "file": None, "feeds": [1, 3, 4]},
 ]
 
 
