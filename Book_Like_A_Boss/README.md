@@ -117,6 +117,57 @@ The Apps Script sets Kit custom fields for attribution:
 - **New subscribers**: `kit_first_form` = "BLAB Networking Call", `Kit_Last_Form` = "BLAB Networking Call"
 - **Existing subscribers**: Only `Kit_Last_Form` updated (preserves original `kit_first_form`)
 
+## UTM Attribution (added 2026-04-13)
+
+BLAB strips query parameters from the webhook payload. To preserve UTMs, we capture them client-side and stuff them into a hidden BLAB custom field that BLAB **does** forward.
+
+### Chain
+
+```
+Site link (?utm_source=dcl-site&utm_medium=cta&utm_campaign=...)
+       │
+       ▼
+book.dancumberland.com/<service>?utm_*
+       │
+       ▼ (GTM tag "BLAB UTM Capture" runs JS that reads URL, fills hidden field)
+Custom field "Tracking Source" → "source=dcl-site|medium=cta|campaign=..."
+       │
+       ▼ (visitor books — BLAB forwards custom_field_tracking_source)
+Webhook payload
+       │
+       ▼ (processKitSubscriptions → parseTrackingSource)
+Kit subscriber fields: utm_source, utm_medium, utm_campaign, utm_content, utm_placement
+```
+
+### One-time BLAB setup
+
+1. **Add a custom field** to every bookable service that should capture attribution:
+   - Label: `Tracking Source`
+   - Type: Text (single-line)
+   - Required: No
+   - BLAB will slugify this to `custom_field_tracking_source` in webhook payloads.
+2. **Route UTM capture through GTM** (BLAB has no "Other Settings → Custom Code" menu — its site-wide JS comes from a GTM container connected via BLAB → Integrations → Tag Manager):
+   - Container: `GTM-KKLSF5KN` (Dan Cumberland Labs account)
+   - Tag: "BLAB UTM Capture (Tracking Source)" — Custom HTML, All Pages trigger
+   - Paste source of the tag: `blab-custom-code-utm.html` in this directory
+   - Publish the container version after editing
+3. **Verify**: load `https://book.dancumberland.com/ai-strategy?utm_source=test&utm_medium=manual&utm_campaign=verify&utm_content=readme-check` → inspect the booking form → the "Tracking Source" field should be hidden but contain `source=test|medium=manual|campaign=verify|content=readme-check`.
+
+### Kit-side behavior
+
+- `parseTrackingSource()` (in `blab-webhook-script.js`) reads `custom_field_tracking_source` from the stored raw payload, splits on `|`, and maps:
+  - `source=` → `utm_source`
+  - `medium=` → `utm_medium`
+  - `campaign=` → `utm_campaign`
+  - `content=` → `utm_content`
+  - `term=` / `placement=` → `utm_placement`
+- New Kit subscribers get UTM fields set on create. Existing subscribers have UTMs **overwritten** on each new booking so the most recent source wins.
+
+### Files
+
+- `blab-custom-code-utm.html` — source of the GTM Custom HTML tag "BLAB UTM Capture (Tracking Source)".
+- `blab-webhook-script.js` — `parseTrackingSource()` + UTM-aware `addToKit()` / `addTagToExistingSubscriber()`.
+
 ## Related Documentation
 
 - Kit setup details: `Dan_Content/_Tools/lead-source-analysis/KIT_SETUP_DOCUMENTATION.md` (Section 11)
