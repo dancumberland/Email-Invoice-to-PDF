@@ -239,8 +239,8 @@ function testWebhook() {
 const KIT_API_KEY = PropertiesService.getScriptProperties().getProperty('KIT_API_KEY') || 'YOUR_API_KEY_HERE';
 const KIT_TAG = 'meeting-guest-pending';
 const KIT_TAG_ID = 15850596;
-const TARGET_SERVICE = 'AI Strategy';
-const TARGET_APPOINTMENT_ID = '279657';
+const TARGET_SERVICE = 'Online Meeting';
+const TARGET_APPOINTMENT_ID = '35230';
 
 /**
  * Daily trigger function - processes past meetings for Kit
@@ -597,6 +597,91 @@ function parseTrackingSource(rawPayload) {
   }
 
   return out;
+}
+
+/**
+ * ONE-TIME cleanup: cancel Kit subscribers added incorrectly on 2026-04-17
+ * when processKitSubscriptions was mistakenly targeting AI Strategy (279657).
+ * Only cancels subscribers whose Kit account was CREATED today (new subscribers).
+ * Skips pre-existing subscribers to avoid unsubscribing newsletter readers.
+ * Run once, then remove this function.
+ */
+function cleanupAIStrategyKitSubscribers() {
+  const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
+  const data = sheet.getDataRange().getValues();
+  const headers = data[0];
+
+  const cols = {
+    email: headers.indexOf('client_email'),
+    kitProcessed: headers.indexOf('kit_processed'),
+    rawPayload: headers.indexOf('raw_payload')
+  };
+
+  const AI_STRATEGY_ID = '279657';
+  const cancelled = [];
+  const skipped = [];
+  const errors = [];
+
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    const rawPayload = row[cols.rawPayload] ? row[cols.rawPayload].toString() : '';
+    const kitProcessed = row[cols.kitProcessed];
+    const email = row[cols.email];
+
+    if (!rawPayload.includes(AI_STRATEGY_ID) || kitProcessed !== 'yes') continue;
+    if (!email || email.toString().trim() === '') continue;
+
+    const emailStr = email.toString().trim();
+
+    try {
+      const findUrl = 'https://api.kit.com/v4/subscribers?email_address=' + encodeURIComponent(emailStr);
+      const findResp = UrlFetchApp.fetch(findUrl, {
+        method: 'GET',
+        headers: { 'X-Kit-Api-Key': KIT_API_KEY },
+        muteHttpExceptions: true
+      });
+      const findData = JSON.parse(findResp.getContentText());
+
+      if (!findData.subscribers || findData.subscribers.length === 0) {
+        skipped.push(emailStr + ' (not in Kit)');
+        continue;
+      }
+
+      const subscriber = findData.subscribers[0];
+      const createdAt = new Date(subscriber.created_at);
+      const cleanupDate = new Date('2026-04-17');
+
+      if (createdAt.toDateString() === cleanupDate.toDateString()) {
+        // Created today by our script — cancel them
+        const cancelUrl = 'https://api.kit.com/v4/subscribers/' + subscriber.id;
+        const cancelResp = UrlFetchApp.fetch(cancelUrl, {
+          method: 'PUT',
+          contentType: 'application/json',
+          headers: { 'X-Kit-Api-Key': KIT_API_KEY },
+          payload: JSON.stringify({ subscriber: { state: 'cancelled' } }),
+          muteHttpExceptions: true
+        });
+        const cancelCode = cancelResp.getResponseCode();
+        if (cancelCode === 200) {
+          cancelled.push(emailStr);
+        } else {
+          errors.push(emailStr + ' (cancel HTTP ' + cancelCode + ')');
+        }
+      } else {
+        skipped.push(emailStr + ' (pre-existing, created ' + createdAt.toDateString() + ')');
+      }
+
+      Utilities.sleep(300);
+    } catch (err) {
+      errors.push(emailStr + ': ' + err.message);
+    }
+  }
+
+  console.log('=== Cleanup complete ===');
+  console.log('Cancelled (' + cancelled.length + '):', JSON.stringify(cancelled));
+  console.log('Skipped pre-existing (' + skipped.length + '):', JSON.stringify(skipped));
+  console.log('Errors (' + errors.length + '):', JSON.stringify(errors));
+  return { cancelled, skipped, errors };
 }
 
 /**
