@@ -238,8 +238,8 @@ function testWebhook() {
 // Get your API key from: Kit → Settings → Developer → API Keys
 const KIT_API_KEY = PropertiesService.getScriptProperties().getProperty('KIT_API_KEY') || 'YOUR_API_KEY_HERE';
 const KIT_TAG = 'meeting-guest-pending';
-const TARGET_SERVICE = 'Online Meeting';
-const TARGET_APPOINTMENT_ID = '35230';
+const TARGET_SERVICE = 'AI Strategy';
+const TARGET_APPOINTMENT_ID = '279657';
 
 /**
  * Daily trigger function - processes past meetings for Kit
