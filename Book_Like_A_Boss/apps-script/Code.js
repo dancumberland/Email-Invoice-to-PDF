@@ -145,7 +145,7 @@ function sendSlackNotification(name, service, datetime, eventType, bookingId, in
   } catch (e) { /* keep raw string */ }
 
   const blabLink = bookingId
-    ? 'https://bookme.name/account/0/bookings/' + bookingId
+    ? 'https://bookme.name/account/0/orders/' + bookingId
     : 'https://bookme.name/account/0/orders';
   const displayName = name || 'Unknown';
   const displayService = service || 'Booking';
@@ -238,7 +238,6 @@ function testWebhook() {
 // Get your API key from: Kit → Settings → Developer → API Keys
 const KIT_API_KEY = PropertiesService.getScriptProperties().getProperty('KIT_API_KEY') || 'YOUR_API_KEY_HERE';
 const KIT_TAG = 'meeting-guest-pending';
-const KIT_TAG_ID = 15850596;
 const TARGET_SERVICE = 'Online Meeting';
 const TARGET_APPOINTMENT_ID = '35230';
 
@@ -411,15 +410,6 @@ function addToKit(email, firstName, utmFields) {
     const code = response.getResponseCode();
 
     if (code === 200 || code === 201) {
-      // Apply tag via dedicated endpoint (tag names don't work in subscriber payload)
-      const tagUrl = `https://api.kit.com/v4/tags/${KIT_TAG_ID}/subscribers`;
-      UrlFetchApp.fetch(tagUrl, {
-        method: 'POST',
-        contentType: 'application/json',
-        headers: { 'X-Kit-Api-Key': KIT_API_KEY },
-        payload: JSON.stringify({ email_address: email }),
-        muteHttpExceptions: true
-      });
       console.log(`Added to Kit: ${email}`);
       return true;
     } else if (code === 422) {
@@ -484,8 +474,8 @@ function addTagToExistingSubscriber(email, utmFields) {
 
       UrlFetchApp.fetch(updateUrl, updateOptions);
 
-      // Add tag to subscriber (must use numeric tag ID, not name)
-      const tagUrl = `https://api.kit.com/v4/tags/${KIT_TAG_ID}/subscribers`;
+      // Add tag to subscriber
+      const tagUrl = `https://api.kit.com/v4/tags/${KIT_TAG}/subscribers`;
       const tagPayload = { email_address: email };
 
       const tagOptions = {

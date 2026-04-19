@@ -145,7 +145,7 @@ function sendSlackNotification(name, service, datetime, eventType, bookingId, in
   } catch (e) { /* keep raw string */ }
 
   const blabLink = bookingId
-    ? 'https://bookme.name/account/0/bookings/' + bookingId
+    ? 'https://bookme.name/account/0/orders/' + bookingId
     : 'https://bookme.name/account/0/orders';
   const displayName = name || 'Unknown';
   const displayService = service || 'Booking';
