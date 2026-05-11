@@ -144,15 +144,38 @@ function sendSlackNotification(name, service, datetime, eventType, bookingId, in
     }
   } catch (e) { /* keep raw string */ }
 
-  const blabLink = bookingId
-    ? 'https://bookme.name/account/0/orders/' + bookingId
-    : 'https://bookme.name/account/0/orders';
+  // ─────────────────────────────────────────────────────────────────────────────
+  // DO NOT add a booking ID to this URL — it WILL 404.
+  //
+  // BLAB's webhook payload contains `booking_id` only (e.g. 4134608). BLAB's
+  // admin panel uses TWO separate internal IDs that are NOT in the payload and
+  // are NOT derivable from booking_id:
+  //   - `/account/0/orders/{order_id}`     (e.g. order_id 4051024)
+  //   - `/account/0/bookings/{admin_id}`   (e.g. admin_id 3582422)
+  // Both are different numbers from booking_id. There is no public BLAB API to
+  // look them up, and the webhook does not include them.
+  //
+  // Past attempts that all 404'd:
+  //   v9–v16:  /orders/{booking_id}    → wrong (order_id != booking_id)
+  //   v10–v16: /bookings/{booking_id}  → wrong (admin_id != booking_id)
+  //   v18:     /bookings/{booking_id}  → wrong (Apr 13 "verified" claim was false)
+  //
+  // The only correct solution with current webhook data: link to the orders
+  // index (jump-off page), include booking_id in the Slack message text so a
+  // human can Cmd+F to find it. This is what v19 (2026-05-11) does.
+  //
+  // History: .claude/sessions/260413.1535, 260418.2104, 260507.1736, 260511.1327
+  //          in dcl-project-management. Lindsey Sailors booking 4134608 was the
+  //          forensic test case: actual admin URLs /orders/4051024 + /bookings/3582422.
+  // ─────────────────────────────────────────────────────────────────────────────
+  const blabLink = 'https://bookme.name/account/0/orders';
   const displayName = name || 'Unknown';
   const displayService = service || 'Booking';
+  const bookingIdSuffix = bookingId ? ' · booking_id `' + bookingId + '`' : '';
 
   const message = emoji + ' *' + label + ':* ' + displayName + '\n' +
                   '   ' + displayService + ' — ' + dtDisplay + '\n' +
-                  '   <' + blabLink + '|View in BLAB>';
+                  '   <' + blabLink + '|View in BLAB>' + bookingIdSuffix;
 
   try {
     UrlFetchApp.fetch(SLACK_WEBHOOK_URL, {
