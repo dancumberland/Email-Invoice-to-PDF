@@ -1,0 +1,17 @@
+[Unit]
+Description=DCL Actions — Slack interactivity listener
+After=network.target
+
+[Service]
+Type=simple
+User=claude
+WorkingDirectory=/home/claude/slack-actions
+ExecStart=/usr/bin/python3 receiver.py
+EnvironmentFile=/home/claude/slack-actions/.env
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
