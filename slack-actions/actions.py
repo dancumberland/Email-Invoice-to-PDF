@@ -90,3 +90,65 @@ def _retry_failed(target, ctx):
 def _mute(target, ctx):
     slack_post.reply(ctx, ":no_bell: Muted — left the failures as-is for this run.")
     return "muted"
+
+
+# --- Phase 2: Lane 1 queue refill (green / idempotent) ---------------------
+# load_lane1_queue.py is an idempotent, additive fill-to-floor loader (ON CONFLICT
+# DO NOTHING, only mutates 'queued' rows). Run WITHOUT --rerank so it never churns.
+LANE1_CWD = "/home/claude/Dan-Cumberland-Labs-Content"
+LANE1_REFILL = ["/usr/bin/python3", "Operations/Tools/load_lane1_queue.py"]
+
+
+@handler("lane1:refill")
+def _lane1_refill(target, ctx):
+    slack_post.reply(ctx, ":inbox_tray: Refilling the Lane 1 queue…")
+    try:
+        proc = subprocess.run(
+            LANE1_REFILL, cwd=LANE1_CWD, capture_output=True, text=True, timeout=300,
+        )
+        tail = (proc.stdout or proc.stderr or "").strip().splitlines()[-4:]
+        summary = "\n".join(tail) if tail else "(no output)"
+        emoji = ":white_check_mark:" if proc.returncode == 0 else ":x:"
+        slack_post.reply(ctx, f"{emoji} Refill finished (rc={proc.returncode}):\n```{summary}```")
+        return f"rc={proc.returncode}"
+    except subprocess.TimeoutExpired:
+        slack_post.reply(ctx, ":x: Refill timed out after 5 min — check Operations/queue_load.log.")
+        return "timeout"
+    except Exception as e:
+        slack_post.reply(ctx, f":x: Refill errored: `{e!r}`")
+        return f"error: {e!r}"
+
+
+# --- Phase 2: Redwood content loop — unpark / kill (green / reversible) -----
+# Both are tiny additive subcommands on content_loop.py. target == the slug.
+REDWOOD_CWD = "/home/claude/redwood-content-system/Operations/Tools"
+
+
+def _redwood_cmd(subcmd, slug, ctx, doing, done):
+    if not slug:
+        slack_post.reply(ctx, ":warning: No slug on this action — nothing to run.")
+        return "no slug"
+    slack_post.reply(ctx, f"{doing} `{slug}`…")
+    try:
+        proc = subprocess.run(
+            ["/usr/bin/python3", "content_loop.py", subcmd, "--slug", slug],
+            cwd=REDWOOD_CWD, capture_output=True, text=True, timeout=120,
+        )
+        out = (proc.stdout or proc.stderr or "").strip().splitlines()
+        line = out[-1] if out else "(no output)"
+        emoji = ":white_check_mark:" if proc.returncode == 0 else ":x:"
+        slack_post.reply(ctx, f"{emoji} {done} (rc={proc.returncode}): {line}")
+        return f"rc={proc.returncode}"
+    except Exception as e:
+        slack_post.reply(ctx, f":x: `{subcmd}` errored: `{e!r}`")
+        return f"error: {e!r}"
+
+
+@handler("redwood:unpark")
+def _redwood_unpark(target, ctx):
+    return _redwood_cmd("unpark", target, ctx, ":arrow_forward: Unparking", "Unparked")
+
+
+@handler("redwood:kill")
+def _redwood_kill(target, ctx):
+    return _redwood_cmd("suppress", target, ctx, ":no_bell: Killing re-notify for", "Killed")
