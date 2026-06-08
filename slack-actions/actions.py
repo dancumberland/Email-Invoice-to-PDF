@@ -69,9 +69,16 @@ BATCH_PUBLISH_CWD = "/home/claude/Dan-Cumberland-Labs-Content"
 def _retry_failed(target, ctx):
     slack_post.reply(ctx, ":arrows_counterclockwise: Retrying the failed slugs…")
     try:
+        # batch_publish.py shells out to the `claude` CLI, which lives in
+        # ~/.local/bin — not on systemd's default PATH. Without this prepend the
+        # retry dies instantly with "No such file or directory: 'claude'" yet
+        # still exits rc=0 (false success). The nightly cron works only because
+        # it exports the same PATH inline. (Fixed 2026-06-06.)
+        env = {**os.environ, "PATH": "/home/claude/.local/bin:" + os.environ.get("PATH", "")}
         proc = subprocess.run(
             ["/usr/bin/python3", BATCH_PUBLISH, "--retry-failed"],
             cwd=BATCH_PUBLISH_CWD, capture_output=True, text=True, timeout=900,
+            env=env,
         )
         tail = (proc.stdout or proc.stderr or "").strip().splitlines()[-4:]
         summary = "\n".join(tail) if tail else "(no output)"
