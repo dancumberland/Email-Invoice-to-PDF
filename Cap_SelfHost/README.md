@@ -60,8 +60,10 @@ End-to-end probe — proves uploads ACTUALLY work, not just that the box is up:
 
 1. **cap-web config assertion** — `S3_PUBLIC_ENDPOINT == s3.dancumberlandlabs.com`,
    `CAP_AWS_BUCKET == cap-recordings`, access key non-empty. (Catches the trap above.)
-2. **MinIO storage round-trip** — write/read/delete a tiny object in `cap-recordings`
-   over the public HTTPS endpoint = the exact path the desktop app uses.
+2. **Multipart storage round-trip** — boto3 `CreateMultipartUpload → UploadPart →
+   CompleteMultipartUpload → read → delete` (~9 bytes) over the public HTTPS endpoint.
+   This is the *exact* operation the desktop app 500'd on (`upload_multipart_initiate`) —
+   a single PUT passing does NOT prove multipart works. Needs host `python3` + `boto3`.
 3. **App reachability** — `hey.dancumberlandlabs.com` returns 2xx/3xx.
 
 Self-alerts to Slack `#notifications` on 2 consecutive fails (+ recovery notice).
@@ -69,6 +71,27 @@ Registered in `Project_Management/fleet-watchdog/registry.py` as **`cap-upload-h
 (mtime on `~/cap-healthcheck/last_run.log`) — that's the dead-man's-switch for the probe itself.
 
 Manual run: `ssh claude@100.99.136.54 'bash ~/cap-healthcheck/cap_healthcheck.sh; cat ~/cap-healthcheck/last_run.log'`
+
+## Troubleshooting (client-side, NOT the server)
+
+These are desktop-app errors on the Mac — the watchdog above can't see them (it monitors the
+server upload path, not the local app).
+
+**"Error / DeviceNotFound" on opening Cap.** Cap saves the selected mic/camera **by device
+name** and hard-errors if that device isn't connected at launch (it does not gracefully fall
+back — Cap 0.5.x). Happened 2026-06-22: the saved mic was `Dan's AirPods Pro`, which were
+disconnected. Settings live in `~/Library/Application Support/so.cap.desktop/store` (JSON;
+`recording_settings.micName` / `.cameraId`).
+- **Durable fix applied:** repointed `micName` → `MacBook Pro Microphone` (always present), so
+  Cap always opens. Backup at `store.bak-260622-devicenotfound`.
+- AirPods still work — just pick them from Cap's mic dropdown when they're connected. Avoid
+  leaving a *Bluetooth* device as the saved default, or this recurs whenever it disconnects.
+- Quick check of what Cap is pinned to:
+  `python3 -c "import json;print(json.load(open('$HOME/Library/Application Support/so.cap.desktop/store'))['recording_settings'])"`
+
+**"Failed to upload recording."** That's the server path — see the two-compose-file trap above
+and run the watchdog manually. The underlying server error shows as `upload_multipart_initiate/500`
+in `~/Library/Application Support/so.cap.desktop/recordings/<recording>.cap/recording-logs.log`.
 
 ## Docker Commands
 

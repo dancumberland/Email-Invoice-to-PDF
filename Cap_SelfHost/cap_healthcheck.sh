@@ -47,24 +47,51 @@ else
   [ -n "$ak" ]                   || problems+=("cap-web CAP_AWS_ACCESS_KEY is EMPTY")
 fi
 
-# --- Layer 2: storage round-trip over the PUBLIC endpoint (the path the desktop app uses) ---
-# Catches MinIO down, Caddy/DNS/cert breakage on s3 subdomain, missing bucket, bad creds.
-U=$(grep '^MINIO_ROOT_USER=' "$ENV_FILE" 2>/dev/null | cut -d= -f2-)
-P=$(grep '^MINIO_ROOT_PASSWORD=' "$ENV_FILE" 2>/dev/null | cut -d= -f2-)
-if [ -z "$U" ] || [ -z "$P" ]; then
-  problems+=("could not read MinIO creds from $ENV_FILE")
-else
-  KEY="__healthcheck/probe-$(date -u +%s).txt"
-  RT=$(docker run --rm --entrypoint sh minio/mc:latest -c "
-    mc alias set pub $EXPECT_ENDPOINT '$U' '$P' >/dev/null 2>&1 || { echo ALIAS_FAIL; exit 0; }
-    echo cap-probe > /tmp/p.txt
-    mc cp /tmp/p.txt pub/$EXPECT_BUCKET/$KEY >/dev/null 2>&1 || { echo WRITE_FAIL; exit 0; }
-    out=\$(mc cat pub/$EXPECT_BUCKET/$KEY 2>/dev/null)
-    mc rm pub/$EXPECT_BUCKET/$KEY >/dev/null 2>&1
-    [ \"\$out\" = cap-probe ] && echo OK || echo READ_FAIL
-  " 2>/dev/null | tail -1)
-  [ "$RT" = "OK" ] || problems+=("storage round-trip failed: ${RT:-no-response}")
-fi
+# --- Layer 2: MULTIPART storage round-trip over the PUBLIC endpoint ---
+# Runs the EXACT operation the desktop upload failed on (2026-06-22): CreateMultipartUpload,
+# which 500'd ("S3 operation failed") while the server had empty creds. A single PUT working
+# does NOT prove multipart works (Caddy proxying of uploadId/partNumber, MinIO multipart, the
+# server-side initiate op can all break independently) — so we do a full create->upload_part->
+# complete->readback->delete cycle with a ~9-byte part. Catches MinIO down, s3-subdomain
+# cert/DNS/Caddy breakage, missing bucket, bad creds, AND multipart-specific regressions.
+# Needs host python3 + boto3 (present on VPS; if it ever vanishes the probe reports a failure,
+# and fleet-watchdog's mtime dead-man's-switch still flags a probe that stops writing).
+RT=$(python3 - "$ENV_FILE" "$EXPECT_ENDPOINT" "$EXPECT_BUCKET" <<'PY' 2>/dev/null
+import os, sys
+env_file, ep, bucket = sys.argv[1], sys.argv[2], sys.argv[3]
+try:
+    import boto3
+    from botocore.config import Config
+    env = {}
+    for line in open(env_file):
+        line = line.strip()
+        if line and not line.startswith('#') and '=' in line:
+            k, v = line.split('=', 1)
+            env[k.replace('export ', '').strip()] = v.strip().strip('"').strip("'")
+    s3 = boto3.client('s3', endpoint_url=ep,
+                      aws_access_key_id=env['MINIO_ROOT_USER'],
+                      aws_secret_access_key=env['MINIO_ROOT_PASSWORD'],
+                      region_name='us-east-1',
+                      config=Config(s3={'addressing_style': 'path'},
+                                    connect_timeout=10, read_timeout=15,
+                                    retries={'max_attempts': 1}))
+    key = '__healthcheck/mpu-probe.txt'
+    uid = s3.create_multipart_upload(Bucket=bucket, Key=key)['UploadId']
+    try:
+        part = s3.upload_part(Bucket=bucket, Key=key, PartNumber=1, UploadId=uid, Body=b'cap-probe')
+        s3.complete_multipart_upload(Bucket=bucket, Key=key, UploadId=uid,
+            MultipartUpload={'Parts': [{'PartNumber': 1, 'ETag': part['ETag']}]})
+    except Exception:
+        s3.abort_multipart_upload(Bucket=bucket, Key=key, UploadId=uid)
+        raise
+    ok = s3.get_object(Bucket=bucket, Key=key)['Body'].read() == b'cap-probe'
+    s3.delete_object(Bucket=bucket, Key=key)
+    print('OK' if ok else 'READBACK_MISMATCH')
+except Exception as e:
+    print(type(e).__name__ + ':' + str(e)[:120])
+PY
+)
+[ "$RT" = "OK" ] || problems+=("multipart round-trip failed: ${RT:-no-response}")
 
 # --- Layer 3: public app reachability ---
 code=$(curl -s -o /dev/null -m 15 -w '%{http_code}' "$APP_URL" 2>/dev/null)
