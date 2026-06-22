@@ -1,0 +1,12 @@
+hey.dancumberlandlabs.com {
+    reverse_proxy localhost:3000 {
+        header_up -Accept-Encoding
+    }
+    replace stream {
+        `Recorded with` ``
+        `| Cap Recording` ``
+        `"py-4 mt-auto"` `"py-4 mt-auto hidden"`
+        `animate-pulse new-card-style` `animate-pulse new-card-style hidden`
+        `flex flex-col lg:w-80` `flex flex-col lg:w-80 hidden`
+    }
+}

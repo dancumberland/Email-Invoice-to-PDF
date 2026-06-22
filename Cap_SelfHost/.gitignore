@@ -1,0 +1,11 @@
+# Secrets — NEVER commit (MinIO/MySQL/NextAuth keys live here)
+.env
+.env.*
+*.bak
+*.bak-*
+
+# Large binaries
+*.png
+
+# local editor
+.vscode/
