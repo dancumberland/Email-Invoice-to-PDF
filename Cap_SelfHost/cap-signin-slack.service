@@ -1,0 +1,20 @@
+[Unit]
+Description=Cap web sign-in code -> Slack (self-hosted Cap is Resend-only; this forwards the dev-mode code)
+After=network-online.target docker.service
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env bash /home/claude/cap-signin-slack/cap-signin-slack.sh
+WorkingDirectory=/home/claude/cap-signin-slack
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/claude/.local/bin"
+Restart=always
+RestartSec=5
+KillMode=mixed
+KillSignal=SIGTERM
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

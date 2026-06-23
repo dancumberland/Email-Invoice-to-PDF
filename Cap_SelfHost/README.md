@@ -53,6 +53,26 @@ endpoint — uploads failed silently while `hey.` still returned 200.
 is now safe. **Never** start the stack with `-f <some-other-file>` unless you've confirmed its
 variable names match `.env`.
 
+## Web sign-in (code comes via Slack, NOT email)
+
+Self-hosted Cap's web sign-in (`hey.dancumberlandlabs.com`) is **Resend-only** for auth email —
+the code is literally `if (RESEND_API_KEY) { send via Resend } else { print code to logs }`,
+with **no SMTP path** (Gmail SMTP creds can't be used). There's no Resend account (Dan declined
+one, 2026-06-22), so Cap runs in "Development Mode" and prints the 6-digit code to the cap-web log.
+
+**`cap-signin-slack.sh`** (systemd **user** service `cap-signin-slack.service`, `Restart=always`,
+lingering on) tails the cap-web log and pushes that code to **Slack `#notifications`** the moment
+you click sign-in. So: click sign in → check Slack → enter the code. No email, no third party.
+
+- Service: `systemctl --user status cap-signin-slack` · logs: `journalctl --user -u cap-signin-slack -f`
+- Self-test the parser: `DRILL=1 ./cap-signin-slack.sh --selftest`
+- Watchdogged by `cap-signin-slack` (process keepalive) in `fleet-watchdog/registry.py`.
+- If it ever dies, web sign-in still works — grab the code manually:
+  `ssh claude@100.99.136.54 'docker logs cap-web --since 5m | grep -A3 "VERIFICATION CODE"'`
+- Want real email instead someday? Create a Resend account, verify `dancumberlandlabs.com`,
+  set `RESEND_API_KEY` + `RESEND_FROM_DOMAIN` in `~/cap/.env`, `docker compose up -d`. Then this
+  forwarder is redundant (Cap emails directly) and can be disabled.
+
 ## Health / Watchdog
 
 **`cap_healthcheck.sh`** (in this dir; deployed to VPS `~/cap-healthcheck/`, cron `*/15`).
