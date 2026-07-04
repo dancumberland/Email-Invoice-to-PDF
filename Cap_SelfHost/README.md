@@ -85,6 +85,15 @@ End-to-end probe — proves uploads ACTUALLY work, not just that the box is up:
    This is the *exact* operation the desktop app 500'd on (`upload_multipart_initiate`) —
    a single PUT passing does NOT prove multipart works. Needs host `python3` + `boto3`.
 3. **App reachability** — `hey.dancumberlandlabs.com` returns 2xx/3xx.
+4. **Referenced-asset integrity** (added 2026-07-03) — reads every non-null
+   `users.image` / `organizations.iconUrl` / `spaces.iconUrl` and does a `head_object`
+   against the live bucket for each key. Catches a **different** failure class than
+   layers 1-3: not a live regression, but a *stale reference* — a DB row still pointing
+   at an object that no longer exists in storage. This is exactly what happened
+   2026-07-03 (Dan's avatar + org icon were broken-image icons because both were
+   uploaded 2026-01-30, before the R2→MinIO migration, and never carried over — see
+   the memory entry / git history for the fix). Layers 1-3 only prove *new* uploads
+   work; this layer proves *existing* references still resolve.
 
 Self-alerts to Slack `#notifications` on 2 consecutive fails (+ recovery notice).
 Registered in `Project_Management/fleet-watchdog/registry.py` as **`cap-upload-health`**
