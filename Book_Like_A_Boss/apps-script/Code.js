@@ -22,7 +22,7 @@ const SHEET_NAME = 'Sheet1';
 
 // Slack webhook - Script Properties override, fallback to constant
 const SLACK_WEBHOOK_URL = PropertiesService.getScriptProperties().getProperty('SLACK_WEBHOOK_URL')
-  || 'REMOVED_SLACK_WEBHOOK_USE_SCRIPT_PROPERTIES';
+  || '';
 
 /**
  * Handles POST requests from BLAB webhooks

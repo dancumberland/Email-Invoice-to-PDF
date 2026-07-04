@@ -1,8 +1,0 @@
-# Configuration Directory
-
-This folder will contain:
-- physics.js - Physics constants (gravity, friction, bounce)
-- game.js - Game rules and settings
-- tables/ - Table layout JSON files
-
-See docs/ARCHITECTURE.md for table data format.

@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-04-13T16:11:35.839027",
+  "generated_at": "2026-04-20T18:33:16.994864",
   "engagement": {
     "name": "Keller Associates AI Roadmap",
     "value": 28000,
     "start_date": "2026-03-19",
     "end_date": "2026-05-07",
-    "current_week": 4,
-    "days_remaining": 24,
+    "current_week": 5,
+    "days_remaining": 17,
     "phase": "discovery"
   },
   "people": [
@@ -311,8 +311,8 @@
       "discipline": "Water/Wastewater",
       "wave": 3,
       "interview_date": "2026-04-15",
-      "interview_status": "scheduled",
-      "brief_path": null,
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Eric_Roundy.md",
       "profile_path": "Discovery/Profiles/Eric_Roundy.md",
       "questions_path": "Discovery/Interview_Questions/Eric.md",
       "readiness_tier": null,
@@ -325,8 +325,8 @@
       "discipline": "PM",
       "wave": 3,
       "interview_date": "2026-04-15",
-      "interview_status": "scheduled",
-      "brief_path": null,
+      "interview_status": "routed",
+      "brief_path": "Analysis/Briefs/Ashley_Wolgast.md",
       "profile_path": "Discovery/Profiles/Ashley_Wolgast.md",
       "questions_path": "Discovery/Interview_Questions/Ashley.md",
       "readiness_tier": null,
@@ -554,7 +554,7 @@
         "Ashley Wolgast",
         "Jared Richins"
       ],
-      "completed": 0,
+      "completed": 2,
       "total": 3
     }
   ],
@@ -563,11 +563,11 @@
       "id": 1,
       "title": "Technology & Infrastructure Audit",
       "sow_spec": "Written report, 5-10 pages covering each system",
-      "status": "inputs_gathering",
-      "target_date": "2026-05-01",
+      "status": "drafting",
+      "target_date": "2026-04-30",
       "inputs_needed": [
         {
-          "label": "Tim Trumbo tool audit sessions",
+          "label": "Tim Trumbo tool audit session #1",
           "type": "interview",
           "available": true
         },
@@ -587,37 +587,57 @@
           "available": true
         },
         {
-          "label": "Deltek ecosystem research",
+          "label": "Deltek ecosystem + Vantagepoint scheduling research",
           "type": "research",
           "available": true
         },
         {
-          "label": "Copilot capabilities deep dive",
+          "label": "Copilot capabilities (Excel, Agents, 2026 features)",
           "type": "research",
-          "available": false
+          "available": true
+        },
+        {
+          "label": "Bluebeam batch signing research",
+          "type": "research",
+          "available": true
+        },
+        {
+          "label": "Scaffold created (Tech_Audit_Scaffold.md)",
+          "type": "other",
+          "available": true
         },
         {
           "label": "IT Glue / full systems inventory",
           "type": "other",
           "available": false
+        },
+        {
+          "label": "Copilot audit logging confirmation (Tim)",
+          "type": "other",
+          "available": false
         }
       ],
-      "inputs_available": 5,
-      "inputs_total": 7,
+      "inputs_available": 8,
+      "inputs_total": 10,
       "depends_on": [],
-      "notes": "Technology.md heavily populated. Need Tim's systems access to complete."
+      "notes": "Scaffold created 4/20 (Tech_Audit_Scaffold.md). Technology.md + 6 research files populated. IT Glue inventory still pending from Tim."
     },
     {
       "id": 2,
       "title": "AI Readiness Assessment",
       "sow_spec": "Written assessment, 8-12 pages, department by department",
-      "status": "inputs_gathering",
-      "target_date": "2026-05-01",
+      "status": "drafting",
+      "target_date": "2026-04-30",
       "inputs_needed": [
         {
-          "label": "All Wave 2 interviews extracted",
+          "label": "All Wave 1+2 interviews extracted (89 briefs)",
           "type": "interview",
-          "available": false
+          "available": true
+        },
+        {
+          "label": "Wave 3 targeted follow-ups (ElevenLabs + tldv)",
+          "type": "interview",
+          "available": true
         },
         {
           "label": "AI Baseline Survey analysis",
@@ -635,56 +655,111 @@
           "available": true
         },
         {
-          "label": "Wave 3 targeted follow-ups",
-          "type": "interview",
-          "available": false
-        }
-      ],
-      "inputs_available": 3,
-      "inputs_total": 5,
-      "depends_on": [],
-      "notes": "People.md and Culture.md heavily populated. Baseline survey analyzed."
-    },
-    {
-      "id": 3,
-      "title": "Prioritized Workflow Opportunity Map",
-      "sow_spec": "Summary page (impact vs effort) + page per department",
-      "status": "inputs_gathering",
-      "target_date": "2026-05-01",
-      "inputs_needed": [
-        {
           "label": "Workflows.md analysis doc",
           "type": "analysis",
           "available": true
         },
         {
-          "label": "AEC AI plan review tools research",
-          "type": "research",
-          "available": false
+          "label": "Pacemark dimension scoring (6 dims)",
+          "type": "analysis",
+          "available": true
         },
         {
-          "label": "All department interviews extracted",
-          "type": "interview",
+          "label": "Individual tier scoring (88 people)",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Scaffold (Readiness_Assessment_Scaffold.md)",
+          "type": "other",
+          "available": true
+        },
+        {
+          "label": "Non-respondent tier proxy methodology",
+          "type": "analysis",
           "available": false
+        }
+      ],
+      "inputs_available": 9,
+      "inputs_total": 10,
+      "depends_on": [],
+      "notes": "Scaffold + all 6 Pacemark dimensions scored + 88 individual tiers. Ready for full draft Apr 21-25."
+    },
+    {
+      "id": 3,
+      "title": "Prioritized Workflow Opportunity Map",
+      "sow_spec": "Summary page (impact vs effort) + page per department",
+      "status": "drafting",
+      "target_date": "2026-04-30",
+      "inputs_needed": [
+        {
+          "label": "Workflows.md analysis doc (92KB)",
+          "type": "analysis",
+          "available": true
         },
         {
           "label": "Technology.md for tool capabilities",
           "type": "analysis",
           "available": true
+        },
+        {
+          "label": "All department interviews extracted",
+          "type": "interview",
+          "available": true
+        },
+        {
+          "label": "AEC AI plan review / QC tools research",
+          "type": "research",
+          "available": true
+        },
+        {
+          "label": "Deltek Vantagepoint scheduling research",
+          "type": "research",
+          "available": true
+        },
+        {
+          "label": "Bluebeam batch signing research",
+          "type": "research",
+          "available": true
+        },
+        {
+          "label": "Scaffold (Workflow_Opportunity_Map_Scaffold.md)",
+          "type": "other",
+          "available": true
+        },
+        {
+          "label": "Crystal Warner / Breck Dalley interviews (Marketing)",
+          "type": "interview",
+          "available": false
+        },
+        {
+          "label": "Field/construction interviews",
+          "type": "interview",
+          "available": false
         }
       ],
-      "inputs_available": 2,
-      "inputs_total": 4,
+      "inputs_available": 7,
+      "inputs_total": 9,
       "depends_on": [],
-      "notes": "Workflows.md is the most populated analysis doc (~92KB)."
+      "notes": "Scaffold ~80% populated. Eng/Acct/HR/IT strong; Marketing/Admin/Field weaker (data gaps)."
     },
     {
       "id": 4,
       "title": "Implementation Roadmap",
       "sow_spec": "Visual timeline + written companion (4-8 pages)",
-      "status": "not_started",
-      "target_date": "2026-05-05",
+      "status": "drafting",
+      "target_date": "2026-04-30",
       "inputs_needed": [
+        {
+          "label": "Pacemark dimension scoring",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Scaffold (Implementation_Roadmap_Scaffold.md)",
+          "type": "other",
+          "available": true
+        },
         {
           "label": "Technology Audit (draft)",
           "type": "other",
@@ -706,59 +781,89 @@
           "available": false
         }
       ],
-      "inputs_available": 0,
-      "inputs_total": 4,
+      "inputs_available": 2,
+      "inputs_total": 6,
       "depends_on": [
         1,
         2,
         3
       ],
-      "notes": "Can't start until Tech Audit, Readiness Assessment, and Workflow Map are drafted."
+      "notes": "Scaffold created 4/20 with four-horizon structure (Foundation/Activation/Integration/Scale). Visual timeline produced at packaging."
     },
     {
       "id": 5,
       "title": "Training Program Design",
       "sow_spec": "Workshop outlines, 1-2 pages each, with agenda and exercises",
-      "status": "not_started",
-      "target_date": "2026-05-05",
+      "status": "drafting",
+      "target_date": "2026-04-30",
       "inputs_needed": [
+        {
+          "label": "Scaffold (Training_Program_Scaffold.md)",
+          "type": "other",
+          "available": true
+        },
+        {
+          "label": "Department-level skill gaps (tier scoring)",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Copilot capabilities confirmed",
+          "type": "research",
+          "available": true
+        },
+        {
+          "label": "Andrea's Motivosity rollout playbook",
+          "type": "analysis",
+          "available": true
+        },
         {
           "label": "Readiness Assessment (draft)",
           "type": "other",
           "available": false
         },
         {
-          "label": "Department-level skill gaps identified",
-          "type": "analysis",
-          "available": false
-        },
-        {
-          "label": "Copilot capabilities confirmed",
-          "type": "research",
+          "label": "TI Committee cadence decision",
+          "type": "other",
           "available": false
         }
       ],
-      "inputs_available": 0,
-      "inputs_total": 3,
+      "inputs_available": 4,
+      "inputs_total": 6,
       "depends_on": [
         2
       ],
-      "notes": "Scaffold exists at Analysis/Deliverables/Training_Program_Scaffold.md"
+      "notes": "Scaffold with Workshops A-F outlined. Andrea's Motivosity playbook + Nathan's earned value demo as anchors."
     },
     {
       "id": 6,
       "title": "Change Management Framework",
       "sow_spec": "Practical playbook, ~10 pages",
-      "status": "not_started",
-      "target_date": "2026-05-05",
+      "status": "drafting",
+      "target_date": "2026-04-30",
       "inputs_needed": [
+        {
+          "label": "Scaffold (Change_Mgmt_Framework_Scaffold.md)",
+          "type": "other",
+          "available": true
+        },
         {
           "label": "Culture.md analysis doc",
           "type": "analysis",
           "available": true
         },
         {
-          "label": "Champions/early adopters identified",
+          "label": "11-person champion roster identified",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Adoption patterns from 89 interviews",
+          "type": "interview",
+          "available": true
+        },
+        {
+          "label": "Resistance archetype mapping",
           "type": "analysis",
           "available": true
         },
@@ -768,17 +873,17 @@
           "available": false
         },
         {
-          "label": "Adoption patterns from interviews",
-          "type": "interview",
-          "available": true
+          "label": "Communication templates drafted",
+          "type": "other",
+          "available": false
         }
       ],
-      "inputs_available": 3,
-      "inputs_total": 4,
+      "inputs_available": 5,
+      "inputs_total": 7,
       "depends_on": [
         2
       ],
-      "notes": null
+      "notes": "Scaffold created 4/20. Champion roster (11 names), 7 comm templates, rollout sequence, resistance handling."
     },
     {
       "id": 7,
@@ -793,12 +898,12 @@
           "available": false
         },
         {
-          "label": "Larry review session (~Apr 30)",
+          "label": "TI Committee review (Apr 30)",
           "type": "other",
           "available": false
         },
         {
-          "label": "Presentation deck created",
+          "label": "Keynote deck designed",
           "type": "other",
           "available": false
         },
@@ -813,7 +918,7 @@
       "depends_on": [
         4
       ],
-      "notes": "2:15 PM at JUMP Level 4, INSPIRE Studio. Top Golf dinner after."
+      "notes": "2:15 PM at JUMP Level 4, INSPIRE Studio. Design in week of May 1."
     },
     {
       "id": 8,
@@ -845,6 +950,150 @@
         7
       ],
       "notes": "Attendees identified based on shareholder meeting outcomes. Post-May 7."
+    },
+    {
+      "id": 9,
+      "title": "TI Committee Pre-Read (bonus)",
+      "sow_spec": "1-page primer before Apr 30 review",
+      "status": "drafting",
+      "target_date": "2026-04-28",
+      "inputs_needed": [
+        {
+          "label": "Pacemark dimension scoring",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Individual tier scoring",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Champion roster",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Reframed 1-page content",
+          "type": "other",
+          "available": true
+        },
+        {
+          "label": "Cover email (Dan\u2192Larry) drafted",
+          "type": "other",
+          "available": true
+        },
+        {
+          "label": "Packaging format decision (PDF/Doc/email)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Gmail draft staged",
+          "type": "other",
+          "available": false
+        }
+      ],
+      "inputs_available": 5,
+      "inputs_total": 7,
+      "depends_on": [],
+      "notes": "Content REFRAMED 4/20 with positive lead (Pacemark Index demoted to context, not centerpiece). Packaging format TBD."
+    },
+    {
+      "id": 10,
+      "title": "Shareholder Take-Home 1-Pager (bonus)",
+      "sow_spec": "Printed handout for May 7 attendees",
+      "status": "not_started",
+      "target_date": "2026-05-06",
+      "inputs_needed": [
+        {
+          "label": "Implementation Roadmap (final)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Keynote deck (locked)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Pacemark branding assets",
+          "type": "other",
+          "available": false
+        }
+      ],
+      "inputs_available": 0,
+      "inputs_total": 3,
+      "depends_on": [
+        4,
+        7
+      ],
+      "notes": "Branded with Pacemark. Summarizes roadmap + next steps for shareholders."
+    },
+    {
+      "id": 11,
+      "title": "Keynote Slide Deck (bonus)",
+      "sow_spec": "May 7 presentation, Pacemark spine + top findings",
+      "status": "not_started",
+      "target_date": "2026-05-05",
+      "inputs_needed": [
+        {
+          "label": "Readiness Assessment (final)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Workflow Opportunity Map (final)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "Implementation Roadmap (final)",
+          "type": "other",
+          "available": false
+        },
+        {
+          "label": "TI Committee feedback integrated",
+          "type": "other",
+          "available": false
+        }
+      ],
+      "inputs_available": 0,
+      "inputs_total": 4,
+      "depends_on": [
+        2,
+        3,
+        4
+      ],
+      "notes": "Built from Readiness + Workflow Map + Roadmap. Interactive workshop structure embedded."
+    },
+    {
+      "id": 12,
+      "title": "Advisory Sprint Scoping Template (bonus)",
+      "sow_spec": "Retainer bridge \u2014 aggregates deferred research items",
+      "status": "not_started",
+      "target_date": "2026-05-05",
+      "inputs_needed": [
+        {
+          "label": "Deferred research items catalogued",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Pacemark dimensional gaps named",
+          "type": "analysis",
+          "available": true
+        },
+        {
+          "label": "Retainer scope template",
+          "type": "other",
+          "available": false
+        }
+      ],
+      "inputs_available": 2,
+      "inputs_total": 3,
+      "depends_on": [],
+      "notes": "Post-engagement retainer framing. Populates with deferred tool evaluations from 30-min research cap."
     }
   ],
   "research": [
@@ -987,26 +1236,7 @@
       ]
     }
   ],
-  "interviews": [
-    {
-      "person": "Eric Roundy",
-      "role": "Senior WW Engineer / Board Treasurer",
-      "date": "2026-04-15",
-      "time": "11:00am",
-      "time_mt": "11:00am",
-      "questions_path": "Discovery/Interview_Questions/Eric.md",
-      "profile_path": "Discovery/Profiles/Eric_Roundy.md"
-    },
-    {
-      "person": "Ashley Wolgast",
-      "role": "Project Coordinator",
-      "date": "2026-04-15",
-      "time": "2:00pm",
-      "time_mt": "2:00pm",
-      "questions_path": "Discovery/Interview_Questions/Ashley.md",
-      "profile_path": "Discovery/Profiles/Ashley_Wolgast.md"
-    }
-  ],
+  "interviews": [],
   "pipeline": [],
   "actions": [
     {
@@ -1139,47 +1369,142 @@
     }
   ],
   "agent": {
-    "total_conversations": 49,
-    "good_conversations": 10,
+    "total_conversations": 140,
+    "good_conversations": 67,
     "completed_people": [
+      {
+        "first_name": "Jeffrey",
+        "role": "Senior Civil Designer",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Michael",
+        "role": "Senior Project Manager",
+        "office": "Idaho Falls"
+      },
+      {
+        "first_name": "Colby",
+        "role": "Traffic Discipline Manager",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Peter",
+        "role": "Licensed E.I.T. - Deputy/Assistant PM",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Matthew",
+        "role": "Team Lead, Civil Design",
+        "office": "Salem"
+      },
+      {
+        "first_name": "Sarah",
+        "role": "Marketing/Proposal Coordinator",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Daniel",
+        "role": "Licensed E.I.T. - Deputy/Assistant PM",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Erin",
+        "role": "Project Manager I",
+        "office": "Clarkston"
+      },
+      {
+        "first_name": "Bryan",
+        "role": "Project Manager II",
+        "office": "Pocatello"
+      },
+      {
+        "first_name": "Donn",
+        "role": "Transportation Regional Manager-Southeast Idaho & Utah",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Rebecca",
+        "role": "E.I.T. (FE) - Project Engineer I",
+        "office": "Provo"
+      },
+      {
+        "first_name": "Margaret",
+        "role": "Administrative Support Specialist",
+        "office": "Clarkston"
+      },
+      {
+        "first_name": "Mathew",
+        "role": "Construction Inspector",
+        "office": "Idaho Falls"
+      },
       {
         "first_name": "Timothy",
         "role": "Controls/Integration Technical Lead",
         "office": "Meridian"
       },
       {
-        "first_name": "Dylan",
-        "role": "Deputy/Assistant PM",
-        "office": "Reno"
+        "first_name": "Andy",
+        "role": "Business Development Manager",
+        "office": "Remote"
       },
       {
-        "first_name": "David",
-        "role": "Marketing/Proposal Coordinator",
-        "office": "Coeur d'Alene"
-      },
-      {
-        "first_name": "Eric",
-        "role": "Design Manager",
+        "first_name": "Nathan",
+        "role": "Project Engineer I",
         "office": "Meridian"
       },
       {
-        "first_name": "Christopher",
-        "role": "Senior Civil Designer",
-        "office": "Meridian"
-      },
-      {
-        "first_name": "Quinn",
-        "role": "Licensed E.I.T.",
+        "first_name": "Danielle",
+        "role": "Administrative Support Specialist",
         "office": "Idaho Falls"
       },
       {
-        "first_name": "Carter",
-        "role": "Survey Technician",
+        "first_name": "Christopher",
+        "role": "Licensed E.I.T.",
+        "office": "Salem"
+      },
+      {
+        "first_name": "Matthew",
+        "role": "Licensed E.I.T.",
+        "office": "Bend"
+      },
+      {
+        "first_name": "Michael",
+        "role": "Branch Office Manager I",
+        "office": "Provo"
+      },
+      {
+        "first_name": "Angela",
+        "role": "Design Manager",
+        "office": "Clarkston"
+      },
+      {
+        "first_name": "Vijayalakshmi",
+        "role": "Project Engineer I",
+        "office": "Beaverton"
+      },
+      {
+        "first_name": "Breanne",
+        "role": "Administrative Support Specialist",
+        "office": "Pocatello"
+      },
+      {
+        "first_name": "Gregory",
+        "role": "Senior W/WW Designer",
         "office": "Meridian"
+      },
+      {
+        "first_name": "Isabella",
+        "role": "Intern",
+        "office": "Reno"
       },
       {
         "first_name": "Larry",
         "role": "President/CEO",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Majed",
+        "role": "Structural Designer",
         "office": "Meridian"
       },
       {
@@ -1188,22 +1513,241 @@
         "office": "Kent"
       },
       {
-        "first_name": "Breanne",
-        "role": "Administrative Support Specialist",
+        "first_name": "Kala",
+        "role": "Sr Training & Development Specialist",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Dylan",
+        "role": "Deputy/Assistant PM",
+        "office": "Reno"
+      },
+      {
+        "first_name": "John",
+        "role": "Senior Civil Designer",
         "office": "Pocatello"
+      },
+      {
+        "first_name": "Jenna",
+        "role": "E.I.T. (FE) - Project Engineer I",
+        "office": "Beaverton"
+      },
+      {
+        "first_name": "Anthony",
+        "role": "Licensed E.I.T.",
+        "office": "Coeur d'Alene"
+      },
+      {
+        "first_name": "Marvin",
+        "role": "Senior Engineer",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Kevin",
+        "role": "Project Engineer II",
+        "office": "Reno"
+      },
+      {
+        "first_name": "Abigail",
+        "role": "Intern",
+        "office": "Richland"
+      },
+      {
+        "first_name": "Cristina",
+        "role": "Administrative Support Specialist",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Carter",
+        "role": "Survey Technician",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Christopher",
+        "role": "Senior Civil Designer",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Lonny",
+        "role": "Structural Designer",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Melissa",
+        "role": "Payroll/Compliance Administrator",
+        "office": "Remote"
+      },
+      {
+        "first_name": "Terry",
+        "role": "Senior E&C Designer",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Scott",
+        "role": "Marketing/Proposal Coordinator",
+        "office": "Beaverton"
+      },
+      {
+        "first_name": "Nicole",
+        "role": "GIS Specialist",
+        "office": "Remote"
+      },
+      {
+        "first_name": "Andrew",
+        "role": "Senior Project Manager",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Cara",
+        "role": "Human Resources Manager",
+        "office": "Salem"
+      },
+      {
+        "first_name": "Austin",
+        "role": "Licensed E.I.T.",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Wendy",
+        "role": "Assistant Controller",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Jody",
+        "role": "Accounts Payable Specialist",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Franziska",
+        "role": "Deputy/Assistant PM",
+        "office": "Salem"
+      },
+      {
+        "first_name": "Jake",
+        "role": "Transportation Regional Manager-Southeast Idaho & Utah",
+        "office": "Pocatello"
+      },
+      {
+        "first_name": "Jesus",
+        "role": "Transportation Regional Manager - Southwest Idaho",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Scot",
+        "role": "Controls/Integration Manager",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Curtis",
+        "role": "Branch Office Manager I",
+        "office": "Richland"
+      },
+      {
+        "first_name": "Eric",
+        "role": "Design Manager",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Bradley",
+        "role": "Electrical Engineering Manager",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Spencer",
+        "role": "Intern",
+        "office": "Provo"
+      },
+      {
+        "first_name": "Gabriel",
+        "role": "Project Manager I",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Katelynn",
+        "role": "Project Engineer III",
+        "office": "Reno"
+      },
+      {
+        "first_name": "Katrina",
+        "role": "Assistant Project Manager",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Kaitlin",
+        "role": "Site/Civil Project Manager",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "David",
+        "role": "Marketing/Proposal Coordinator",
+        "office": "Coeur d'Alene"
+      },
+      {
+        "first_name": "Jason",
+        "role": "E.I.T. (FE)",
+        "office": "Beaverton"
+      },
+      {
+        "first_name": "Timothy",
+        "role": "Senior Bridge Engineer",
+        "office": "Coeur d'Alene"
+      },
+      {
+        "first_name": "Quinn",
+        "role": "Licensed E.I.T.",
+        "office": "Idaho Falls"
+      },
+      {
+        "first_name": "Patrick",
+        "role": "Project Engineer I/Technician",
+        "office": "Meridian"
+      },
+      {
+        "first_name": "Tamma",
+        "role": "E.I.T. (FE)",
+        "office": "Provo"
       }
     ],
     "person_attempts": {
       "Carter|Survey Technician|Meridian": 1,
-      "Unknown|Unknown|Unknown": 23,
+      "Unknown|Unknown|Unknown": 66,
       "David|Marketing/Proposal Coordinator|Coeur d'Alene": 2,
       "Dylan|Deputy/Assistant PM|Reno": 1,
-      "Peter|Field Representative|Idaho Falls": 2,
+      "Peter|Field Representative|Idaho Falls": 3,
       "Ryan|Intern|Pocatello": 1,
       "Sanaz|Branch Office Manager I|Kent": 1,
-      "Jody|Accounts Payable Specialist|Meridian": 1
+      "Jody|Accounts Payable Specialist|Meridian": 1,
+      "Jesus|Transportation Regional Manager - Southwest Idaho|Meridian": 1,
+      "Colby|Traffic Discipline Manager|Meridian": 3,
+      "Daniel|Licensed E.I.T. - Deputy/Assistant PM|Meridian": 1,
+      "John|Senior Civil Designer|Pocatello": 1,
+      "Michael|Branch Office Manager I|Provo": 4,
+      "Jenna|E.I.T. (FE) - Project Engineer I|Beaverton": 1,
+      "Gregory|Senior W/WW Designer|Meridian": 1,
+      "Nicole|GIS Specialist|Remote": 1,
+      "Peter|Licensed E.I.T. - Deputy/Assistant PM|Meridian": 1,
+      "Erin|Project Manager I|Clarkston": 1,
+      "Jason|E.I.T. (FE)|Beaverton": 1,
+      "Patrick|Project Engineer I/Technician|Meridian": 1,
+      "Terry|Senior E&C Designer|Meridian": 1,
+      "Vijayalakshmi|Project Engineer I|Beaverton": 1,
+      "Sean|Senior Civil Designer|Coeur d'Alene": 1,
+      "Monica|Administrative Support Specialist|Salem": 4,
+      "Donn|Transportation Regional Manager-Southeast Idaho & Utah|Meridian": 1,
+      "Curtis|Branch Office Manager I|Richland": 1,
+      "Rebecca|E.I.T. (FE) - Project Engineer I|Provo": 1,
+      "Cristina|Administrative Support Specialist|Meridian": 3,
+      "Scott|Marketing/Proposal Coordinator|Beaverton": 1,
+      "Jeffrey|Senior Civil Designer|Meridian": 3,
+      "Just|Unknown|Unknown": 1,
+      "Jake|Transportation Regional Manager-Southeast Idaho & Utah|Pocatello": 1,
+      "Kevin|Project Engineer II|Reno": 2,
+      "Mathew|Construction Inspector|Idaho Falls": 1,
+      "Matthew|Team Lead, Civil Design|Salem": 1,
+      "Wendy|Assistant Controller|Meridian": 3,
+      "Angela|Design Manager|Clarkston": 4
     },
-    "last_check": "2026-04-13T22:10:26.713394+00:00",
+    "last_check": "2026-04-21T00:31:35.760929+00:00",
     "phone_number": "+1 (208) 567-9434",
     "phone_active": true
   },

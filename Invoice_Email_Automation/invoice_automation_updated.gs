@@ -58,6 +58,9 @@ function handleThread_(thread, folder) {
   // Start with email body HTML, embedding any inline images
   let html = embedAllImages_(htmlBody || wrapPlainAsHtml_(bodyPlain), imageAttachments);
 
+  // Fetch external images (https://) and convert to embedded data URIs
+  html = fetchExternalImages_(html);
+
   // Convert document attachments (PDFs, etc.) to thumbnail images and append to HTML
   const uniqueDocuments = uniqueAttachments_(documentAttachments);
   if (uniqueDocuments.length > 0) {
@@ -396,6 +399,45 @@ function embedAllImages_(html, imageAttachments = []) {
   }
 
   return resultHtml;
+}
+
+/**
+ * Fetch external images (http/https URLs) and convert to base64 data URIs.
+ * Ensures images hosted on external servers are embedded in the final PDF
+ * rather than left as unresolvable URL references.
+ */
+function fetchExternalImages_(html) {
+  if (!html) return html;
+
+  var result = html.replace(/(<img[^>]*\ssrc=)(['"])(https?:\/\/[^'"]+)\2/gi, function(match, prefix, quote, url) {
+    // Skip tracking pixels and tiny spacer images
+    if (url.indexOf('track') !== -1 && url.indexOf('open') !== -1) return match;
+
+    try {
+      var response = UrlFetchApp.fetch(url, {
+        muteHttpExceptions: true,
+        followRedirects: true,
+        validateHttpsCertificates: false,
+      });
+
+      if (response.getResponseCode() === 200) {
+        var blob = response.getBlob();
+        var mimeType = blob.getContentType() || 'image/png';
+        if (mimeType.indexOf('image/') === 0) {
+          var bytes = blob.getBytes();
+          // Skip images larger than 2MB to avoid bloating the PDF
+          if (bytes.length > 2 * 1024 * 1024) return match;
+          var base64 = Utilities.base64Encode(bytes);
+          return prefix + quote + 'data:' + mimeType + ';base64,' + base64 + quote;
+        }
+      }
+    } catch (e) {
+      Logger.log('Failed to fetch image: ' + url + ' - ' + e.message);
+    }
+    return match;
+  });
+
+  return result;
 }
 
 function wrapPlainAsHtml_(plain) {

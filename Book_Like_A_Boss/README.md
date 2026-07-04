@@ -102,7 +102,8 @@ Sheet: https://docs.google.com/spreadsheets/d/16NrUr0Xkz5TK-437P-2JH2bnywVE7cKjY
 
 - Column K (`kit_processed`): marked "yes" after Apps Script processes a row
 - Only "Online Meeting" bookings (appointment ID 35230) are processed for Kit
-- Canceled bookings and sales calls are skipped
+- AI Strategy bookings (appointment ID 279657) are deliberately excluded — those are sales calls (prospects), not networking guests. They should never enter the newsletter invite sequence.
+- Canceled bookings are skipped
 
 ### 6. Running Booking Sync (separate from Kit)
 

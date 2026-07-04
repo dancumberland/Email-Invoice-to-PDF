@@ -1,7 +1,0 @@
-# Utilities Directory
-
-This folder will contain helper functions:
-- collision.js - Collision detection helpers
-- math.js - Math utilities (vectors, angles)
-
-See docs/ARCHITECTURE.md for details.

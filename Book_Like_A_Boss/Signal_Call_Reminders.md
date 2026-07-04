@@ -1,6 +1,8 @@
 # Signal Call — reminder + no-show system (copy + cadence)
 
-**Status:** ✅ BUILT 2026-06-18 (live, in BLAB admin via Chrome). Optional phone field, 3-reminder schedule, custom-voice Confirmation + Reminder email bodies, and the post-booking Success message are ALL live on the Signal Call appointment. Only the after-a-miss recovery is unbuilt (it's not a BLAB feature — see constraints). 
+**Status:** ✅ BUILT 2026-06-18 (live, in BLAB admin via Chrome). Optional phone field, 3-reminder schedule, custom-voice Confirmation + Reminder email bodies, and the post-booking Success message are ALL live on the Signal Call appointment. Only the after-a-miss recovery is unbuilt (it's not a BLAB feature — see constraints).
+
+**🟡 PASTE PENDING (2026-07-04):** the on-book Confirmation email (§1) and the Success Message re-sell (§"Confirmation page re-sell") copy were updated to carry the locked seam sentence — *"You'll leave with your first move and the start of a 90-day plan built on it. The plan is yours to keep either way."* — so the deliverable page → booking page → confirmation email all read as one promise. The booking page (dancumberlandlabs.com/signal-call) already shipped. **These two BLAB surfaces are a manual paste in BLAB admin (Customization > Email Messages for the confirmation; General Settings > Success Message) — Dan-side, behind the BLAB login.** Paste the updated §1 body + add the seam line to the Success Message, then flip this back to ✅.
 **Goal:** lift show-rate from the ~50–60% of a bare scheduler toward 75–90% with confirmations, reminders, and a recovery path.
 **Voice:** peer-to-peer, plain, no hype. SMS kept under ~160 chars.
 
@@ -79,7 +81,7 @@ These four answers decide what's buildable. Ship the link-based booking regardle
 
 You're on the calendar for {{date}} at {{time}} {{timezone}}. Here's what to expect.
 
-We'll walk your Signal Scorer result together, pin down the first move against your firm's bottleneck, and you'll leave with a plan you can run whether we work together or not. Thirty minutes, no pitch.
+We'll walk your Signal Scorer result together and pin down the one constraint capping the rest. You'll leave with your first move and the start of a 90-day plan built on it. The plan is yours to keep either way. Thirty minutes, no pitch.
 
 You don't need to prepare anything — your result is already on file. If you want to get more out of it, come with one sentence on what you're hoping AI does for the firm in the next year.
 
@@ -152,6 +154,7 @@ Missed you for the Signal Call today — no worries. Rebook whenever: {{reschedu
 
 - One line: "You're booked. Here's what happens on the call."
 - The 3-step: walk your result → pinpoint the constraint → map the first move + leave with a plan.
+- The seam sentence (same wording as the deliverable page + booking page, so click→call reads as one promise): "You'll leave with your first move and the start of a 90-day plan built on it. The plan is yours to keep either way."
 - Add-to-calendar button.
 - One verified testimonial (Amanda: 20% margin, 10+ hrs/week per person).
 - Soft no-show line: "Can't make it? Reschedule — link's in your email."
