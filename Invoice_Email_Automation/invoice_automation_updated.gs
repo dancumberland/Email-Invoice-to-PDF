@@ -445,7 +445,11 @@ function callGeminiVendor_(imageBytes, mimeType) {
         { inline_data: { mime_type: mimeType, data: Utilities.base64Encode(imageBytes) } },
       ],
     }],
-    generationConfig: { temperature: 0, maxOutputTokens: 40 },
+    // maxOutputTokens must leave room for Gemini 2.5 Flash "thinking" tokens, which
+    // count against the budget; thinkingBudget: 0 turns thinking off (we just need the
+    // vendor name). With only 40 and thinking on, answers truncated ("MOSTK") or came
+    // back empty. Verified 2026-07-14: both test receipts returned full vendors.
+    generationConfig: { temperature: 0, maxOutputTokens: 200, thinkingConfig: { thinkingBudget: 0 } },
   };
 
   const resp = UrlFetchApp.fetch(url, {
