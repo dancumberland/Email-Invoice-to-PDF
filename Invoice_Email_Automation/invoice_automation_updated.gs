@@ -226,12 +226,13 @@ function parseTagLine_(raw) {
   const cleaned = (raw || '').trim();
   if (!cleaned) return null;
   const parts = cleaned.split(/\s+/);
-  if (parts.length < 2) return null;
 
   const code = (parts[0] || '').toUpperCase();
   if (KNOWN_CODES.indexOf(code) === -1) return null;
 
-  const sender = parts.slice(1).join(' ') || 'Unknown';
+  // Vendor name is optional. If the tag line is just the code (e.g. "HSA"),
+  // return a null sender so the caller can backfill it from the forwarded From: header.
+  const sender = parts.slice(1).join(' ').trim() || null;
   return { businessCode: code, senderName: sender };
 }
 
@@ -241,12 +242,22 @@ function extractMeta_(bodyPlain, subject) {
     const trimmed = line.trim();
     if (!trimmed) continue;
     const fromBody = parseTagLine_(trimmed);
-    if (fromBody) return fromBody;
+    if (fromBody) {
+      if (!fromBody.senderName) {
+        fromBody.senderName = extractForwardedSenderName_(bodyPlain) || 'Unknown';
+      }
+      return fromBody;
+    }
     break;
   }
 
   const fromSubject = parseTagLine_(subject);
-  if (fromSubject) return fromSubject;
+  if (fromSubject) {
+    if (!fromSubject.senderName) {
+      fromSubject.senderName = extractForwardedSenderName_(bodyPlain) || 'Unknown';
+    }
+    return fromSubject;
+  }
 
   // Fallback: DCL code with sender name extracted from forwarded email's From header
   const forwardedSender = extractForwardedSenderName_(bodyPlain) || 'Unknown';

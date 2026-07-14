@@ -58,6 +58,8 @@ Examples:
 
 *Note:* `BUSINESSCODE` must be one of `AIRBNB`, `TF`, `TMM`, `DCL`, or `HSA` **in ALL CAPS**. If no valid code is found, the script defaults to `DCL` and extracts the sender name from the forwarded email's `From:` header (e.g., "Cloudflare" from `From: Cloudflare <noreply@cloudflare.com>`).
 
+*The vendor name is optional.* A first line of just the code — `HSA` on its own, with no name after it — now works: the script fills the vendor name from the forwarded `From:` header, so `HSA` alone on a Dr. B receipt produces `260708 - HSA - Dr. B.pdf`. (Before July 2026 a bare code was rejected and silently fell back to `DCL`, which is why some HSA receipts came out tagged `DCL`.)
+
 The script reads this first body line, combines it with the email date, and produces filenames like:
 
 - `251115 - DCL - Zoom.pdf`
