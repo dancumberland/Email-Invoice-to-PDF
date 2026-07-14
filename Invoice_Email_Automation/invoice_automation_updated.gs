@@ -30,17 +30,11 @@ function handleThread_(thread, folder) {
   const subject = message.getSubject() || '';
   const bodyPlain = message.getPlainBody() || '';
   const messageDate = message.getDate();
-  const { businessCode, senderName } = extractMeta_(bodyPlain, subject);
-  const transactionDate = resolveTransactionDate_(bodyPlain, messageDate);
-  const yymmdd = formatDateYYMMDD_(transactionDate);
-  const filenameBase = sanitize_(`${yymmdd} - ${businessCode} - ${senderName}` || 'invoice');
 
   const allAttachments = message.getAttachments({
     includeInlineImages: true,
     includeAttachments: true,
   }) || [];
-
-  const htmlBody = message.getBody() || '';
 
   // Separate image attachments from document attachments (PDFs, docs, etc.)
   const imageAttachments = [];
@@ -54,6 +48,23 @@ function handleThread_(thread, folder) {
       documentAttachments.push(att);
     }
   });
+
+  const meta = extractMeta_(bodyPlain, subject);
+  let senderName = meta.senderName;
+  // If neither the tag line nor a forwarded From: header gave a vendor, read the
+  // vendor name straight off the receipt image with Gemini vision. Degrades to
+  // 'Unknown' on any failure (missing key, quota, unreadable) so a run never breaks.
+  if (!senderName || senderName === 'Unknown') {
+    const receiptVendor = extractVendorFromReceipt_(imageAttachments, documentAttachments);
+    if (receiptVendor) senderName = receiptVendor;
+  }
+  if (!senderName) senderName = 'Unknown';
+
+  const transactionDate = resolveTransactionDate_(bodyPlain, messageDate);
+  const yymmdd = formatDateYYMMDD_(transactionDate);
+  const filenameBase = sanitize_(`${yymmdd} - ${meta.businessCode} - ${senderName}` || 'invoice');
+
+  const htmlBody = message.getBody() || '';
 
   // Start with email body HTML, embedding any inline images
   let html = embedAllImages_(htmlBody || wrapPlainAsHtml_(bodyPlain), imageAttachments);
@@ -340,6 +351,129 @@ function extractForwardedSenderName_(bodyPlain = '') {
   }
 
   return null;
+}
+
+// ---------------------------------------------------------------------------
+// Vendor extraction from the receipt itself (Gemini vision)
+//
+// Used when the tag line / forwarded From: header gives no vendor - e.g. a
+// composed email with "HSA" on the first line and a photo of the receipt
+// attached. Reads the business name straight off the receipt image.
+//
+// SETUP: put a Google AI Studio API key in Project Settings > Script Properties
+// under the key name GEMINI_API_KEY. Without it, this returns null (-> Unknown),
+// i.e. the old behaviour. Swap GEMINI_MODEL if you want a different/newer model.
+// ---------------------------------------------------------------------------
+const GEMINI_MODEL = 'gemini-2.5-flash';
+
+function extractVendorFromReceipt_(imageAttachments, documentAttachments) {
+  try {
+    let imageBytes = null;
+    let mimeType = 'image/jpeg';
+    let imgSize = 0;
+
+    // Prefer the largest image attachment (the receipt photo, not a signature logo).
+    const receiptImg = pickLargestImage_(imageAttachments);
+    if (receiptImg) {
+      const blob = receiptImg.copyBlob();
+      imageBytes = blob.getBytes();
+      imgSize = imageBytes.length;
+      mimeType = blob.getContentType() || 'image/jpeg';
+    }
+
+    // A real receipt photo is large; if we only have tiny inline images (logos),
+    // fall back to rendering the first PDF attachment's thumbnail instead.
+    if ((!imageBytes || imgSize < 25000) && documentAttachments && documentAttachments.length > 0) {
+      const dataUri = getPdfThumbnail_(documentAttachments[0]);
+      if (dataUri) {
+        const m = dataUri.match(/^data:([^;]+);base64,(.*)$/);
+        if (m) {
+          mimeType = m[1];
+          imageBytes = Utilities.base64Decode(m[2]);
+        }
+      }
+    }
+
+    if (!imageBytes) return null;
+    return callGeminiVendor_(imageBytes, mimeType);
+  } catch (e) {
+    Logger.log('extractVendorFromReceipt_ error: ' + e.message);
+    return null;
+  }
+}
+
+function pickLargestImage_(imageAttachments) {
+  if (!imageAttachments || imageAttachments.length === 0) return null;
+  let best = null;
+  let bestSize = -1;
+  imageAttachments.forEach(att => {
+    let size = 0;
+    try {
+      size = att.getSize ? att.getSize() : att.copyBlob().getBytes().length;
+    } catch (e) {
+      size = 0;
+    }
+    if (size > bestSize) {
+      bestSize = size;
+      best = att;
+    }
+  });
+  return best;
+}
+
+function callGeminiVendor_(imageBytes, mimeType) {
+  const apiKey = PropertiesService.getScriptProperties().getProperty('GEMINI_API_KEY');
+  if (!apiKey) {
+    Logger.log('GEMINI_API_KEY not set in Script Properties - vendor left as Unknown.');
+    return null;
+  }
+
+  const prompt =
+    'You are reading a purchase receipt or invoice image. Reply with ONLY the name of the ' +
+    'vendor or business that was paid: the store, pharmacy, clinic, doctor, or company. ' +
+    'No address, no tax IDs, no dates, no extra words, no quotes. If the image shows multiple ' +
+    'receipts, give the single most prominent vendor. If you genuinely cannot determine a ' +
+    'business name, reply with exactly: Unknown';
+
+  const url = 'https://generativelanguage.googleapis.com/v1beta/models/' +
+    GEMINI_MODEL + ':generateContent?key=' + encodeURIComponent(apiKey);
+
+  const payload = {
+    contents: [{
+      parts: [
+        { text: prompt },
+        { inline_data: { mime_type: mimeType, data: Utilities.base64Encode(imageBytes) } },
+      ],
+    }],
+    generationConfig: { temperature: 0, maxOutputTokens: 40 },
+  };
+
+  const resp = UrlFetchApp.fetch(url, {
+    method: 'post',
+    contentType: 'application/json',
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true,
+  });
+
+  if (resp.getResponseCode() !== 200) {
+    Logger.log('Gemini error ' + resp.getResponseCode() + ': ' + resp.getContentText().slice(0, 300));
+    return null;
+  }
+
+  let text = '';
+  try {
+    const data = JSON.parse(resp.getContentText());
+    const parts = ((((data.candidates || [])[0] || {}).content || {}).parts) || [];
+    text = parts.map(p => p.text || '').join('').trim();
+  } catch (e) {
+    Logger.log('Gemini parse error: ' + e.message);
+    return null;
+  }
+
+  text = (text || '').replace(/[\r\n]+/g, ' ').trim();
+  if (!text || /^unknown\.?$/i.test(text)) return null;
+  if (text.length > 60) text = text.slice(0, 60).trim();  // keep it filename-friendly
+  return text;
 }
 
 /**

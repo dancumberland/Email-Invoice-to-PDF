@@ -60,6 +60,8 @@ Examples:
 
 *The vendor name is optional.* A first line of just the code — `HSA` on its own, with no name after it — now works: the script fills the vendor name from the forwarded `From:` header, so `HSA` alone on a Dr. B receipt produces `260708 - HSA - Dr. B.pdf`. (Before July 2026 a bare code was rejected and silently fell back to `DCL`, which is why some HSA receipts came out tagged `DCL`.)
 
+*Vendor name from the receipt itself (Gemini vision).* When there's no `From:` header to read — e.g. you compose a new email with just `HSA` on the first line and attach a photo of the receipt — the script sends the receipt image to Gemini and reads the business name straight off it (so `HSA` + a Fybeca receipt photo produces `260211 - HSA - Fybeca.pdf`). It only fires when the tag line / `From:` header gave no vendor, and degrades to `Unknown` on any failure, so a run never breaks. **Setup:** create a Google AI Studio API key (aistudio.google.com) and add it in the Apps Script project under **Project Settings ⚙ → Script Properties** as `GEMINI_API_KEY`. Without the key, this step is skipped and the vendor stays `Unknown` (the old behaviour). Model is set by the `GEMINI_MODEL` constant near the top of the vision section (`gemini-2.5-flash`). Cost is negligible (a few receipts/week). If you suddenly see lots of `Unknown` vendors again, check the key/quota in the execution log.
+
 The script reads this first body line, combines it with the email date, and produces filenames like:
 
 - `251115 - DCL - Zoom.pdf`
