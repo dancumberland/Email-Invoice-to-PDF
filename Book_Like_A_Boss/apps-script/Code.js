@@ -65,12 +65,18 @@ function doPost(e) {
 
     const initiatedBy = extractField(data, ['canceled_by', 'rescheduled_by']);
 
+    // BLAB's payload carries the real appointment name in package_name (e.g. "ECP Discovery").
+    // serviceType's candidate-field list has no match for it and falls through to the raw
+    // `type` field, which is actually the webhook's own event action ("booking_created") —
+    // that's why the sheet/Slack used to show "booking_created" instead of the appointment name.
+    const packageName = data.package_name || serviceType || '';
+
     // Append row to sheet
     sheet.appendRow([
       new Date().toISOString(),           // timestamp
       clientName.trim() || 'Unknown',      // client_name
       clientEmail || '',                   // client_email
-      serviceType || '',                   // service_type
+      packageName,                         // service_type
       bookingDatetime || '',               // booking_datetime
       duration || '',                      // duration
       status,                              // status
@@ -80,7 +86,6 @@ function doPost(e) {
     ]);
 
     // Send Slack notification (after sheet append so logging isn't blocked)
-    const packageName = data.package_name || serviceType || '';
     sendSlackNotification(clientName.trim(), packageName, bookingDatetime, eventType, bookingId, initiatedBy);
 
     // Return success
