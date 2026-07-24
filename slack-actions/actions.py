@@ -268,3 +268,52 @@ def _fleet_mute(target, ctx):
     slack_post.reply(ctx, f":no_bell: Muted `{target}` for 24h "
                           f"(alerts pause; a recovery still posts).")
     return "muted"
+
+
+# ---------------------------------------------------------------- BLAB pre-call research
+# Closes the gap where research-lead never wrote research_status=researched
+# back to the sheet. blab_notifier.py posts a Research button to #decisions
+# on new AI Strategy discovery bookings (package 279657/284532); this runs
+# the unattended pipeline end to end: booking lookup -> headless claude -p
+# agent -> sentinel-gated sheet write-back + calendar update.
+# research_bridge.py resolves its own claude binary by absolute path
+# (~/.local/bin/claude), so it's unaffected by this service's minimal
+# systemd PATH — confirmed against the actual unit file before wiring this.
+RESEARCH_BRIDGE_DIR = "/home/claude/blab-research-bridge"
+RESEARCH_BRIDGE_SCRIPT = os.path.join(RESEARCH_BRIDGE_DIR, "research_bridge.py")
+RESEARCH_BRIDGE_TIMEOUT = 1600  # research_bridge.py's own agent timeout is 1500s
+
+
+@handler("research:run")
+def _research_run(target, ctx):
+    booking_id = target
+    if not booking_id:
+        slack_post.reply(ctx, ":warning: No booking id on this action — nothing to research.")
+        return "no target"
+    slack_post.reply(ctx, f":mag: Running pre-call research for booking `{booking_id}`… (can take up to ~25 min)")
+    try:
+        proc = subprocess.run(
+            ["/usr/bin/python3", RESEARCH_BRIDGE_SCRIPT, "run", "--booking-id", booking_id],
+            cwd=RESEARCH_BRIDGE_DIR, capture_output=True, text=True, timeout=RESEARCH_BRIDGE_TIMEOUT,
+        )
+        # research_bridge.py already prints a Slack-ready mrkdwn summary to
+        # stdout on success or failure alike — relay it as-is.
+        output = (proc.stdout or "").strip()
+        if proc.returncode != 0:
+            tail = (proc.stderr or "").strip()[-500:]
+            slack_post.reply(ctx, f":x: Research failed for `{booking_id}` (rc={proc.returncode}):\n```{tail or output[-300:] or '(no output)'}```")
+            return f"rc={proc.returncode}"
+        slack_post.reply(ctx, output or f":warning: Research for `{booking_id}` finished with no output.")
+        return "rc=0"
+    except subprocess.TimeoutExpired:
+        slack_post.reply(ctx, f":x: Research for `{booking_id}` timed out after {RESEARCH_BRIDGE_TIMEOUT}s — check the VPS process (`ps aux | grep research_bridge`).")
+        return "timeout"
+    except Exception as e:
+        slack_post.reply(ctx, f":x: Research handler errored for `{booking_id}`: `{e!r}`")
+        return f"error: {e!r}"
+
+
+@handler("research:skip")
+def _research_skip(target, ctx):
+    slack_post.reply(ctx, f":no_bell: Skipped — booking `{target}` left un-researched.")
+    return "skipped"
