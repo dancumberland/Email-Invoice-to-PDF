@@ -159,3 +159,112 @@ def _redwood_unpark(target, ctx):
 @handler("redwood:kill")
 def _redwood_kill(target, ctx):
     return _redwood_cmd("suppress", target, ctx, ":no_bell: Killing re-notify for", "Killed")
+
+
+# ---------------------------------------------------------------- fleet watchdog (Tier 2)
+# Appended by the fleet-watchdog build. Handlers for #decisions cards posted by
+# sweep.py. Trust boundary: `target` is ONLY ever a registry key — never shell data.
+import sys as _sys
+import json as _json
+if "/home/claude/fleet-watchdog" not in _sys.path:
+    _sys.path.insert(0, "/home/claude/fleet-watchdog")
+
+_FLEET_STATE_DIR = os.path.expanduser("~/.local/state/fleet-watchdog")
+
+
+def _fleet_job(target, ctx):
+    try:
+        import registry
+    except Exception as e:
+        slack_post.reply(ctx, f":x: fleet registry import failed: `{e!r}`")
+        return None
+    job = registry.by_name(target)
+    if not job:
+        slack_post.reply(ctx, f":warning: Unknown job `{target}` — refusing.")
+    return job
+
+
+@handler("fleet_watchdog:restart")
+def _fleet_restart(target, ctx):
+    job = _fleet_job(target, ctx)
+    if not job:
+        return f"unknown job: {target}"
+    if "restart" not in (job.get("actions") or []) or job.get("signal") != "process":
+        slack_post.reply(ctx, f":no_entry: `{target}` is not restart-enabled.")
+        return "not restartable"
+    cmd = job.get("restart_cmd")
+    if not (isinstance(cmd, list) and cmd):
+        slack_post.reply(ctx, f":x: `{target}` has no restart_cmd.")
+        return "no restart_cmd"
+    slack_post.reply(ctx, f":arrows_counterclockwise: Restarting `{target}`…")
+    env = dict(os.environ)
+    env.setdefault("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}")
+    try:
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=60, env=env)
+    except Exception as e:
+        slack_post.reply(ctx, f":x: Restart errored: `{e!r}`")
+        return f"error: {e!r}"
+    if proc.returncode != 0:
+        tail = (proc.stderr or proc.stdout or "").strip()[-300:]
+        slack_post.reply(ctx, f":x: Restart failed (rc={proc.returncode}): ```{tail or '(no output)'}```")
+        return f"rc={proc.returncode}"
+    # a restart that doesn't STAY up is worse than no restart — verify liveness
+    time.sleep(4)
+    try:
+        import signals
+        res = signals.check_process(
+            {"service": job.get("service"), "process_kind": "keepalive"},
+            time.time(), None, False)
+        alive, detail = (res.status == "ok"), res.detail
+    except Exception as e:
+        alive, detail = True, f"(liveness check error: {e!r})"
+    if alive:
+        slack_post.reply(ctx, f":white_check_mark: `{target}` restarted and is up ({detail}).")
+        return "restarted-ok"
+    slack_post.reply(ctx, f":rotating_light: `{target}` restarted but it's *down again* "
+                          f"({detail}) — not a transient fault, needs you.")
+    return "restarted-died"
+
+
+@handler("fleet_watchdog:show_diagnosis")
+def _fleet_diagnose(target, ctx):
+    job = _fleet_job(target, ctx)
+    if not job:
+        return f"unknown job: {target}"
+    slack_post.reply(ctx, f":mag: Diagnosing `{target}`… (advisory)")
+    try:
+        import signals, diagnose
+        from pathlib import Path
+        tail, p = "", job.get("path")
+        if p and Path(os.path.expanduser(p)).exists():
+            tail = signals._read_tail(Path(os.path.expanduser(p)), 6000)
+        text = diagnose.diagnose(job, tail, timeout=90)
+    except Exception as e:
+        slack_post.reply(ctx, f":x: Diagnosis errored: `{e!r}`")
+        return f"error: {e!r}"
+    slack_post.reply(ctx, f":speech_balloon: *Diagnosis — {target}* (advisory, AI — verify before acting):\n{text}")
+    return "diagnosed"
+
+
+@handler("fleet_watchdog:mute")
+def _fleet_mute(target, ctx):
+    job = _fleet_job(target, ctx)
+    if not job:
+        return f"unknown job: {target}"
+    host = job.get("host", "vps")
+    path = os.path.join(_FLEET_STATE_DIR, f"mutes-{host}.json")
+    os.makedirs(_FLEET_STATE_DIR, exist_ok=True)
+    try:
+        data = _json.load(open(path)) if os.path.exists(path) else {}
+    except Exception:
+        data = {}
+    jobs = data.get("jobs") or {}
+    jobs[target] = time.time() + 24 * 3600
+    data["jobs"] = jobs
+    tmp = path + ".tmp"
+    with open(tmp, "w") as fh:
+        _json.dump(data, fh, indent=2)
+    os.replace(tmp, path)  # atomic; this handler is the sole writer of mutes-*.json
+    slack_post.reply(ctx, f":no_bell: Muted `{target}` for 24h "
+                          f"(alerts pause; a recovery still posts).")
+    return "muted"
