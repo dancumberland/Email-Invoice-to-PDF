@@ -153,3 +153,37 @@ Add `DEEPGRAM_API_KEY` (transcription) or `GROQ_API_KEY`/`OPENAI_API_KEY` (summa
 ssh claude@100.99.136.54 "docker exec cap-mysql mysql -ucap -p\$(grep '^MYSQL_PASSWORD=' /home/claude/cap/.env | cut -d= -f2-) cap -e 'SELECT email, stripeSubscriptionStatus FROM users;'"
 ```
 Watermark is removed because the user has `stripeSubscriptionStatus = 'active'`.
+
+## Desktop app: camera runs ahead of the audio (found 2026-07-24, Cap 0.5.7)
+
+**Symptom:** a studio recording exports with the camera window out of sync — the face
+moves ahead of the voice by roughly half a second to a second. The screen recording
+itself stays in sync.
+
+**Cause.** Each source stamps the moment its first frame or sample arrived
+(`start_time` in `recording-meta.json`). Normally all three land together. When the
+screen capture is slow to hand over its first frame, the screen's start_time lands
+several hundred milliseconds after the mic's and the camera's, and the editor writes
+catch-up offsets into `project-config.json` (`clips[0].offsets`). The mic offset is
+applied once, correctly. **The camera offset is applied twice in the render.**
+
+Measured on the 2026-07-24 Pacemark mood-board recording: screen started 776 ms after
+the camera, camera rendered 1550 ms early (2 × 776), face about three quarters of a
+second ahead of the voice. Setting the stored camera offset to 0 renders it at 776 ms,
+correctly aligned — verified by cross-correlating the export against the source tracks.
+
+Recordings where all sources start together get a camera offset of 0, so the doubling
+has nothing to double and the export is fine. That is why this only showed up now.
+
+**Check and fix:**
+
+```bash
+python3 cap_check_sync.py            # report on the 5 newest recordings
+python3 cap_check_sync.py --fix      # zero a bad camera offset on the newest
+/Applications/Cap.app/Contents/MacOS/cap-cli export "<path>.cap" \
+    -o ~/Desktop/fixed.mp4 --resolution 1280x720 --quality web
+```
+
+`cap-cli` (bundled at `/Applications/Cap.app/Contents/MacOS/cap-cli`) re-exports
+headlessly, so a bad export can be corrected without re-recording and without opening
+the editor.
