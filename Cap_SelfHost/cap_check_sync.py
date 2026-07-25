@@ -18,9 +18,18 @@ camera rendered 1550 ms early, face about three quarters of a second ahead of
 the audio. Setting the stored camera offset to 0 renders it correctly at
 776 ms, verified by cross-correlating the export against the source tracks.
 
+Second thing this fixes — the background from the default preset:
+
+A saved preset that uses a custom image background carries its layout values into a
+new recording (padding, rounding, shadow) but NOT the image itself; the background
+falls back to a stock blue gradient. The image path in the preset is valid — writing
+it into a recording's project-config.json renders correctly — so this only needs the
+value copied across. `--fix` copies the default preset's background source into the
+recording, so exports come out on the branded background every time.
+
 Usage:
     python3 cap_check_sync.py                 # report on the 5 newest recordings
-    python3 cap_check_sync.py --fix           # also zero a bad camera offset on the newest
+    python3 cap_check_sync.py --fix           # fix the newest: camera offset + background
     python3 cap_check_sync.py --fix PATH.cap  # fix a specific recording
 
 After --fix, re-export:
@@ -32,7 +41,18 @@ import shutil
 import sys
 from pathlib import Path
 
-RECORDINGS = Path.home() / "Library/Application Support/so.cap.desktop/recordings"
+SUPPORT = Path.home() / "Library/Application Support/so.cap.desktop"
+RECORDINGS = SUPPORT / "recordings"
+STORE = SUPPORT / "store"
+
+
+def default_preset():
+    """The preset marked as default in Cap's store, or None."""
+    try:
+        presets = json.loads(STORE.read_text())["presets"]
+        return presets["presets"][presets["default"]]
+    except Exception:
+        return None
 
 
 def load(path, name):
@@ -71,23 +91,49 @@ def report(cap_dir):
               f"~{ms:.0f} ms ahead of the voice. Fix with --fix.")
     elif "camera" in starts:
         print("  ✅ camera offset is zero — export will be in sync")
+
+    src = (cfg or {}).get("background", {}).get("source", {})
+    preset = default_preset()
+    want = (preset or {})["config"]["background"]["source"] if preset else None
+    if want and src != want:
+        print(f"  ⚠️  background is '{src.get('type')}', not the default preset "
+              f"({preset['name']!r}: {want.get('type')}). Fix with --fix.")
+    elif want:
+        print(f"  ✅ background matches the default preset ({preset['name']!r})")
     return bad
 
 
 def fix(cap_dir):
     path = cap_dir / "project-config.json"
     cfg = json.loads(path.read_text())
+    changed = []
+
     clip = cfg["clips"][0]
     before = clip["offsets"].get("camera")
-    if not before:
-        print(f"nothing to fix in {cap_dir.name} (camera offset already {before})")
+    if before:
+        clip["offsets"]["camera"] = 0.0
+        changed.append(f"camera offset {before} -> 0.0")
+
+    preset = default_preset()
+    if preset:
+        want = preset["config"]["background"]["source"]
+        if cfg["background"]["source"] != want:
+            missing = want.get("type") == "image" and not Path(want.get("path") or "").exists()
+            if missing:
+                print(f"  preset image is missing from disk: {want.get('path')} — "
+                      "re-pick it in the editor and re-save the preset")
+            else:
+                cfg["background"]["source"] = want
+                changed.append(f"background -> {preset['name']!r}")
+
+    if not changed:
+        print(f"nothing to fix in {cap_dir.name}")
         return
     backup = path.with_suffix(".json.bak-presyncfix")
     if not backup.exists():
         shutil.copy2(path, backup)
-    clip["offsets"]["camera"] = 0.0
     path.write_text(json.dumps(cfg, indent=2))
-    print(f"fixed {cap_dir.name}: camera offset {before} -> 0.0  (backup: {backup.name})")
+    print(f"fixed {cap_dir.name}: " + "; ".join(changed) + f"  (backup: {backup.name})")
     print("re-export with:\n  /Applications/Cap.app/Contents/MacOS/cap-cli export "
           f'"{cap_dir}" -o ~/Desktop/fixed.mp4 --resolution 1280x720 --quality web')
 
