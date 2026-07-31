@@ -32,6 +32,12 @@ import urllib.request
 _ENV_PATH = "/home/claude/slack-actions/.env"
 
 
+def _chunk_text(text, limit):
+    if not text:
+        return []
+    return [text[i:i + limit] for i in range(0, len(text), limit)]
+
+
 def _load_cfg():
     cfg = {}
     try:
@@ -50,8 +56,16 @@ def _load_cfg():
     return cfg
 
 
-def post_decision(stream, title, context="", actions=None):
-    """Returns the Slack API response text, or None if unconfigured/failed."""
+def post_decision(stream, title, context="", body="", actions=None):
+    """Returns the Slack API response text, or None if unconfigured/failed.
+
+    `body`, if given, is rendered as one or more mrkdwn section blocks between
+    the context line and the action buttons — for details too long for the
+    single-line `context` (e.g. intake-form answers a caller wants surfaced
+    before the buttons are tapped). Chunked defensively at just under Slack's
+    3000-char-per-block section limit; callers should still pre-truncate
+    since a very long body reads as several stacked blocks otherwise.
+    """
     cfg = _load_cfg()
     token = cfg.get("SLACK_BOT_TOKEN", "")
     channel = cfg.get("DECISIONS_CHANNEL_ID", "")
@@ -61,6 +75,8 @@ def post_decision(stream, title, context="", actions=None):
     blocks = [{"type": "section", "text": {"type": "mrkdwn", "text": f"*{title}*"}}]
     if context:
         blocks.append({"type": "context", "elements": [{"type": "mrkdwn", "text": context}]})
+    for chunk in _chunk_text(body, 2900):
+        blocks.append({"type": "section", "text": {"type": "mrkdwn", "text": chunk}})
 
     elements = []
     for a in (actions or []):
