@@ -91,6 +91,20 @@ We’ll nail those two archetypes so **P&L tells the truth** every month, and
 
 📌 **Audit tip:** attach COA export (CSV) to year-end work-papers.
 
+⚙️ This snapshot is illustrative, not exhaustive — the full, current 4xxx revenue account list (19 accounts, confirmed live against Xero 2026-08-03) lives in the `invoice` skill's SKILL.md under "Known Revenue Accounts." Treat that table as the source of truth for account selection; this guide stays focused on the accrual mechanics.
+
+🚨 **4005 "AI Optimization Retainer" was archived 2026-08-03.** It no longer appears in Xero's account picker. Never code an invoice to it, including via a stale API/reference call.
+
+### 2.1a Revenue Type Tracking Category
+
+⚙️ A per-invoice-line **tracking category** named `Revenue Type` (options `Recurring` / `One-time`) was added 2026-08-03. It segments the P&L natively — this is why it's a tracking category and not new COA codes (see §12.4, Forbidden Actions: never create COA codes for a split a tracking category already handles).
+
+🧩 AI-Cue: the classification test is **timing of revenue recognition** (contract §2.6), not the product name — delivery spanning 2+ consecutive calendar months → `Recurring`; a lump sum delivered and invoiced inside one month → `One-time`, even on an account normally used for recurring work.
+
+📌 All 2026 transactions were back-tagged in a one-time Find & Recode sweep on 2026-08-03 (see `DCL_Sales/.claude/sessions/260803.1412-xero-revenue-type-backtagging.md` for the exact batches and account-to-type mapping). Every new invoice going forward needs this tag set at creation — it does not default or backfill itself.
+
+🚨 Failure mode-C-01: an invoice coded to the correct revenue account but left untagged for `Revenue Type` will still distort the `metrics-update` skill's weekly MRR read, even though the P&L account itself is correct. Known gap as of 2026-08-03: account 4715 "Other Income" carries a live YTD balance that was not included in the initial back-tagging batches — check it for untagged transactions before trusting an MRR pull that includes it.
+
 ### 2.2 Account-by-Account Deep Notes
 **1360 Contract Asset – Payment Plans**  
 * Only two journal sources:  
