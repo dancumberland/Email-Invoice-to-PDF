@@ -92,6 +92,10 @@ def post_decision(stream, title, context="", body="", actions=None):
     if elements:
         blocks.append({"type": "actions", "elements": elements})
 
+    # Slack stacks messages from the same app with no separation. The rule is
+    # what keeps this card from reading as a continuation of the one above it.
+    blocks.append({"type": "divider"})
+
     payload = {"channel": channel, "text": title, "blocks": blocks}
     req = urllib.request.Request(
         "https://slack.com/api/chat.postMessage",

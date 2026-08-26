@@ -317,3 +317,47 @@ def _research_run(target, ctx):
 def _research_skip(target, ctx):
     slack_post.reply(ctx, f":no_bell: Skipped — booking `{target}` left un-researched.")
     return "skipped"
+
+
+# --- Phase 3: article title picks (green / reversible) ---------------------
+# Buttons on the #decisions "Title needed" card. Applying a title only unparks
+# the article for the next nightly run — nothing publishes on the tap, and a
+# second tap on a different number just re-approves.
+#
+# Trust boundary: `target` arrives as "<slug>|<n>" from the card's own button
+# value and is passed as one argv element (never a shell string); title_decisions
+# re-validates its shape before it reaches the pipeline.
+TITLE_DECISIONS_CWD = "/home/claude/Dan-Cumberland-Labs-Content"
+TITLE_DECISIONS = "Operations/Tools/title_decisions.py"
+
+
+@handler("title:pick")
+def _title_pick(target, ctx):
+    if not target or "|" not in target:
+        slack_post.reply(ctx, ":warning: That button carried no article — nothing applied.")
+        return "no target"
+    slug, _, number = target.partition("|")
+    slack_post.reply(ctx, f":pencil: Applying candidate *{number}* to `{slug}`…")
+    try:
+        proc = subprocess.run(
+            ["/usr/bin/python3", TITLE_DECISIONS, "--apply-pick", target],
+            cwd=TITLE_DECISIONS_CWD, capture_output=True, text=True, timeout=120,
+        )
+        out = (proc.stdout or "").strip().splitlines()
+        if proc.returncode == 0 and out:
+            slack_post.reply(
+                ctx,
+                f":white_check_mark: Title set to *{out[-1]}*\n"
+                f"`{slug}` is unparked. The next nightly run finishes and publishes it.\n"
+                "──────────",
+            )
+            return f"approved: {out[-1]}"
+        detail = "\n".join(out[-3:] or (proc.stderr or "").strip().splitlines()[-3:]) or "(no output)"
+        slack_post.reply(ctx, f":x: Could not apply candidate {number} (rc={proc.returncode}):\n```{detail}```")
+        return f"rc={proc.returncode}"
+    except subprocess.TimeoutExpired:
+        slack_post.reply(ctx, ":x: Title apply timed out after 2 min — check the pipeline log.")
+        return "timeout"
+    except Exception as e:
+        slack_post.reply(ctx, f":x: Title apply errored: `{e!r}`")
+        return f"error: {e!r}"
