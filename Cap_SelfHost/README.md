@@ -29,7 +29,8 @@ upload to *itself* and you get **"Failed to upload recording."**
 - `/home/claude/cap/docker-compose.yml` — **the live config** (MinIO). This is the default
   file `docker compose` picks up, so it MUST be the correct one (see the trap below).
 - `/home/claude/cap/.env` — secrets (MinIO creds, NextAuth/DB encryption keys, MySQL).
-- `/etc/caddy/Caddyfile` — reverse proxy for `hey.` (port 3000) + `s3.` (port 9000) + branding removal.
+- `/etc/caddy/Caddyfile` — reverse proxy for `hey.` (port 3000) + `s3.` (port 9000) + full share-page branding removal.
+- `/var/www/cap-branding/` — DCL favicon/app-icon assets served directly by Caddy. The canonical source is `Sites/DCL/DCL-Site/public/favicon-192.png`, `favicon.ico`, and `favicon.svg`.
 
 Local mirrors of `docker-compose.yml` and `Caddyfile` live in this directory. **VPS is the
 source of truth** — edit there, then mirror down.
@@ -133,12 +134,24 @@ ssh claude@100.99.136.54 'cd /home/claude/cap && docker compose logs -f cap-web'
 ssh claude@100.99.136.54 'cd /home/claude/cap && docker compose up -d'
 ```
 
-## Caddy: branding removal + s3 route
+## Caddy: white-label layer + s3 route
 
-`hey.dancumberlandlabs.com` strips Cap branding via response text-replacement (logo footer,
-"Recorded with", page title, sidebar). If Cap updates its frontend markup these replacements
-break silently — eyeball the page after any `cap-web` image update. `s3.dancumberlandlabs.com`
-reverse-proxies to MinIO on `localhost:9000`. Reload after edits: `sudo systemctl reload caddy`.
+`hey.dancumberlandlabs.com` strips Cap branding via response text replacement (logo footer,
+"Recorded with", share-page/sidebar UI, default recording titles, preview descriptions, hidden
+fallback labels, and Cap's support address). It also serves DCL's real favicon at every icon
+endpoint plus a DCL web manifest. This is what makes Slack unfurls read **DCL Video …** and
+**Watch this video from Dan Cumberland Labs**, with the DCL logo instead of Cap's.
+
+If Cap updates its frontend markup, replacements can break silently — fetch a current `/s/<id>`
+as `Slackbot-LinkExpanding`, inspect title/description/Open Graph/Twitter metadata, and eyeball
+the page after any `cap-web` image update. Slack may retain an older unfurl for an already-posted
+URL; a newly recorded URL (or a one-off query parameter during testing) forces a fresh fetch.
+`s3.dancumberlandlabs.com` reverse-proxies to MinIO on `localhost:9000`. Reload after edits:
+`sudo systemctl reload caddy`.
+
+The pre-white-label live config is recoverable at
+`/etc/caddy/Caddyfile.bak-20260919-cap-whitelabel`. Validate before any restore or future edit:
+`sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile`.
 
 To re-enable a stripped element, remove its `replace` line in `/etc/caddy/Caddyfile`.
 

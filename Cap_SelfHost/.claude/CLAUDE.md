@@ -9,7 +9,7 @@ Self-hosted Cap (Loom alternative) running at **https://hey.dancumberlandlabs.co
 - **URL:** https://hey.dancumberlandlabs.com
 - **VPS:** `100.99.136.54` (Tailscale) / `159.203.139.119` (public)
 - **Storage:** self-hosted **MinIO** on the VPS (migrated off R2 2026-03-25); bucket `cap-recordings`; public endpoint `https://s3.dancumberlandlabs.com` (Caddy → localhost:9000)
-- **Architecture:** `Client → Caddy (HTTPS + text replacements) → cap-web :3000`; uploads go **direct via presigned URL** to `s3.dancumberlandlabs.com` → MinIO :9000. `S3_PUBLIC_ENDPOINT` MUST be the public host, never `localhost` (else "Failed to upload recording").
+- **Architecture:** `Client → Caddy (HTTPS + white-label text/icon layer) → cap-web :3000`; uploads go **direct via presigned URL** to `s3.dancumberlandlabs.com` → MinIO :9000. `S3_PUBLIC_ENDPOINT` MUST be the public host, never `localhost` (else "Failed to upload recording").
 - **Watchdog:** `cap-upload-health` in fleet-watchdog — `*/15` end-to-end probe (config + storage round-trip + reachability), self-alerts Slack. Source `cap_healthcheck.sh`. See README § Health/Watchdog.
 - **⚠️ Two-compose-file trap:** the correct MinIO config IS now the default `docker-compose.yml`. A bare `docker compose up -d` is safe; do NOT use `-f <other-file>` without checking its var names match `.env`. See README § the trap (root cause of the 2026-06-22 outage).
 
@@ -17,7 +17,8 @@ Self-hosted Cap (Loom alternative) running at **https://hey.dancumberlandlabs.co
 
 - `/home/claude/cap/docker-compose.yml` — **live** Docker Compose config (MinIO; correct default)
 - `/home/claude/cap/.env` — secrets (MinIO creds, NextAuth/DB keys, MySQL)
-- `/etc/caddy/Caddyfile` — reverse proxy (`hey.` :3000 + `s3.` :9000) + Cap branding removal
+- `/etc/caddy/Caddyfile` — reverse proxy (`hey.` :3000 + `s3.` :9000) + Cap branding removal from visible pages and share-preview metadata
+- `/var/www/cap-branding/` — DCL favicon/app icons served for Cap's icon endpoints (canonical assets: `Sites/DCL/DCL-Site/public/favicon*`)
 - `/home/claude/cap-healthcheck/cap_healthcheck.sh` — upload-path watchdog (cron `*/15`)
 
 ## Local Files

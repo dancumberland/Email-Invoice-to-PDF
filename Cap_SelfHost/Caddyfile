@@ -1,12 +1,54 @@
 hey.dancumberlandlabs.com {
-    reverse_proxy localhost:3000 {
-        header_up -Accept-Encoding
+    handle /favicon.ico {
+        root * /var/www/cap-branding
+        file_server
     }
-    replace stream {
-        `Recorded with` ``
-        `| Cap Recording` ``
-        `"py-4 mt-auto"` `"py-4 mt-auto hidden"`
-        `animate-pulse new-card-style` `animate-pulse new-card-style hidden`
-        `flex flex-col lg:w-80` `flex flex-col lg:w-80 hidden`
+
+    handle /favicon-16x16.png {
+        root * /var/www/cap-branding
+        file_server
+    }
+
+    handle /favicon-32x32.png {
+        root * /var/www/cap-branding
+        file_server
+    }
+
+    handle /favicon-192.png {
+        root * /var/www/cap-branding
+        file_server
+    }
+
+    handle /apple-touch-icon.png {
+        root * /var/www/cap-branding
+        file_server
+    }
+
+    handle /safari-pinned-tab.svg {
+        root * /var/www/cap-branding
+        file_server
+    }
+
+    handle /site.webmanifest {
+        header Content-Type application/manifest+json
+        respond `{"name":"Dan Cumberland Labs Videos","short_name":"DCL Videos","icons":[{"src":"/favicon-192.png","sizes":"192x192","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}` 200
+    }
+
+    handle {
+        reverse_proxy localhost:3000 {
+            header_up -Accept-Encoding
+        }
+        replace stream {
+            `Recorded with` ``
+            `| Cap Recording` ``
+            `Watch this video on Cap` `Watch this video from Dan Cumberland Labs`
+            `Cap 202` `DCL Video 202`
+            `Cap Logo` `DCL Logo`
+            `Cap team` `Dan Cumberland Labs team`
+            `hello@cap.so` `dc@dancumberlandlabs.com`
+            `"py-4 mt-auto"` `"py-4 mt-auto hidden"`
+            `animate-pulse new-card-style` `animate-pulse new-card-style hidden`
+            `flex flex-col lg:w-80` `flex flex-col lg:w-80 hidden`
+        }
     }
 }
